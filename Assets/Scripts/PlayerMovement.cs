@@ -76,9 +76,17 @@ public class PlayerMovement : MonoBehaviour
 
     void CheckGrounded()
     {
-        // Karakterin altında bir ışın (ray) çiz ve yerde olup olmadığını kontrol et
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, groundCheckDistance, groundLayer);
-        _isGrounded = hit.collider != null; // Eğer bir çarpışma varsa, karakter yerde demektir
+        // CircleCast için yarıçap ve mesafe belirle
+        float radius = 0.5f; // Kontrol edilecek alanın yarıçapı
+        float distance = groundCheckDistance; // Kontrol mesafesi
+        Vector2 direction = Vector2.down; // Kontrol yönü (aşağı)
+
+        // CircleCast çiz ve yerde olup olmadığını kontrol et
+        RaycastHit2D hit = Physics2D.CircleCast(transform.position, radius, direction, distance, groundLayer);
+        _isGrounded = hit.collider != null;
+
+        // Debug görselleştirme
+        Debug.DrawRay(transform.position, direction * distance, _isGrounded ? Color.green : Color.red);
     }
 
     void HandleJump()

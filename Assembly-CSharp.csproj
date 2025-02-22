@@ -48,6 +48,8 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\CameraMovement.cs" />
     <Compile Include="Assets\Scripts\PlayerMovement.cs" />
+    <None Include="Assets\DEPO\craftpix street animal-pixelart\license.txt" />
+    <None Include="Assets\DEPO\craftpix street animal-pixelart\Font.txt" />
     <Reference Include="UnityEngine">
       <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.36f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
     </Reference>
