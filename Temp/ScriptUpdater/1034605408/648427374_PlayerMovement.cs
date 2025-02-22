@@ -70,7 +70,8 @@ public class PlayerMovement : MonoBehaviour
     {
         // Animator'a hızın mutlak değerini ilet
         _animator.SetFloat("speed", Mathf.Abs(speed));
-        
+
+        // Animator'a yerde olup olmadığını ilet
         _animator.SetBool("isGrounded", _isGrounded);
     }
 
@@ -85,7 +86,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (_isGrounded && Input.GetKeyDown(KeyCode.Space)) // Yerdeyse ve Space tuşuna basıldıysa
         {
-            _rigidbody2D.linearVelocity = new Vector2(_rigidbody2D.linearVelocity.x, jumpForce*10); // Zıplama kuvveti uygula
+            _rigidbody2D.linearVelocity = new Vector2(_rigidbody2D.linearVelocity.x, jumpForce); // Zıplama kuvveti uygula
         }
     }
 }
