@@ -48,9 +48,9 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 0
-    y: 447.74396
+    y: 396.28796
     width: 636.44
-    height: 295.856
+    height: 347.31198
   m_SerializedDataModeController:
     m_DataMode: 0
     m_PreferredDataMode: 0
@@ -68,7 +68,7 @@ MonoBehaviour:
   m_ShowGizmos: 0
   m_TargetDisplay: 0
   m_ClearColor: {r: 0, g: 0, b: 0, a: 0}
-  m_TargetSize: {x: 489, y: 274.856}
+  m_TargetSize: {x: 580, y: 326.31198}
   m_TextureFilterMode: 0
   m_TextureHideFlags: 61
   m_RenderIMGUI: 1
@@ -83,10 +83,10 @@ MonoBehaviour:
     m_VRangeLocked: 0
     hZoomLockedByDefault: 0
     vZoomLockedByDefault: 0
-    m_HBaseRangeMin: -187.77599
-    m_HBaseRangeMax: 187.77599
-    m_VBaseRangeMin: -105.54469
-    m_VBaseRangeMax: 105.54469
+    m_HBaseRangeMin: -222.71999
+    m_HBaseRangeMax: 222.71999
+    m_VBaseRangeMin: -125.303795
+    m_VBaseRangeMax: 125.303795
     m_HAllowExceedBaseRangeMin: 1
     m_HAllowExceedBaseRangeMax: 1
     m_VAllowExceedBaseRangeMin: 1
@@ -105,9 +105,9 @@ MonoBehaviour:
       x: 0
       y: 21
       width: 636.44
-      height: 274.856
+      height: 326.31198
     m_Scale: {x: 1.3020834, y: 1.3020834}
-    m_Translation: {x: 318.22, y: 137.428}
+    m_Translation: {x: 318.22, y: 163.15599}
     m_MarginLeft: 0
     m_MarginRight: 0
     m_MarginTop: 0
@@ -115,12 +115,12 @@ MonoBehaviour:
     m_LastShownAreaInsideMargins:
       serializedVersion: 2
       x: -244.39296
-      y: -105.54469
+      y: -125.303795
       width: 488.78592
-      height: 211.08939
+      height: 250.60759
     m_MinimalGUI: 1
   m_defaultScale: 1
-  m_LastWindowPixelSize: {x: 828.69794, y: 385.22916}
+  m_LastWindowPixelSize: {x: 828.69794, y: 452.22916}
   m_ClearInEditMode: 1
   m_NoCameraWarning: 1
   m_LowResolutionForAspectRatios: 01000000000100000100
@@ -197,9 +197,9 @@ MonoBehaviour:
     x: 0
     y: 0
     width: 637.44
-    height: 368.63998
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+    height: 317.184
+  m_MinSize: {x: 201, y: 226}
+  m_MaxSize: {x: 4001, y: 4026}
   m_ActualView: {fileID: 6}
   m_Panes:
   - {fileID: 6}
@@ -232,7 +232,7 @@ MonoBehaviour:
     x: 0
     y: 79.104
     width: 636.44
-    height: 342.63998
+    height: 291.184
   m_SerializedDataModeController:
     m_DataMode: 0
     m_PreferredDataMode: 0
@@ -452,17 +452,17 @@ MonoBehaviour:
       layout: 4
       size: {x: 0, y: 0}
       sizeOverridden: 0
-    - dockPosition: 1
-      containerId: overlay-container--right
+    - dockPosition: 0
+      containerId: Floating
       displayed: 0
       id: Scene View/Physics Debugger
-      index: 12
-      contents: '{"m_Layout":4,"m_Collapsed":false,"m_Floating":false,"m_FloatingSnapOffset":{"x":0.0,"y":0.0},"m_SnapOffsetDelta":{"x":24.0,"y":0.0},"m_FloatingSnapCorner":0,"m_Size":{"x":0.0,"y":0.0},"m_SizeOverridden":false}'
-      floating: 0
+      index: 0
+      contents: '{"m_Layout":4,"m_Collapsed":false,"m_Floating":true,"m_FloatingSnapOffset":{"x":-188.16000366210938,"y":-61.441009521484378},"m_SnapOffsetDelta":{"x":0.0,"y":0.0},"m_FloatingSnapCorner":3,"m_Size":{"x":0.0,"y":0.0},"m_SizeOverridden":false}'
+      floating: 1
       collapsed: 0
-      snapOffset: {x: 0, y: 0}
-      snapOffsetDelta: {x: 24, y: 0}
-      snapCorner: 0
+      snapOffset: {x: -188.16, y: -61.44101}
+      snapOffsetDelta: {x: 0, y: 0}
+      snapCorner: 3
       layout: 4
       size: {x: 0, y: 0}
       sizeOverridden: 0
@@ -470,7 +470,7 @@ MonoBehaviour:
       containerId: overlay-container--right
       displayed: 0
       id: Tool Settings
-      index: 13
+      index: 12
       contents: '{"m_Layout":4,"m_Collapsed":false,"m_Floating":false,"m_FloatingSnapOffset":{"x":0.0,"y":0.0},"m_SnapOffsetDelta":{"x":24.0,"y":0.0},"m_FloatingSnapCorner":0,"m_Size":{"x":0.0,"y":0.0},"m_SizeOverridden":false}'
       floating: 0
       collapsed: 0
@@ -498,7 +498,7 @@ MonoBehaviour:
       containerId: overlay-container--right
       displayed: 0
       id: APV Overlay
-      index: 14
+      index: 13
       contents: '{"m_Layout":4,"m_Collapsed":false,"m_Floating":false,"m_FloatingSnapOffset":{"x":48.0,"y":48.0},"m_SnapOffsetDelta":{"x":0.0,"y":0.0},"m_FloatingSnapCorner":0,"m_Size":{"x":0.0,"y":0.0},"m_SizeOverridden":false}'
       floating: 0
       collapsed: 0
@@ -526,7 +526,7 @@ MonoBehaviour:
       containerId: overlay-container--right
       displayed: 0
       id: Scene View/TrailRenderer
-      index: 15
+      index: 14
       contents: '{"m_Layout":4,"m_Collapsed":false,"m_Floating":false,"m_FloatingSnapOffset":{"x":48.0,"y":48.0},"m_SnapOffsetDelta":{"x":0.0,"y":0.0},"m_FloatingSnapCorner":0,"m_Size":{"x":0.0,"y":0.0},"m_SizeOverridden":false}'
       floating: 0
       collapsed: 0
@@ -694,7 +694,7 @@ MonoBehaviour:
       containerId: overlay-container--right
       displayed: 0
       id: Scene View/Path
-      index: 16
+      index: 15
       contents: '{"m_Layout":4,"m_Collapsed":false,"m_Floating":false,"m_FloatingSnapOffset":{"x":0.0,"y":0.0},"m_SnapOffsetDelta":{"x":24.0,"y":0.0},"m_FloatingSnapCorner":0,"m_Size":{"x":0.0,"y":0.0},"m_SizeOverridden":false}'
       floating: 0
       collapsed: 0
@@ -722,7 +722,7 @@ MonoBehaviour:
       containerId: overlay-container--right
       displayed: 0
       id: SceneView/CamerasOverlay
-      index: 17
+      index: 16
       contents: '{"m_Layout":4,"m_Collapsed":false,"m_Floating":false,"m_FloatingSnapOffset":{"x":0.0,"y":0.0},"m_SnapOffsetDelta":{"x":24.0,"y":0.0},"m_FloatingSnapCorner":0,"m_Size":{"x":0.0,"y":0.0},"m_SizeOverridden":false}'
       floating: 0
       collapsed: 0
@@ -736,7 +736,7 @@ MonoBehaviour:
       containerId: overlay-container--right
       displayed: 0
       id: Scene View/PBR Validation Settings
-      index: 18
+      index: 17
       contents: '{"m_Layout":4,"m_Collapsed":false,"m_Floating":false,"m_FloatingSnapOffset":{"x":0.0,"y":0.0},"m_SnapOffsetDelta":{"x":24.0,"y":0.0},"m_FloatingSnapCorner":0,"m_Size":{"x":0.0,"y":0.0},"m_SizeOverridden":false}'
       floating: 0
       collapsed: 0
@@ -773,9 +773,9 @@ MonoBehaviour:
   m_AudioPlay: 0
   m_DebugDrawModesUseInteractiveLightBakingData: 0
   m_Position:
-    m_Target: {x: 21.625402, y: 0.061368812, z: 0.08910672}
+    m_Target: {x: 15.211165, y: 0.12263438, z: -0.042779118}
     speed: 2
-    m_Value: {x: 21.625402, y: 0.061368812, z: 0.08910672}
+    m_Value: {x: 15.211165, y: 0.12263438, z: -0.042779118}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -825,9 +825,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 8.733052
+    m_Target: 12.187319
     speed: 2
-    m_Value: 8.733052
+    m_Value: 12.187319
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -954,7 +954,7 @@ MonoBehaviour:
     x: 0
     y: 79.104
     width: 636.44
-    height: 334.96
+    height: 291.184
   m_SerializedDataModeController:
     m_DataMode: 0
     m_PreferredDataMode: 0
@@ -976,15 +976,17 @@ MonoBehaviour:
     - {fileID: -342893132680888958, guid: 289953696ec47b247a365e8a398bdd3a, type: 2}
     - {fileID: 1455459660138225718, guid: 5f1ba5e506096ec47b10239f6e7cc176, type: 2}
     - {fileID: -2368642476144311038, guid: da4ea3f4883b5e846a012cd7b72b17fe, type: 2}
+    - {fileID: 3597282828997418384, guid: c7704112dee3b2c46b13aefdf69331fe, type: 2}
+    - {fileID: 5463968008525926499, guid: 4019e39085d21644ca18a582d92120f1, type: 2}
     m_ValueSerializationHelper:
     - e00: 0.1
       e01: 0
       e02: 0
-      e03: 70.11
+      e03: 58.205994
       e10: 0
       e11: 0.1
       e12: 0
-      e13: -156.91
+      e13: -178.798
       e20: 0
       e21: 0
       e22: 1
@@ -1089,14 +1091,46 @@ MonoBehaviour:
       e31: 0
       e32: 0
       e33: 1
-    - e00: 0.8581112
+    - e00: 0.41002622
       e01: 0
       e02: 0
-      e03: -139.50919
+      e03: 66.496704
       e10: 0
-      e11: 0.8581112
+      e11: 0.41002622
       e12: 0
-      e13: -17.1622
+      e13: 86.34944
+      e20: 0
+      e21: 0
+      e22: 1
+      e23: 0
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    - e00: 0.5940937
+      e01: 0
+      e02: 0
+      e03: 203.94353
+      e10: 0
+      e11: 0.5940937
+      e12: 0
+      e13: 114.88774
+      e20: 0
+      e21: 0
+      e22: 1
+      e23: 0
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    - e00: 0.48095998
+      e01: 0
+      e02: 0
+      e03: -9.048004
+      e10: 0
+      e11: 0.48095998
+      e12: 0
+      e13: 85.070404
       e20: 0
       e21: 0
       e22: 1
@@ -1137,11 +1171,11 @@ MonoBehaviour:
   m_Position:
     serializedVersion: 2
     x: 0
-    y: 368.63998
+    y: 317.184
     width: 637.44
-    height: 321.856
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+    height: 373.31198
+  m_MinSize: {x: 201, y: 226}
+  m_MaxSize: {x: 4001, y: 4026}
   m_ActualView: {fileID: 2}
   m_Panes:
   - {fileID: 2}
@@ -1171,7 +1205,7 @@ MonoBehaviour:
   m_MinSize: {x: 100, y: 100}
   m_MaxSize: {x: 8096, y: 16192}
   vertical: 1
-  controlID: 71941
+  controlID: 24936
   draggingID: 0
 --- !u!114 &12
 MonoBehaviour:
@@ -1237,10 +1271,10 @@ MonoBehaviour:
     m_OverlaysVisible: 1
   m_SceneHierarchy:
     m_TreeViewState:
-      scrollPos: {x: 0, y: 112}
-      m_SelectedIDs: 5a04ffff
-      m_LastClickedID: -64422
-      m_ExpandedIDs: 2426fcff4c31fcffce31fcffd031fcff5232fcff1833fcffe033fcfff033fcfff633fcff0c34fcfff2e7fdfffac6feff78ccfeff0602ffff981bffff8a40ffff0a64ffff8c64ffff0cfbffff7cb20000d6b2000006b30000fab30000a8b40000d6b40000b8b50000e8b50000f4b5000010b6000080b600008cb6000096b60000b8b70000dab70000
+      scrollPos: {x: 0, y: 11361.944}
+      m_SelectedIDs: 
+      m_LastClickedID: 0
+      m_ExpandedIDs: 0cfbffff6eb3000014b40000c0b40000d0b4000096b60000bab700001ab8000054b8000042b90000acb90000ecb90000e2ba000070bb000064bc0000e8bc0000ecbc0000febc0000f8bd000020be00007abe000096be0000bebe0000e6be00000ebf00002abf000000c0000060c000005cc30000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -1336,9 +1370,9 @@ MonoBehaviour:
     m_SceneHandles: 
     m_ShowAllHits: 0
     m_SkipHidden: 0
-    m_SearchArea: 0
+    m_SearchArea: 1
     m_Folders:
-    - Assets/DEPO/craftpix street animal-pixelart/2 Dog 2
+    - Assets/Animation
     m_Globs: []
     m_ProductIds: 
     m_AnyWithAssetOrigin: 0
@@ -1348,16 +1382,16 @@ MonoBehaviour:
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/DEPO/craftpix street animal-pixelart/2 Dog 2
+  - Assets/Animation
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\TAYLOGAMES\Catalyst
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 682a0400
-    m_LastClickedID: 273000
-    m_ExpandedIDs: 0000000004c1000006c100000ac10000262401003e240400ce28040000ca9a3b
+    m_SelectedIDs: a2ce0000
+    m_LastClickedID: 52898
+    m_ExpandedIDs: 00000000bacc0000bccc0000becc0000c0cc0000c2cc000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1386,7 +1420,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 0000000004c1000006c1000008c100000ac1000000ca9a3b
+    m_ExpandedIDs: 00000000bacc0000bccc0000becc0000c0cc0000c2cc000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1412,8 +1446,8 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 5a04ffff
-    m_LastClickedInstanceID: -64422
+    m_SelectedInstanceIDs: 
+    m_LastClickedInstanceID: 0
     m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c623000092b00000080d0100ac0d0100200d0100de520100
     m_RenameOverlay:
@@ -1463,8 +1497,8 @@ MonoBehaviour:
     y: 0
     width: 368.64
     height: 690.496
-  m_MinSize: {x: 275, y: 50}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 276, y: 76}
+  m_MaxSize: {x: 4001, y: 4026}
   m_ActualView: {fileID: 17}
   m_Panes:
   - {fileID: 17}

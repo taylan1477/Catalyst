@@ -3,10 +3,12 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public float speed = 0.0f; // Mevcut hız
-    public float acceleration = 0.015f; // Hızlanma
-    public float deceleration = 0.04f; // Yavaşlama
-    public float maxSpeed = 2.5f; // Maks hız
-    public float jumpForce = 10f; // Zıplama kuvveti
+    public float acceleration = 0.02f; // Hızlanma
+    public float deceleration = 0.03f; // Yavaşlama
+    public float maxSpeed = 3.3f; // Maks hız
+    public float normalJumpForce = 20f; // Normal zıplama kuvveti
+    public float chargedJumpForce = 28f; // Charged zıplama kuvveti
+    public float chargeThreshold = 0.6f; // Charged Jump için gereken süre
     public float groundCheckDistance = 0.1f; // Yerde olup olmadığını kontrol etmek için mesafe
     public LayerMask groundLayer; // Yer katmanı
 
@@ -14,6 +16,8 @@ public class PlayerMovement : MonoBehaviour
     private Animator _animator;
     private SpriteRenderer _spriteRenderer;
     private bool _isGrounded; // Karakter yerde mi?
+    private bool _isCharging = false;
+    private float _chargeStartTime = 0f;
 
     void Start()
     {
@@ -27,73 +31,76 @@ public class PlayerMovement : MonoBehaviour
         HandleMovement();
         ApplyMovement();
         UpdateAnimator();
-        CheckGrounded(); // Yerde olup olmadığını kontrol et
-        HandleJump(); // Zıplamayı kontrol et
+        CheckGrounded();
+        HandleJump();
     }
 
     void HandleMovement()
     {
         if (Input.GetKey(KeyCode.D)) // Sağa hareket
         {
-            if (speed < 0) // Eğer sola gidiyorsa, hızı tersine çevir
-            {
-                speed *= -1;
-            }
+            if (speed < 0) speed *= -1; // Eğer sola gidiyorsa, hızı tersine çevir
             speed += acceleration;
-            _spriteRenderer.flipX = false; // Sprite'ı sağa dönük yap
+            _spriteRenderer.flipX = false;
         }
         else if (Input.GetKey(KeyCode.A)) // Sola hareket
         {
-            if (speed > 0) // Eğer sağa gidiyorsa, hızı tersine çevir
-            {
-                speed *= -1;
-            }
+            if (speed > 0) speed *= -1;
             speed -= acceleration;
-            _spriteRenderer.flipX = true; // Sprite'ı sola dönük yap
+            _spriteRenderer.flipX = true;
         }
         else // Tuşa basılmıyorsa yavaşla
         {
             speed = Mathf.MoveTowards(speed, 0, deceleration);
         }
 
-        // Hızı sınırla
-        speed = Mathf.Clamp(speed, -maxSpeed, maxSpeed);
+        speed = Mathf.Clamp(speed, -maxSpeed, maxSpeed); // Hızı sınırla
     }
 
     void ApplyMovement()
     {
-        // Hızı yön ile çarp ve karaktere uygula
         _rigidbody2D.linearVelocity = new Vector2(speed * 4, _rigidbody2D.linearVelocity.y);
     }
 
     void UpdateAnimator()
     {
-        // Animator'a hızın mutlak değerini ilet
         _animator.SetFloat("speed", Mathf.Abs(speed));
-        
         _animator.SetBool("isGrounded", _isGrounded);
+        _animator.SetBool("isCharging", _isCharging);
     }
 
     void CheckGrounded()
     {
-        // CircleCast için yarıçap ve mesafe belirle
-        float radius = 0.5f; // Kontrol edilecek alanın yarıçapı
-        float distance = groundCheckDistance; // Kontrol mesafesi
-        Vector2 direction = Vector2.down; // Kontrol yönü (aşağı)
+        Vector2 origin = (Vector2)transform.position + Vector2.down * 0.5f;
+        float radius = 0.2f;
+        float distance = groundCheckDistance;
+        Vector2 direction = Vector2.down;
 
-        // CircleCast çiz ve yerde olup olmadığını kontrol et
-        RaycastHit2D hit = Physics2D.CircleCast(transform.position, radius, direction, distance, groundLayer);
+        RaycastHit2D hit = Physics2D.CircleCast(origin, radius, direction, distance, groundLayer);
         _isGrounded = hit.collider != null;
 
-        // Debug görselleştirme
-        Debug.DrawRay(transform.position, direction * distance, _isGrounded ? Color.green : Color.red);
+        Debug.DrawRay(origin, direction * distance, _isGrounded ? Color.green : Color.red);
     }
 
     void HandleJump()
     {
-        if (_isGrounded && Input.GetKeyDown(KeyCode.Space)) // Yerdeyse ve Space tuşuna basıldıysa
+        if (_isGrounded)
         {
-            _rigidbody2D.linearVelocity = new Vector2(_rigidbody2D.linearVelocity.x, jumpForce*10); // Zıplama kuvveti uygula
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                _isCharging = true;
+                _chargeStartTime = Time.time; // Basıldığı an kaydedilir
+            }
+
+            if (Input.GetKeyUp(KeyCode.Space) && _isCharging)
+            {
+                float heldTime = Time.time - _chargeStartTime;
+                float jumpPower = (heldTime >= chargeThreshold) ? chargedJumpForce : normalJumpForce;
+
+                _rigidbody2D.linearVelocity = new Vector2(_rigidbody2D.linearVelocity.x, jumpPower);
+                
+                _isCharging = false;
+            }
         }
     }
 }
