@@ -113,7 +113,7 @@ public class PlayerMovement : MonoBehaviour
     void Attack()
     {
         // Saldırı animasyonunu başlat
-        _animator.SetBool("isHiting", true);
+        _animator.SetTrigger("AttackTrigger");
 
         // Fareleri algıla ve hasar ver
         Collider2D[] hitMice = Physics2D.OverlapCircleAll(transform.position, attackRange, mouseLayer);
@@ -125,16 +125,7 @@ public class PlayerMovement : MonoBehaviour
                 mouse.TakeDamage(attackDamage);
             }
         }
-
-        // Animasyonun süresi kadar sonra isHiting'i false yap
-        Invoke("ResetAttackAnimation", 0.5f); // 0.5 saniye (animasyon süresine göre ayarlayın)
     }
-
-    void ResetAttackAnimation()
-    {
-        _animator.SetBool("isHiting", false);
-    }
-
     void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
