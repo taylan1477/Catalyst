@@ -10,8 +10,11 @@ public class PlayerMovement : MonoBehaviour
     public float chargedJumpForce = 28f; // Charged zıplama kuvveti
     public float chargeThreshold = 0.6f; // Charged Jump için gereken süre
     public float groundCheckDistance = 0.1f; // Yerde olup olmadığını kontrol etmek için mesafe
+    public float attackRange = 1f; // Vuruş menzili
+    public int attackDamage = 1; // Vuruş hasarı
+    public LayerMask mouseLayer; // Fare katmanı
+    
     public LayerMask groundLayer; // Yer katmanı
-
     private Rigidbody2D _rigidbody2D;
     private Animator _animator;
     private SpriteRenderer _spriteRenderer;
@@ -33,6 +36,10 @@ public class PlayerMovement : MonoBehaviour
         UpdateAnimator();
         CheckGrounded();
         HandleJump();
+        if (Input.GetKeyDown(KeyCode.E)) // Boşluk tuşu ile vur
+        {
+            Attack();
+        }
     }
 
     void HandleMovement()
@@ -102,5 +109,35 @@ public class PlayerMovement : MonoBehaviour
                 _isCharging = false;
             }
         }
+    }
+    void Attack()
+    {
+        // Saldırı animasyonunu başlat
+        _animator.SetBool("isHiting", true);
+
+        // Fareleri algıla ve hasar ver
+        Collider2D[] hitMice = Physics2D.OverlapCircleAll(transform.position, attackRange, mouseLayer);
+        foreach (Collider2D mouseCollider in hitMice)
+        {
+            MouseController mouse = mouseCollider.GetComponent<MouseController>();
+            if (mouse != null)
+            {
+                mouse.TakeDamage(attackDamage);
+            }
+        }
+
+        // Animasyonun süresi kadar sonra isHiting'i false yap
+        Invoke("ResetAttackAnimation", 0.5f); // 0.5 saniye (animasyon süresine göre ayarlayın)
+    }
+
+    void ResetAttackAnimation()
+    {
+        _animator.SetBool("isHiting", false);
+    }
+
+    void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, attackRange);
     }
 }
