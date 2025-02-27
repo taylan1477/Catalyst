@@ -4,12 +4,11 @@ public class MouseController : MonoBehaviour
 {
     public Transform[] waypoints;
     public float moveSpeed = 2f;
-    public int health = 3; // Fare canı
+    public int health = 3; 
     private int _currentWaypointIndex = 0;
     private Animator _animator;
     private SpriteRenderer _spriteRenderer;
-    private bool _isDead = false; // Fare öldü mü?
-    private bool _isHurt = false;
+    private bool _isDead = false; 
 
     void Start()
     {
@@ -32,13 +31,13 @@ public class MouseController : MonoBehaviour
         Transform targetWaypoint = waypoints[_currentWaypointIndex];
         transform.position = Vector2.MoveTowards(transform.position, targetWaypoint.position, moveSpeed * Time.deltaTime);
 
-        if (targetWaypoint.position.x < transform.position.x) // Sola gidiyorsa
+        if (targetWaypoint.position.x < transform.position.x) 
         {
-            _spriteRenderer.flipX = true; // Sprite'ı sola çevir
+            _spriteRenderer.flipX = true; 
         }
-        else // Sağa gidiyorsa
+        else 
         {
-            _spriteRenderer.flipX = false; // Sprite'ı sağa çevir
+            _spriteRenderer.flipX = false; 
         }
 
         if (Vector2.Distance(transform.position, targetWaypoint.position) < 0.1f)
@@ -53,24 +52,24 @@ public class MouseController : MonoBehaviour
     {
         if (_isDead) return;
 
-        health -= damage; // Canı azalt
+        health -= damage; 
 
-        if (health <= 0) // Can sıfır olduysa
+        if (health <= 0) 
         {
             Die();
         }
         else
         {
-            // Yaralanma animasyonunu oynat
-            _isHurt = true;
-            _animator.SetBool("isHurt",_isHurt);
+            // Yaralanma animasyonunu TRIGGER ile tetikle
+            _animator.SetTrigger("isHurt");
         }
     }
 
     void Die()
     {
         _isDead = true;
-        _animator.SetBool("isDead", true); // Ölüm animasyonunu oynat
-        Destroy(gameObject, 5f); // Fareyi 5 saniye sonra yok et
+        _animator.SetTrigger("isDead"); // Ölüm animasyonu için de TRIGGER kullan
+        Destroy(gameObject, 5f); 
+        _animator.SetBool("isWalking", false);
     }
 }
