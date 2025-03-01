@@ -69,7 +69,13 @@ public class MouseController : MonoBehaviour
     {
         _isDead = true;
         _animator.SetTrigger("isDead"); // Ölüm animasyonu için de TRIGGER kullan
-        Destroy(gameObject, 5f); 
         _animator.SetBool("isWalking", false);
+        
+        transform.localScale *= 0.7f; // biraz küçült
+    }
+    
+    public bool IsDead()
+    {
+        return _isDead; // Fare öldü mü?
     }
 }

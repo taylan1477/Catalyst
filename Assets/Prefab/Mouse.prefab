@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7219920648793390937}
   - component: {fileID: 4521825520202608161}
-  - component: {fileID: 2260018427462203872}
+  - component: {fileID: 4287104187419092872}
   - component: {fileID: 3260742584935838300}
   - component: {fileID: 8028857059425999070}
   - component: {fileID: 6734933162714191847}
@@ -31,7 +31,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 27.095795, y: -1.1540908, z: -9.941766}
-  m_LocalScale: {x: 20, y: 8, z: 0}
+  m_LocalScale: {x: 8, y: 8, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -91,7 +91,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &2260018427462203872
+--- !u!114 &4287104187419092872
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

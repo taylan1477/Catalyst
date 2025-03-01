@@ -6,14 +6,18 @@ public class PlayerMovement : MonoBehaviour
     public float acceleration = 0.02f; // Hızlanma
     public float deceleration = 0.03f; // Yavaşlama
     public float maxSpeed = 3.3f; // Maks hız
-    public float normalJumpForce = 20f; // Normal zıplama kuvveti
-    public float chargedJumpForce = 28f; // Charged zıplama kuvveti
+    public float normalJumpForce = 20f; // Normal zıplama
+    public float chargedJumpForce = 28f; // Charged Jump 
     public float chargeThreshold = 0.6f; // Charged Jump için gereken süre
-    public float groundCheckDistance = 0.1f; // Yerde olup olmadığını kontrol etmek için mesafe
+    public float groundCheckDistance = 0.1f; // Ground check mesafesi
+
     public float attackRange = 1f; // Vuruş menzili
     public int attackDamage = 1; // Vuruş hasarı
     public LayerMask mouseLayer; // Fare katmanı
-    
+    public Transform carryPosition; // Fareyi taşıma pozisyonu (kedinin ağzı)
+    private GameObject _carriedMouse; // Taşınan fare
+    private bool _isCarrying = false; // Fare taşınıyor mu?
+
     public LayerMask groundLayer; // Yer katmanı
     private Rigidbody2D _rigidbody2D;
     private Animator _animator;
@@ -40,6 +44,18 @@ public class PlayerMovement : MonoBehaviour
         {
             Attack();
         }
+
+        if (Input.GetKeyDown(KeyCode.F)) // F tuşuna basıldığında
+        {
+            if (_isCarrying)
+            {
+                DropMouse(); // Fareyi bırak
+            }
+            else
+            {
+                TryPickUpMouse(); // Fareyi al
+            }
+        }
     }
 
     void HandleMovement()
@@ -48,13 +64,15 @@ public class PlayerMovement : MonoBehaviour
         {
             if (speed < 0) speed *= -1; // Eğer sola gidiyorsa, hızı tersine çevir
             speed += acceleration;
-            _spriteRenderer.flipX = false;
+            _spriteRenderer.flipX = false; // Kediyi sağa çevir
+            UpdateCarryPosition(); // CarryPosition'ı güncelle
         }
         else if (Input.GetKey(KeyCode.A)) // Sola hareket
         {
             if (speed > 0) speed *= -1;
             speed -= acceleration;
-            _spriteRenderer.flipX = true;
+            _spriteRenderer.flipX = true; // Kediyi sola çevir
+            UpdateCarryPosition(); // CarryPosition'ı güncelle
         }
         else // Tuşa basılmıyorsa yavaşla
         {
@@ -105,11 +123,12 @@ public class PlayerMovement : MonoBehaviour
                 float jumpPower = (heldTime >= chargeThreshold) ? chargedJumpForce : normalJumpForce;
 
                 _rigidbody2D.linearVelocity = new Vector2(_rigidbody2D.linearVelocity.x, jumpPower);
-                
+
                 _isCharging = false;
             }
         }
     }
+
     void Attack()
     {
         // Saldırı animasyonunu başlat
@@ -126,9 +145,80 @@ public class PlayerMovement : MonoBehaviour
             }
         }
     }
-    void OnDrawGizmosSelected()
+
+    void TryPickUpMouse()
     {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, attackRange);
+        // Kedinin etrafındaki fareleri algıla
+        Collider2D[]
+            nearbyMice = Physics2D.OverlapCircleAll(transform.position, 1f); // 1 birim yarıçapında fareleri algıla
+        foreach (Collider2D mouseCollider in nearbyMice)
+        {
+            MouseController mouse = mouseCollider.GetComponent<MouseController>();
+            if (mouse != null && mouse.IsDead()) // Fare öldüyse
+            {
+                PickUpMouse(mouseCollider.gameObject); // Fareyi al
+                break;
+            }
+        }
+    }
+
+    void PickUpMouse(GameObject mouse)
+    {
+        _carriedMouse = mouse;
+        _isCarrying = true;
+
+        // Fareyi kedinin child objesi yap
+        _carriedMouse.transform.SetParent(carryPosition);
+        _carriedMouse.transform.localPosition = Vector3.zero; // Fareyi ağzın tam ortasına yerleştir
+
+        // Fare collider'ını devre dışı bırak (çarpışmaları engelle)
+        _carriedMouse.GetComponent<Collider2D>().enabled = false;
+
+        // Fare rigidbody'sini devre dışı bırak (yerçekimi etkisini kaldır)
+        Rigidbody2D mouseRigidbody = _carriedMouse.GetComponent<Rigidbody2D>();
+        if (mouseRigidbody != null)
+        {
+            mouseRigidbody.simulated = false; // Rigidbody'yi devre dışı bırak
+        }
+    }
+
+    void DropMouse()
+    {
+        if (_carriedMouse != null)
+        {
+            _isCarrying = false;
+
+            // Fareyi kedinin child objesi olmaktan çıkar
+            _carriedMouse.transform.SetParent(null);
+
+            // Fare collider'ını tekrar etkinleştir
+            _carriedMouse.GetComponent<Collider2D>().enabled = true;
+
+            // Fare rigidbody'sini tekrar etkinleştir
+            Rigidbody2D mouseRigidbody = _carriedMouse.GetComponent<Rigidbody2D>();
+            if (mouseRigidbody != null)
+            {
+                mouseRigidbody.simulated = true; // Rigidbody'yi tekrar etkinleştir
+            }
+
+            _carriedMouse = null;
+        }
+    }
+    void UpdateCarryPosition()
+    {
+        if (_isCarrying)
+        {
+            // Kedinin yönüne göre carryPosition'ı güncelle
+            if (_spriteRenderer.flipX) // Sola bakıyorsa
+            {
+                carryPosition.localPosition = new Vector3(-0.065f, 0.06f, 0); // Sola göre pozisyon
+                _carriedMouse.GetComponent<SpriteRenderer>().flipX = true; // Fareyi sola çevir
+            }
+            else // Sağa bakıyorsa
+            {
+                carryPosition.localPosition = new Vector3(0.065f, 0.06f, 0); // Sağa göre pozisyon
+                _carriedMouse.GetComponent<SpriteRenderer>().flipX = false; // Fareyi sağa çevir
+            }
+        }
     }
 }
