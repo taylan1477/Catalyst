@@ -2,10 +2,10 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float speed = 0.0f; // Mevcut hız
+    public float speed; // Mevcut hız
     public float acceleration = 0.02f; // Hızlanma
     public float deceleration = 0.03f; // Yavaşlama
-    public float maxSpeed = 3.3f; // Maks hız
+    public float maxSpeed = 3.5f; // Maks hız
     public float normalJumpForce = 20f; // Normal zıplama
     public float chargedJumpForce = 28f; // Charged Jump 
     public float chargeThreshold = 0.6f; // Charged Jump için gereken süre
@@ -16,15 +16,16 @@ public class PlayerMovement : MonoBehaviour
     public LayerMask mouseLayer; // Fare katmanı
     public Transform carryPosition; // Fareyi taşıma pozisyonu (kedinin ağzı)
     private GameObject _carriedMouse; // Taşınan fare
-    private bool _isCarrying = false; // Fare taşınıyor mu?
+    private bool _isCarrying; // Fare taşınıyor mu?
 
-    public LayerMask groundLayer; // Yer katmanı
+    public LayerMask groundLayer;
     private Rigidbody2D _rigidbody2D;
     private Animator _animator;
     private SpriteRenderer _spriteRenderer;
-    private bool _isGrounded; // Karakter yerde mi?
-    private bool _isCharging = false;
-    private float _chargeStartTime = 0f;
+    private bool _isGrounded; 
+    private bool _isCharging;
+    private bool _isStoping;
+    private float _chargeStartTime;
 
     void Start()
     {
@@ -74,9 +75,15 @@ public class PlayerMovement : MonoBehaviour
             _spriteRenderer.flipX = true; // Kediyi sola çevir
             UpdateCarryPosition(); // CarryPosition'ı güncelle
         }
+        else if (Input.GetKey(KeyCode.S) && Mathf.Abs(speed) > 0) // Fren
+        {
+            speed = Mathf.MoveTowards(speed, 0, deceleration*2f);
+            _isStoping = true;
+        }
         else // Tuşa basılmıyorsa yavaşla
         {
             speed = Mathf.MoveTowards(speed, 0, deceleration);
+            _isStoping = false;
         }
 
         speed = Mathf.Clamp(speed, -maxSpeed, maxSpeed); // Hızı sınırla
@@ -92,6 +99,7 @@ public class PlayerMovement : MonoBehaviour
         _animator.SetFloat("speed", Mathf.Abs(speed));
         _animator.SetBool("isGrounded", _isGrounded);
         _animator.SetBool("isCharging", _isCharging);
+        _animator.SetBool("isStoping", _isStoping);
     }
 
     void CheckGrounded()
@@ -198,12 +206,21 @@ public class PlayerMovement : MonoBehaviour
             Rigidbody2D mouseRigidbody = _carriedMouse.GetComponent<Rigidbody2D>();
             if (mouseRigidbody != null)
             {
-                mouseRigidbody.simulated = true; // Rigidbody'yi tekrar etkinleştir
+                mouseRigidbody.simulated = true; // Rigidbody'yi tekrar aktif et
             }
 
+            // Fare bırakıldığı anda dişi kediye yakın mı kontrol et
+            FemaleCat femaleCat = FindAnyObjectByType<FemaleCat>();
+            if (femaleCat != null && femaleCat.IsMouseNearby())
+            {
+                Debug.Log("Fare dişi kedinin yanına bırakıldı!");
+                femaleCat.GetComponent<Animator>().SetTrigger("ReceiveMouse");
+                Destroy(_carriedMouse);
+            }
             _carriedMouse = null;
         }
     }
+
     void UpdateCarryPosition()
     {
         if (_isCarrying)
