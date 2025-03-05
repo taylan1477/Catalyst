@@ -87,9 +87,19 @@ public class PlayerMovement : MonoBehaviour
             _isStoping = false;
         }
         
-        // BURAYA isSlowed i ekleriz hem maks hem de uygulanan hızı 2 ya da 4 kat azaltırız
-        speed = Mathf.Clamp(speed, -maxSpeed, maxSpeed); // Hızı sınırla
-        _rigidbody2D.linearVelocity = new Vector2(speed, _rigidbody2D.linearVelocity.y);
+        if (isSlowed)
+        {
+            // Yavaşlatılmış hızı hesapla ve sınırla
+            float slowedSpeed = speed * 0.5f; // Hızı yarıya indir
+            speed = Mathf.Clamp(speed, -maxSpeed * 0.5f, maxSpeed * 0.5f);
+            slowedSpeed = Mathf.Clamp(slowedSpeed, -maxSpeed * 0.5f, maxSpeed * 0.5f); // Yavaşlatılmış hızı sınırla
+            _rigidbody2D.linearVelocity = new Vector2(slowedSpeed, _rigidbody2D.linearVelocity.y);
+        }
+        else
+        {
+            speed = Mathf.Clamp(speed, -maxSpeed, maxSpeed);
+            _rigidbody2D.linearVelocity = new Vector2(speed, _rigidbody2D.linearVelocity.y);
+        }
     }
 
     void UpdateAnimator()
