@@ -5,10 +5,10 @@ public class MouseController : MonoBehaviour
     public Transform[] waypoints;
     public float moveSpeed = 2f;
     public int health = 3; 
-    private int _currentWaypointIndex = 0;
+    private int _currentWaypointIndex;
     private Animator _animator;
     private SpriteRenderer _spriteRenderer;
-    private bool _isDead = false; 
+    private bool _isDead; 
 
     void Start()
     {

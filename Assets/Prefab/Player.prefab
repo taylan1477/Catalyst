@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2266794975621149271
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1232642631316714175}
+  m_Layer: 0
+  m_Name: CarryPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1232642631316714175
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2266794975621149271}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.054, y: 0.059, z: 0}
+  m_LocalScale: {x: 0.11111112, y: 0.11111112, z: 0}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8043793620121273906}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4573823566962593706
 GameObject:
   m_ObjectHideFlags: 0
@@ -34,7 +65,8 @@ Transform:
   m_LocalPosition: {x: 14.0417185, y: 0.94262874, z: 0}
   m_LocalScale: {x: 9, y: 9, z: 0}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1232642631316714175}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &688583278395713683
@@ -127,9 +159,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0
-  acceleration: 0.02
-  deceleration: 0.03
-  maxSpeed: 3.3
+  acceleration: 0.08
+  deceleration: 0.12
+  maxSpeed: 14
   normalJumpForce: 20
   chargedJumpForce: 28
   chargeThreshold: 0.6
@@ -138,7 +170,8 @@ MonoBehaviour:
   attackDamage: 1
   mouseLayer:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 128
+  carryPosition: {fileID: 1232642631316714175}
   groundLayer:
     serializedVersion: 2
     m_Bits: 1
@@ -185,7 +218,7 @@ BoxCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -231,7 +264,7 @@ BoxCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 4294967295
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2

@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\FemaleCatController.cs" />
+    <Compile Include="Assets\Scripts\PlayerPush.cs" />
     <Compile Include="Assets\Scripts\CameraMovement.cs" />
     <Compile Include="Assets\Scripts\MouseController.cs" />
     <Compile Include="Assets\Scripts\PlayerMovement.cs" />

@@ -3,13 +3,15 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public float speed; // Mevcut hız
-    public float acceleration = 0.02f; // Hızlanma
-    public float deceleration = 0.03f; // Yavaşlama
-    public float maxSpeed = 3.5f; // Maks hız
+    public float acceleration = 0.08f; // Hızlanma
+    public float deceleration = 0.12f; // Yavaşlama
+    public float maxSpeed = 14f; // Maks hız
     public float normalJumpForce = 20f; // Normal zıplama
     public float chargedJumpForce = 28f; // Charged Jump 
     public float chargeThreshold = 0.6f; // Charged Jump için gereken süre
     public float groundCheckDistance = 0.1f; // Ground check mesafesi
+
+    public bool isSlowed; // Yavaşlatma durumu
 
     public float attackRange = 1f; // Vuruş menzili
     public int attackDamage = 1; // Vuruş hasarı
@@ -37,7 +39,6 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         HandleMovement();
-        ApplyMovement();
         UpdateAnimator();
         CheckGrounded();
         HandleJump();
@@ -85,13 +86,10 @@ public class PlayerMovement : MonoBehaviour
             speed = Mathf.MoveTowards(speed, 0, deceleration);
             _isStoping = false;
         }
-
+        
+        // BURAYA isSlowed i ekleriz hem maks hem de uygulanan hızı 2 ya da 4 kat azaltırız
         speed = Mathf.Clamp(speed, -maxSpeed, maxSpeed); // Hızı sınırla
-    }
-
-    void ApplyMovement()
-    {
-        _rigidbody2D.linearVelocity = new Vector2(speed * 4, _rigidbody2D.linearVelocity.y);
+        _rigidbody2D.linearVelocity = new Vector2(speed, _rigidbody2D.linearVelocity.y);
     }
 
     void UpdateAnimator()
