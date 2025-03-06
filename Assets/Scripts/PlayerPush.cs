@@ -2,23 +2,26 @@ using UnityEngine;
 
 public class PlayerPush : MonoBehaviour
 {
-    public float pushForce = 5f; // İtme/çekme kuvveti
+    public float pushForce = 3f; // İtme/çekme kuvveti
 
     private PlayerMovement _playerMovement;
     private GameObject _boxToPush;
     private Rigidbody2D _boxRigidbody;
+    private Rigidbody2D _playerRigidbody;
 
     void Start()
     {
         _playerMovement = GetComponent<PlayerMovement>();
+        _playerRigidbody = GetComponent<Rigidbody2D>(); // Karakterin Rigidbody2D'sini al
     }
 
     void Update()
     {
         // Shift tuşuna basılı olduğunda
-        if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
+        if (Input.GetKey(KeyCode.LeftShift))
         {
             _playerMovement.isSlowed = true; // Karakteri yavaşlat
+            _playerMovement.isPulling = true; // Çekme durumu
 
             // Eğer kutu varsa ve Shift tuşuna basılıysa
             if (_boxToPush != null)
@@ -29,19 +32,21 @@ public class PlayerPush : MonoBehaviour
                     _boxRigidbody.bodyType = RigidbodyType2D.Dynamic;
                 }
 
-                PushBox(); // Kutuyu it
+                PushOrPullBox(); // Kutuyu it veya çek
             }
         }
         else
         {
             _playerMovement.isSlowed = false; // Hızı normale döndür
+            _playerMovement.isPulling = false; // Çekme durumunu bitir
 
             // Eğer kutu varsa ve Shift tuşu bırakıldıysa
             if (_boxToPush != null)
             {
-                // Kutunun Rigidbody2D'sini Kinematic yap
+                // Kutunun Rigidbody2D'sini Kinematic yap ve hızını sıfırla
                 if (_boxRigidbody != null)
                 {
+                    _boxRigidbody.linearVelocity = Vector2.zero; // Hızı sıfırla
                     _boxRigidbody.bodyType = RigidbodyType2D.Kinematic;
                 }
             }
@@ -70,20 +75,39 @@ public class PlayerPush : MonoBehaviour
         }
     }
 
-    private void PushBox()
+    private void PushOrPullBox()
     {
         // Shift tuşuna basılı olduğundan emin ol
         if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
         {
-            Debug.Log("Kutu itiliyor!"); // Fonksiyonun çağrıldığını kontrol et
-            Vector2 pushDirection = (_boxToPush.transform.position - transform.position).normalized;
-            Debug.DrawRay(transform.position, pushDirection * 2f, Color.red, 1f); // Yönü görselleştir
+            Debug.Log("Kutu itiliyor veya çekiliyor!"); // Fonksiyonun çağrıldığını kontrol et
 
-            // Kutunun Rigidbody2D'sini al ve itme kuvvetini uygula
-            if (_boxRigidbody != null)
+            // Karakterin hareket yönünü al
+            float moveInput = Input.GetAxis("Horizontal");
+
+            // Kutunun yönünü hesapla
+            Vector2 direction = (_boxToPush.transform.position - transform.position).normalized;
+
+            // Kutunun hızını al
+            Vector2 boxVelocity = _boxRigidbody.linearVelocity;
+
+            // Karakterin hızını kutunun hızına eşitle
+            _playerRigidbody.linearVelocity = boxVelocity;
+
+            // Eğer karakter kutudan uzaklaşıyorsa (çekme)
+            if (moveInput * direction.x < 0)
             {
-                _boxRigidbody.linearVelocity = pushDirection * pushForce; // Kutuyu it
+                Debug.Log("Kutu çekiliyor!");
+                _boxRigidbody.linearVelocity = -direction * pushForce; // Kutuyu kendine doğru çek
             }
+            // Eğer karakter kutuyu itiyorsa
+            else
+            {
+                Debug.Log("Kutu itiliyor!");
+                _boxRigidbody.linearVelocity = direction * pushForce; // Kutuyu it
+            }
+
+            Debug.DrawRay(transform.position, direction * 2f, Color.red, 1f); // Yönü görselleştir
         }
     }
 }

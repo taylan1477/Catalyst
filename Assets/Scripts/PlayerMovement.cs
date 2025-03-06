@@ -9,9 +9,10 @@ public class PlayerMovement : MonoBehaviour
     public float normalJumpForce = 20f; // Normal zıplama
     public float chargedJumpForce = 28f; // Charged Jump 
     public float chargeThreshold = 0.6f; // Charged Jump için gereken süre
-    public float groundCheckDistance = 0.1f; // Ground check mesafesi
+    public float groundCheckDistance = 0.1f; // Ground check pornosu
 
     public bool isSlowed; // Yavaşlatma durumu
+    public bool isPulling; // Çekiş Porn bebeğim
 
     public float attackRange = 1f; // Vuruş menzili
     public int attackDamage = 1; // Vuruş hasarı
@@ -66,15 +67,21 @@ public class PlayerMovement : MonoBehaviour
         {
             if (speed < 0) speed *= -1; // Eğer sola gidiyorsa, hızı tersine çevir
             speed += acceleration;
-            _spriteRenderer.flipX = false; // Kediyi sağa çevir
-            UpdateCarryPosition(); // CarryPosition'ı güncelle
+            if (isPulling == false)
+            {
+                _spriteRenderer.flipX = false; // Kediyi sola çevir
+                UpdateCarryPosition(); // CarryPosition'ı güncelle
+            }
         }
         else if (Input.GetKey(KeyCode.A)) // Sola hareket
         {
-            if (speed > 0) speed *= -1;
+            if (speed > 0) speed *= -1;  // Eğer sağa gidiyorsa, hızı tersine çevir
             speed -= acceleration;
-            _spriteRenderer.flipX = true; // Kediyi sola çevir
-            UpdateCarryPosition(); // CarryPosition'ı güncelle
+            if (isPulling == false)
+            {
+                _spriteRenderer.flipX = true; // Kediyi sola çevir
+                UpdateCarryPosition(); // CarryPosition'ı güncelle
+            }
         }
         else if (Input.GetKey(KeyCode.S) && Mathf.Abs(speed) > 0) // Fren
         {
@@ -90,13 +97,15 @@ public class PlayerMovement : MonoBehaviour
         if (isSlowed)
         {
             // Yavaşlatılmış hızı hesapla ve sınırla
-            float slowedSpeed = speed * 0.5f; // Hızı yarıya indir
-            speed = Mathf.Clamp(speed, -maxSpeed * 0.5f, maxSpeed * 0.5f);
-            slowedSpeed = Mathf.Clamp(slowedSpeed, -maxSpeed * 0.5f, maxSpeed * 0.5f); // Yavaşlatılmış hızı sınırla
+            _animator.SetBool("isPushing", true);
+            float slowedSpeed = speed * 0.3f; // Hızı yarıya indir
+            speed = Mathf.Clamp(speed, -maxSpeed * 0.3f, maxSpeed * 0.3f);
+            slowedSpeed = Mathf.Clamp(slowedSpeed, -maxSpeed * 0.3f, maxSpeed * 0.3f); // Yavaşlatılmış hızı sınırla
             _rigidbody2D.linearVelocity = new Vector2(slowedSpeed, _rigidbody2D.linearVelocity.y);
         }
         else
         {
+            _animator.SetBool("isPushing", false);
             speed = Mathf.Clamp(speed, -maxSpeed, maxSpeed);
             _rigidbody2D.linearVelocity = new Vector2(speed, _rigidbody2D.linearVelocity.y);
         }
