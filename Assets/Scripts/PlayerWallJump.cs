@@ -12,14 +12,21 @@ public class PlayerWallJump : MonoBehaviour
     private Rigidbody2D _rigidbody2D;
     private bool _isTouchingWall; // Duvara değiyor mu?
     private bool _isGrounded; // Karakter yerde mi?
+    private bool _isHolding; // Duvara tutunuyor mu?
     private float _wallJumpDirection; // Duvardan zıplama yönü
     private float _wallHoldTime; // Duvara tutunma süresi
     private SpriteRenderer _spriteRenderer;
+    private Animator _animator;
+    private BoxCollider2D _collider; // Karakterin collider'ı
+    private Vector2 _originalOffset; // Collider'ın orijinal offset değeri
 
     void Start()
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
+        _animator = GetComponent<Animator>();
+        _collider = GetComponent<BoxCollider2D>();
+        _originalOffset = _collider.offset;
     }
 
     void Update()
@@ -28,6 +35,8 @@ public class PlayerWallJump : MonoBehaviour
         CheckWall();
         HandleWallJump();
         HandleWallHoldTime();
+        _animator.SetBool("isHolding", _isHolding);
+        UpdateColliderPosition();
     }
 
     void CheckGrounded()
@@ -55,6 +64,9 @@ public class PlayerWallJump : MonoBehaviour
         // Duvara değme kontrolü
         _isTouchingWall = Physics2D.Raycast(wallCheck.position, checkDirection, wallCheckDistance, wallLayer);
 
+        // Duvara değiyorsa isHolding true, değmiyorsa false yap
+        _isHolding = _isTouchingWall;
+
         // Debug çizgisi
         Debug.DrawRay(wallCheck.position, checkDirection * wallCheckDistance, _isTouchingWall ? Color.green : Color.red);
     }
@@ -76,8 +88,6 @@ public class PlayerWallJump : MonoBehaviour
         }
     }
 
-
-
     void HandleWallHoldTime()
     {
         // Duvara değiyorsa tutunma süresini artır
@@ -95,6 +105,24 @@ public class PlayerWallJump : MonoBehaviour
         else
         {
             _wallHoldTime = 0f; // Duvara değmiyorsa süreyi sıfırla
+        }
+    }
+    void UpdateColliderPosition()
+    {
+        if (_isHolding)
+        {
+            if (!_spriteRenderer.flipX) // Sağa bakıyorsa
+            {
+                _collider.offset = new Vector2(_originalOffset.x - 0.05f, _collider.offset.y); // Sola kaydır
+            }
+            else // Sola bakıyorsa
+            {
+                _collider.offset = new Vector2(_originalOffset.x + 0.05f, _collider.offset.y); // Sağa kaydır
+            }
+        }
+        else
+        {
+            _collider.offset = _originalOffset;
         }
     }
 }
