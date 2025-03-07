@@ -49,6 +49,7 @@
     <Compile Include="Assets\Scripts\FemaleCatController.cs" />
     <Compile Include="Assets\Scripts\PlayerPush.cs" />
     <Compile Include="Assets\Scripts\CameraMovement.cs" />
+    <Compile Include="Assets\Scripts\PlayerWallJump.cs" />
     <Compile Include="Assets\Scripts\MouseController.cs" />
     <Compile Include="Assets\Scripts\PlayerMovement.cs" />
     <None Include="Assets\DEPO\craftpix street animal-pixelart\license.txt" />

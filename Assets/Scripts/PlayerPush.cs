@@ -78,7 +78,7 @@ public class PlayerPush : MonoBehaviour
     private void PushOrPullBox()
     {
         // Shift tuşuna basılı olduğundan emin ol
-        if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
+        if (Input.GetKey(KeyCode.LeftShift))
         {
             Debug.Log("Kutu itiliyor veya çekiliyor!"); // Fonksiyonun çağrıldığını kontrol et
 

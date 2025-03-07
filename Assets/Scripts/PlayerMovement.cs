@@ -147,7 +147,9 @@ public class PlayerMovement : MonoBehaviour
                 float heldTime = Time.time - _chargeStartTime;
                 float jumpPower = (heldTime >= chargeThreshold) ? chargedJumpForce : normalJumpForce;
 
-                _rigidbody2D.linearVelocity = new Vector2(_rigidbody2D.linearVelocity.x, jumpPower);
+                // Yön vektörü ekle
+                Vector2 jumpDirection = new Vector2(_rigidbody2D.linearVelocity.x, jumpPower);
+                _rigidbody2D.linearVelocity = jumpDirection;
 
                 _isCharging = false;
             }
