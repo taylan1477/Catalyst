@@ -33124,8 +33124,24 @@ PrefabInstance:
       value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 940567848754232291, guid: 8abebd0463a5ce14ebce6dc8a92afb68, type: 3}
+      propertyPath: wallCheckLower
+      value: 
+      objectReference: {fileID: 13167116}
+    - target: {fileID: 940567848754232291, guid: 8abebd0463a5ce14ebce6dc8a92afb68, type: 3}
+      propertyPath: wallCheckUpper
+      value: 
+      objectReference: {fileID: 13167116}
+    - target: {fileID: 940567848754232291, guid: 8abebd0463a5ce14ebce6dc8a92afb68, type: 3}
       propertyPath: wallCheckDistance
-      value: 0.2
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 940567848754232291, guid: 8abebd0463a5ce14ebce6dc8a92afb68, type: 3}
+      propertyPath: groundLayer.m_Bits
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 940567848754232291, guid: 8abebd0463a5ce14ebce6dc8a92afb68, type: 3}
+      propertyPath: wallJumpMomentumRetention
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3301210580932682005, guid: 8abebd0463a5ce14ebce6dc8a92afb68, type: 3}
       propertyPath: m_AngularDamping
