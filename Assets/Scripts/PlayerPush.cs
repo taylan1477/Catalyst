@@ -21,7 +21,7 @@ public class PlayerPush : MonoBehaviour
         if (Input.GetKey(KeyCode.LeftShift))
         {
             _playerMovement.isSlowed = true; // Karakteri yavaşlat
-            _playerMovement.isPulling = true; // Çekme durumu
+            _playerMovement.isPushing = true; // Çekme durumu
 
             // Eğer kutu varsa ve Shift tuşuna basılıysa
             if (_boxToPush != null)
@@ -38,7 +38,7 @@ public class PlayerPush : MonoBehaviour
         else
         {
             _playerMovement.isSlowed = false; // Hızı normale döndür
-            _playerMovement.isPulling = false; // Çekme durumunu bitir
+            _playerMovement.isPushing = false; // Çekme durumunu bitir
 
             // Eğer kutu varsa ve Shift tuşu bırakıldıysa
             if (_boxToPush != null)

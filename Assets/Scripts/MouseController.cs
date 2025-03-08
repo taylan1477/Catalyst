@@ -68,7 +68,7 @@ public class MouseController : MonoBehaviour
     void Die()
     {
         _isDead = true;
-        _animator.SetTrigger("isDead"); // Ölüm animasyonu için de TRIGGER kullan
+        _animator.SetTrigger("isDead");
         _animator.SetBool("isWalking", false);
         
         transform.localScale *= 0.7f; // biraz küçült

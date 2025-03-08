@@ -17,7 +17,7 @@ public class PlayerMovement : MonoBehaviour
     private float _coyoteTimeTimer; // Coyote time için sayaç
     
     public bool isSlowed; // Yavaşlatma durumu
-    public bool isPulling; // Çekiş Porn bebeğim
+    public bool isPushing; // Çekiş Porn bebeğim
 
     public float attackRange = 1f; // Vuruş menzili
     public int attackDamage = 1; // Vuruş hasarı
@@ -73,7 +73,7 @@ public class PlayerMovement : MonoBehaviour
         {
             if (speed < 0) speed *= -1; // Eğer sola gidiyorsa, hızı tersine çevir
             speed += acceleration;
-            if (isPulling == false)
+            if (isPushing == false)
             {
                 _spriteRenderer.flipX = false; // Kediyi sola çevir
                 UpdateCarryPosition(); // CarryPosition'ı güncelle
@@ -83,7 +83,7 @@ public class PlayerMovement : MonoBehaviour
         {
             if (speed > 0) speed *= -1;  // Eğer sağa gidiyorsa, hızı tersine çevir
             speed -= acceleration;
-            if (isPulling == false)
+            if (isPushing == false)
             {
                 _spriteRenderer.flipX = true; // Kediyi sola çevir
                 UpdateCarryPosition(); // CarryPosition'ı güncelle
@@ -103,7 +103,6 @@ public class PlayerMovement : MonoBehaviour
         if (isSlowed)
         {
             // Yavaşlatılmış hızı hesapla ve sınırla
-            _animator.SetBool("isPushing", true);
             float slowedSpeed = speed * 0.3f; // Hızı yarıya indir
             speed = Mathf.Clamp(speed, -maxSpeed * 0.3f, maxSpeed * 0.3f);
             slowedSpeed = Mathf.Clamp(slowedSpeed, -maxSpeed * 0.3f, maxSpeed * 0.3f); // Yavaşlatılmış hızı sınırla
@@ -111,7 +110,6 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-            _animator.SetBool("isPushing", false);
             speed = Mathf.Clamp(speed, -maxSpeed, maxSpeed);
             _rigidbody2D.linearVelocity = new Vector2(speed, _rigidbody2D.linearVelocity.y);
         }
@@ -119,10 +117,11 @@ public class PlayerMovement : MonoBehaviour
 
     void UpdateAnimator()
     {
-        _animator.SetFloat("speed", Mathf.Abs(speed));
-        _animator.SetBool("isGrounded", _isGrounded);
-        _animator.SetBool("isCharging", _isCharging);
-        _animator.SetBool("isStoping", _isStoping);
+        _animator.SetFloat(AnimatorHashes.Speed, Mathf.Abs(speed));
+        _animator.SetBool(AnimatorHashes.IsGrounded, _isGrounded);
+        _animator.SetBool(AnimatorHashes.IsCharging, _isCharging);
+        _animator.SetBool(AnimatorHashes.IsStoping, _isStoping);
+        _animator.SetBool(AnimatorHashes.IsPushing, isPushing);
     }
 
     void CheckGrounded()
@@ -186,7 +185,7 @@ public class PlayerMovement : MonoBehaviour
     void Attack()
     {
         // Saldırı animasyonunu başlat
-        _animator.SetTrigger("AttackTrigger");
+        _animator.SetTrigger(AnimatorHashes.AttackTrigger);
 
         // Fareleri algıla ve hasar ver
         Collider2D[] hitMice = Physics2D.OverlapCircleAll(transform.position, attackRange, mouseLayer);
