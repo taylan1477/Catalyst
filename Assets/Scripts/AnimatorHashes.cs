@@ -6,6 +6,8 @@ public static class AnimatorHashes
     public static readonly int IsCharging = Animator.StringToHash("isCharging");
     public static readonly int IsStoping = Animator.StringToHash("isStoping");
     public static readonly int IsPushing = Animator.StringToHash("isPushing");
+    public static readonly int IsPulling = Animator.StringToHash("isPulling");
+    public static readonly int IsHolding = Animator.StringToHash("isHolding");
     
     public static readonly int AttackTrigger = Animator.StringToHash("AttackTrigger");
     

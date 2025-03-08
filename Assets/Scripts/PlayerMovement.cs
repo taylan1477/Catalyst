@@ -18,6 +18,7 @@ public class PlayerMovement : MonoBehaviour
     
     public bool isSlowed; // Yavaşlatma durumu
     public bool isPushing; // Çekiş Porn bebeğim
+    public bool isPulling;
 
     public float attackRange = 1f; // Vuruş menzili
     public int attackDamage = 1; // Vuruş hasarı
@@ -122,6 +123,7 @@ public class PlayerMovement : MonoBehaviour
         _animator.SetBool(AnimatorHashes.IsCharging, _isCharging);
         _animator.SetBool(AnimatorHashes.IsStoping, _isStoping);
         _animator.SetBool(AnimatorHashes.IsPushing, isPushing);
+        _animator.SetBool(AnimatorHashes.IsPulling, isPulling);
     }
 
     void CheckGrounded()

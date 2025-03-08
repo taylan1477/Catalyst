@@ -35,8 +35,11 @@ public class PlayerWallJump : MonoBehaviour
         CheckWall();
         HandleWallJump();
         HandleWallHoldTime();
-        _animator.SetBool("isHolding", _isHolding);
         UpdateColliderPosition();
+        if (!_isGrounded)
+        {
+            _animator.SetBool(AnimatorHashes.IsHolding, _isHolding);
+        }
     }
 
     void CheckGrounded()
@@ -80,7 +83,7 @@ public class PlayerWallJump : MonoBehaviour
             _wallJumpDirection = _isTouchingWall ? -1 : 1;
 
             // 45 derecelik itme kuvveti (yatay ve dikey kuvvetler eşit)
-            float horizontalForce = wallJumpForce * 0.7071f; // cos(45°) ≈ 0.7071
+            float horizontalForce = wallJumpForce * 0.7071f * Mathf.Sign(_rigidbody2D.linearVelocity.x);  // cos(45°) ≈ 0.7071
             float verticalForce = wallJumpForce * 0.7071f;  // sin(45°) ≈ 0.7071
 
             // Kuvveti uygula
