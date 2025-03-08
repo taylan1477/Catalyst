@@ -5,12 +5,17 @@ public class PlayerMovement : MonoBehaviour
     public float speed; // Mevcut hız
     public float acceleration = 0.08f; // Hızlanma
     public float deceleration = 0.12f; // Yavaşlama
-    public float maxSpeed = 14f; // Maks hız
+    public float maxSpeed = 12f; // Maks hız
+    
     public float normalJumpForce = 20f; // Normal zıplama
     public float chargedJumpForce = 28f; // Charged Jump 
     public float chargeThreshold = 0.6f; // Charged Jump için gereken süre
     public float groundCheckDistance = 0.1f; // Ground check pornosu
-
+    public float jumpBufferTime = 0.12f; // Buffer süresi
+    private float _jumpBufferTimer;
+    public float coyoteTime = 0.12f;    // Coyote jump süresi
+    private float _coyoteTimeTimer; // Coyote time için sayaç
+    
     public bool isSlowed; // Yavaşlatma durumu
     public bool isPulling; // Çekiş Porn bebeğim
 
@@ -27,8 +32,9 @@ public class PlayerMovement : MonoBehaviour
     private SpriteRenderer _spriteRenderer;
     private bool _isGrounded; 
     private bool _isCharging;
-    private bool _isStoping;
     private float _chargeStartTime;
+    private bool _isStoping;
+
 
     void Start()
     {
@@ -134,24 +140,45 @@ public class PlayerMovement : MonoBehaviour
 
     void HandleJump()
     {
-        if (_isGrounded)
+        // Space tuşuna basıldığında jump buffering başlat
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            if (Input.GetKeyDown(KeyCode.Space))
+            _jumpBufferTimer = jumpBufferTime;
+            if (_isGrounded)
             {
-                _isCharging = true;
-                _chargeStartTime = Time.time; // Basıldığı an kaydedilir
+                _isCharging = true;           // Yere değdiğinde charged jump için şarj başlasın
+                _chargeStartTime = Time.time;   // Şarj başlangıç zamanı
             }
+        }
 
-            if (Input.GetKeyUp(KeyCode.Space) && _isCharging)
+        // Zamanlayıcıları güncelle
+        if (_jumpBufferTimer > 0)
+            _jumpBufferTimer -= Time.deltaTime;
+
+        if (_isGrounded)
+            _coyoteTimeTimer = coyoteTime;
+        else
+            _coyoteTimeTimer -= Time.deltaTime;
+
+        // Space tuşu bırakıldığında charged jump ya da normal jump gerçekleştir
+        if (Input.GetKeyUp(KeyCode.Space))
+        {
+            if (_isCharging)
             {
+                // Charged jump: Tuş ne kadar uzun tutulduysa ona göre zıplama kuvveti
                 float heldTime = Time.time - _chargeStartTime;
                 float jumpPower = (heldTime >= chargeThreshold) ? chargedJumpForce : normalJumpForce;
-
-                // Yön vektörü ekle
-                Vector2 jumpDirection = new Vector2(_rigidbody2D.linearVelocity.x, jumpPower);
-                _rigidbody2D.linearVelocity = jumpDirection;
-
+                _rigidbody2D.linearVelocity = new Vector2(_rigidbody2D.linearVelocity.x, jumpPower);
                 _isCharging = false;
+                _jumpBufferTimer = 0;
+                _coyoteTimeTimer = 0;
+            }
+            else if (_jumpBufferTimer > 0 && _coyoteTimeTimer > 0)
+            {
+                // Eğer _isCharging false ise, yani havadaysa (örneğin buffer sayesinde) normal zıplama
+                _rigidbody2D.linearVelocity = new Vector2(_rigidbody2D.linearVelocity.x, normalJumpForce);
+                _jumpBufferTimer = 0;
+                _coyoteTimeTimer = 0;
             }
         }
     }
