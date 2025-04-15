@@ -50,6 +50,10 @@ public class PlayerWallJump : MonoBehaviour
     {
         _isGrounded = Physics2D.Raycast(transform.position, Vector2.down, 0.1f, groundLayer);
     }
+    public bool IsTouchingWall()
+    {
+        return _isTouchingWall;
+    }
 
     void CheckWall()
     {
@@ -58,32 +62,36 @@ public class PlayerWallJump : MonoBehaviour
         // Wall check pozisyonunu güncelle
         wallCheck.localPosition = new Vector3(Mathf.Abs(wallCheck.localPosition.x) * direction, wallCheck.localPosition.y, wallCheck.localPosition.z);
 
-        // Duvar kontrolü
+        // Raycast ile duvar kontrolü
         Vector2 checkDirection = Vector2.right * direction;
-        _isTouchingWall = Physics2D.Raycast(wallCheck.position, checkDirection, wallCheckDistance, wallLayer);
-        _isHolding = _isTouchingWall;
-
-        // Duvar tutunma süresi
-        if (_isTouchingWall && !_isGrounded)
+        bool isCurrentlyTouchingWall = Physics2D.Raycast(wallCheck.position, checkDirection, wallCheckDistance, wallLayer);
+    
+        // Yerçekimi ve tutunma kontrolü
+        if (isCurrentlyTouchingWall && !_isGrounded)
         {
             _lastWallTouchTime = Time.time;
             _wallHoldTimer += Time.deltaTime;
+            _isHolding = true;
             _rb.gravityScale = 5f;
+
             if (_wallHoldTimer >= maxWallHoldTime)
             {
-                _isTouchingWall = false;
-                _wallHoldTimer = 0f;
-                _rb.gravityScale = 6f;
+                _isHolding = false; // Artık tutunamıyor
             }
         }
         else
         {
             _wallHoldTimer = 0f;
+            _isHolding = false;
             _rb.gravityScale = 6f;
         }
 
+        // En sonda _isTouchingWall'ı güncelle
+        _isTouchingWall = isCurrentlyTouchingWall && _isHolding;
+
         Debug.DrawRay(wallCheck.position, checkDirection * wallCheckDistance, _isTouchingWall ? Color.green : Color.red);
     }
+
 
     void HandleWallHoldTime()
     {

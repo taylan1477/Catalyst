@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class PlayerClimbUp : MonoBehaviour
@@ -15,25 +16,31 @@ public class PlayerClimbUp : MonoBehaviour
     private Rigidbody2D _rb;
     private bool _isClimbing;
     private bool _canClimb;
+    private PlayerWallJump _wallJump; // WallJump sınıfını burada kullanacağız
 
     void Start()
     {
         _animator = GetComponent<Animator>();
         _rb = GetComponent<Rigidbody2D>();
+        _wallJump = GetComponent<PlayerWallJump>(); // WallJump bileşenini alıyoruz
     }
 
     void Update()
     {
-        if (_isClimbing)
-        {
-            Debug.Log("Tırmanma hâlinde, giriş engellendi.");
-            return;
-        }
+        // if (_isClimbing)
+        // {
+        //     return;
+        // }
+
+        Debug.Log(_wallJump.IsTouchingWall());
 
         CheckClimbableWall();
 
-        if (_canClimb && Input.GetKeyDown(KeyCode.Space))
+        // Eğer tırmanmak için uygun duvar varsa ve space tuşuna basıldıysa
+        if (_canClimb && Input.GetKeyDown(KeyCode.Space) && _wallJump.IsTouchingWall())
         {
+            Debug.Log("Tırmanma için şartlar sağlandı.");
+            // Tırmanmaya başla
             StartCoroutine(Climb());
         }
     }
@@ -49,14 +56,53 @@ public class PlayerClimbUp : MonoBehaviour
 
     void CheckClimbableWall()
     {
+        // Yönü belirle (sağa ya da sola)
         Vector2 direction = Vector2.right * GetFacingDirection();
         RaycastHit2D hit = Physics2D.Raycast(climbCheck.position, direction, climbCheckDistance, climbableLayer);
+        
+        // Duvar var mı kontrol et
         _canClimb = hit.collider != null;
 
         if (_canClimb)
-            Debug.Log("Tırmanılabilir duvar bulundu: " + hit.collider.name);
+        {
+            Debug.Log("Duvar bulundu, tırmanılabilir.");
+
+            // Eğer duvar varsa, duvarın sonuna yaklaşıp yaklaşmadığını kontrol et
+            RaycastHit2D topHit = Physics2D.Raycast(climbCheck.position, Vector2.up, climbCheckDistance, climbableLayer);
+            if (topHit.collider != null)
+            {
+                Debug.Log("Duvarın üst kısmına yaklaşılıyor.");
+                if (topHit.distance < 0.2f) // Duvarın üst kısmına yaklaşıyorsa
+                {
+                    Debug.Log("Duvarın son kısmına ulaşıldı, tırmanma animasyonu başlatılacak.");
+                    StartClimbingUp();
+                }
+                else
+                {
+                    Debug.Log("Duvarın üst kısmına yaklaşılmadı.");
+                }
+            }
+            else
+            {
+                Debug.Log("Duvarın üst kısmı bulunamadı.");
+            }
+        }
 
         Debug.DrawRay(climbCheck.position, direction * climbCheckDistance, _canClimb ? Color.green : Color.red);
+    }
+
+    void StartClimbingUp()
+    {
+        if (!_isClimbing)
+        {
+            _isClimbing = true;
+            Debug.Log("Tırmanma animasyonu tetiklendi.");
+            _animator.SetTrigger(AnimatorHashes.ClimbUp);
+            _rb.linearVelocity = Vector2.zero;
+            _rb.gravityScale = 0;
+            
+            // StartCoroutine(Climb());
+        }
     }
 
     int GetFacingDirection()
@@ -66,20 +112,14 @@ public class PlayerClimbUp : MonoBehaviour
 
     System.Collections.IEnumerator Climb()
     {
-        _isClimbing = true;
-        
-        _animator.SetTrigger(AnimatorHashes.ClimbUp);
+        yield return new WaitForSeconds(climbDuration); // Animasyon süresi kadar bekle
 
-        _rb.linearVelocity = Vector2.zero;
-        _rb.gravityScale = 0;
-
-        yield return new WaitForSeconds(climbDuration);
-
-        // Yukarı + yönüne göre offset
+        // Karakteri yukarıya doğru taşı ve bakış yönüne göre hareket et
         Vector2 finalOffset = new Vector2(climbOffset.x * GetFacingDirection(), climbOffset.y);
         _rb.MovePosition(_rb.position + finalOffset);
         Debug.Log("Karakter yukarı taşındı.");
 
+        // Tırmanma bitti, yerçekimini yeniden aç
         _rb.gravityScale = 1;
         _isClimbing = false;
     }
