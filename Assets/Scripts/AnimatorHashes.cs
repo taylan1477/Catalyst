@@ -10,5 +10,6 @@ public static class AnimatorHashes
     public static readonly int IsHolding = Animator.StringToHash("isHolding");
     
     public static readonly int AttackTrigger = Animator.StringToHash("AttackTrigger");
+    public static readonly int ClimbUp = Animator.StringToHash("ClimbUp");
     
 }

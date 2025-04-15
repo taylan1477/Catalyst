@@ -2,29 +2,32 @@ using UnityEngine;
 
 public class PlayerWallJump : MonoBehaviour
 {
-    public float wallJumpForce = 25f; // Duvardan zıplama kuvveti
-    public LayerMask wallLayer; // Duvarlar için layer
-    public LayerMask groundLayer; // Yer için layer
-    public Transform wallCheck; // Duvara değme kontrolü için boş obje
-    public float wallCheckDistance = 0.1f; // Duvara değme kontrol mesafesi
-    public float maxWallHoldTime = 1f; // Duvara maksimum tutunma süresi (1 saniye)
+    public float wallJumpForce = 16f;
+    public float wallCheckDistance = 0.1f;
+    public float maxWallHoldTime = 1f;
+    public LayerMask wallLayer;
+    public LayerMask groundLayer;
+    public Transform wallCheck;
 
-    private Rigidbody2D _rigidbody2D;
-    private bool _isTouchingWall; // Duvara değiyor mu?
-    private bool _isGrounded; // Karakter yerde mi?
-    private bool _isHolding; // Duvara tutunuyor mu?
-    private float _wallJumpDirection; // Duvardan zıplama yönü
+    private Rigidbody2D _rb;
+    private SpriteRenderer _sr;
+    private Animator _anim;
+    private BoxCollider2D _collider;
+    private Vector2 _originalOffset;
+
+    private bool _isTouchingWall;
+    private bool _isGrounded;
+    private bool _isHolding;
+    private float _wallHoldTimer;
     private float _wallHoldTime; // Duvara tutunma süresi
-    private SpriteRenderer _spriteRenderer;
-    private Animator _animator;
-    private BoxCollider2D _collider; // Karakterin collider'ı
-    private Vector2 _originalOffset; // Collider'ın orijinal offset değeri
+    private float _lastWallTouchTime;
+    public float wallJumpCoyoteTime = 0.2f; // Zıplama toleransı süresi
 
     void Start()
     {
-        _rigidbody2D = GetComponent<Rigidbody2D>();
-        _spriteRenderer = GetComponent<SpriteRenderer>();
-        _animator = GetComponent<Animator>();
+        _rb = GetComponent<Rigidbody2D>();
+        _sr = GetComponent<SpriteRenderer>();
+        _anim = GetComponent<Animator>();
         _collider = GetComponent<BoxCollider2D>();
         _originalOffset = _collider.offset;
     }
@@ -33,95 +36,104 @@ public class PlayerWallJump : MonoBehaviour
     {
         CheckGrounded();
         CheckWall();
-        HandleWallJump();
         HandleWallHoldTime();
+        HandleWallJump();
         UpdateColliderPosition();
+
         if (!_isGrounded)
         {
-            _animator.SetBool(AnimatorHashes.IsHolding, _isHolding);
+            _anim.SetBool(AnimatorHashes.IsHolding, _isHolding);
         }
     }
 
     void CheckGrounded()
     {
-        // Yerde olup olmadığını kontrol et
         _isGrounded = Physics2D.Raycast(transform.position, Vector2.down, 0.1f, groundLayer);
     }
 
     void CheckWall()
     {
-        if (wallCheck == null || _spriteRenderer == null)
-        {
-            return; // Objeler atanmamışsa fonksiyonu durdur
-        }
+        float direction = _sr.flipX ? -1 : 1;
 
-        // Karakterin baktığı yönü al
-        float direction = _spriteRenderer.flipX ? -1 : 1;
-
-        // WallCheck objesinin konumunu güncelle
+        // Wall check pozisyonunu güncelle
         wallCheck.localPosition = new Vector3(Mathf.Abs(wallCheck.localPosition.x) * direction, wallCheck.localPosition.y, wallCheck.localPosition.z);
 
-        // WallCheck objesinin yönünü güncelle
-        Vector2 checkDirection = transform.right * direction;
-
-        // Duvara değme kontrolü
+        // Duvar kontrolü
+        Vector2 checkDirection = Vector2.right * direction;
         _isTouchingWall = Physics2D.Raycast(wallCheck.position, checkDirection, wallCheckDistance, wallLayer);
-
-        // Duvara değiyorsa isHolding true, değmiyorsa false yap
         _isHolding = _isTouchingWall;
 
-        // Debug çizgisi
-        Debug.DrawRay(wallCheck.position, checkDirection * wallCheckDistance, _isTouchingWall ? Color.green : Color.red);
-    }
-
-    void HandleWallJump()
-    {
-        // Karakter yerde değilse ve duvara değiyorsa, duvardan zıpla
-        if (!_isGrounded && _isTouchingWall && Input.GetKeyDown(KeyCode.Space))
+        // Duvar tutunma süresi
+        if (_isTouchingWall && !_isGrounded)
         {
-            // Duvara göre zıplama yönü
-            _wallJumpDirection = _isTouchingWall ? -1 : 1;
-
-            // 45 derecelik itme kuvveti (yatay ve dikey kuvvetler eşit)
-            float horizontalForce = wallJumpForce * 0.7071f * Mathf.Sign(_rigidbody2D.linearVelocity.x);  // cos(45°) ≈ 0.7071
-            float verticalForce = wallJumpForce * 0.7071f;  // sin(45°) ≈ 0.7071
-
-            // Kuvveti uygula
-            _rigidbody2D.linearVelocity = new Vector2(horizontalForce * _wallJumpDirection, verticalForce);
-        }
-    }
-
-    void HandleWallHoldTime()
-    {
-        // Duvara değiyorsa tutunma süresini artır
-        if (_isTouchingWall)
-        {
-            _wallHoldTime += Time.deltaTime;
-
-            // Tutunma süresi dolduysa
-            if (_wallHoldTime >= maxWallHoldTime)
+            _lastWallTouchTime = Time.time;
+            _wallHoldTimer += Time.deltaTime;
+            _rb.gravityScale = 5f;
+            if (_wallHoldTimer >= maxWallHoldTime)
             {
-                _isTouchingWall = false; // Duvardan ayrıl
-                _wallHoldTime = 0f; // Süreyi sıfırla
+                _isTouchingWall = false;
+                _wallHoldTimer = 0f;
+                _rb.gravityScale = 6f;
             }
         }
         else
         {
-            _wallHoldTime = 0f; // Duvara değmiyorsa süreyi sıfırla
+            _wallHoldTimer = 0f;
+            _rb.gravityScale = 6f;
+        }
+
+        Debug.DrawRay(wallCheck.position, checkDirection * wallCheckDistance, _isTouchingWall ? Color.green : Color.red);
+    }
+
+    void HandleWallHoldTime()
+    {
+        if (_isTouchingWall && !_isGrounded)
+        {
+            _wallHoldTime += Time.deltaTime;
+
+            if (_wallHoldTime >= maxWallHoldTime)
+            {
+                _isTouchingWall = false;
+                _isHolding = false;
+                _wallHoldTime = 0f;
+
+                // Duvardan kaymasın diye velocity'yi hafifçe azalt
+                _rb.linearVelocity = new Vector2(_rb.linearVelocity.x, Mathf.Min(_rb.linearVelocity.y, 0f));
+            }
+        }
+        else
+        {
+            _wallHoldTime = 0f;
         }
     }
+
+
+    void HandleWallJump()
+    {
+        bool canWallJump = (Time.time - _lastWallTouchTime <= wallJumpCoyoteTime);
+
+        if (!_isGrounded && canWallJump && Input.GetKeyDown(KeyCode.Space))
+        {
+            float direction = _sr.flipX ? 1 : -1; // Zıplama yönü ters olacak
+
+            float horizontalForce = wallJumpForce * 0.7071f * direction;
+            float verticalForce = wallJumpForce * 0.7071f;
+
+            _rb.linearVelocity = new Vector2(horizontalForce, verticalForce);
+            _isTouchingWall = false; // Hemen sonra tekrar zıplamasın
+            _wallHoldTime = 0f;
+        }
+    }
+
+
     void UpdateColliderPosition()
     {
         if (_isHolding)
         {
-            if (!_spriteRenderer.flipX) // Sağa bakıyorsa
-            {
-                _collider.offset = new Vector2(_originalOffset.x - 0.05f, _collider.offset.y); // Sola kaydır
-            }
-            else // Sola bakıyorsa
-            {
-                _collider.offset = new Vector2(_originalOffset.x + 0.05f, _collider.offset.y); // Sağa kaydır
-            }
+            if (!_sr.flipX) // Sağa bakıyorsa
+                _collider.offset = new Vector2(_originalOffset.x - 0.05f, _originalOffset.y);
+            else
+                _collider.offset = new Vector2(_originalOffset.x + 0.05f, _originalOffset.y);
         }
         else
         {

@@ -75,6 +75,7 @@ GameObject:
   - component: {fileID: 1050792802234318282}
   - component: {fileID: 501417183355690104}
   - component: {fileID: 8216331949264492665}
+  - component: {fileID: 4435165782867732076}
   - component: {fileID: 940567848754232291}
   - component: {fileID: 3301210580932682005}
   - component: {fileID: 5204602838216876375}
@@ -101,6 +102,7 @@ Transform:
   m_Children:
   - {fileID: 1232642631316714175}
   - {fileID: 2525580318244195115}
+  - {fileID: 5278202778572558651}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &688583278395713683
@@ -195,12 +197,15 @@ MonoBehaviour:
   speed: 0
   acceleration: 0.08
   deceleration: 0.12
-  maxSpeed: 14
+  maxSpeed: 12
   normalJumpForce: 20
   chargedJumpForce: 28
-  chargeThreshold: 0.6
+  chargeThreshold: 0.5
   groundCheckDistance: 0.1
+  jumpBufferTime: 0.12
+  coyoteTime: 0.12
   isSlowed: 0
+  isPushing: 0
   isPulling: 0
   attackRange: 1.5
   attackDamage: 1
@@ -224,6 +229,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pushForce: 3
+--- !u!114 &4435165782867732076
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4573823566962593706}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f67fd20e00cf79f48b0199675728635f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  climbCheck: {fileID: 0}
+  climbCheckDistance: 0.3
+  climbableLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  climbDuration: 0.5
+  climbOffset: {x: 0, y: 1.2}
 --- !u!114 &940567848754232291
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -237,12 +261,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wallJumpForce: 20
+  wallCheckDistance: 0.1
+  maxWallHoldTime: 1
   wallLayer:
     serializedVersion: 2
     m_Bits: 256
-  wallCheck: {fileID: 0}
-  wallCheckDistance: 0.1
-  maxWallHoldTime: 1
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  wallCheck: {fileID: 2525580318244195115}
+  wallJumpCoyoteTime: 0.2
 --- !u!50 &3301210580932682005
 Rigidbody2D:
   serializedVersion: 5
@@ -362,3 +390,34 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.13967004, y: 0.1125052}
   m_EdgeRadius: 0
+--- !u!1 &5371582973123913220
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5278202778572558651}
+  m_Layer: 6
+  m_Name: ClimbCheck
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5278202778572558651
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5371582973123913220}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.104, y: 0.125, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8043793620121273906}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
