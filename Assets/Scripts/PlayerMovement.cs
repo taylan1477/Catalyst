@@ -79,6 +79,7 @@ public class PlayerMovement : MonoBehaviour
                 _spriteRenderer.flipX = false; // Kediyi sola çevir
                 UpdateCarryPosition(); // CarryPosition'ı güncelle
             }
+            _isStoping = false;
         }
         else if (Input.GetKey(KeyCode.A)) // Sola hareket
         {
@@ -89,11 +90,16 @@ public class PlayerMovement : MonoBehaviour
                 _spriteRenderer.flipX = true; // Kediyi sola çevir
                 UpdateCarryPosition(); // CarryPosition'ı güncelle
             }
+            _isStoping = false;
         }
         else if (Input.GetKey(KeyCode.S) && Mathf.Abs(speed) > 0) // Fren
         {
-            speed = Mathf.MoveTowards(speed, 0, deceleration*2f);
+            speed = Mathf.MoveTowards(speed, 0, deceleration*3f);
             _isStoping = true;
+            if (speed == 0)
+            {
+                _isStoping = false;
+            }
         }
         else // Tuşa basılmıyorsa yavaşla
         {
