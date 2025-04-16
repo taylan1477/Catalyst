@@ -10,8 +10,6 @@ public class PlayerPush : MonoBehaviour
     private Rigidbody2D _playerRigidbody;
     private SpriteRenderer _spriteRenderer;
 
-    
-
     void Start()
     {
         _playerMovement = GetComponent<PlayerMovement>();
@@ -60,14 +58,18 @@ public class PlayerPush : MonoBehaviour
             }
         }
     }
-
-
+    
     private void PushBox(Vector2 direction)
     {
         _playerMovement.isPushing = true;
         _playerMovement.isPulling = false;
 
-        _boxRigidbody.linearVelocity = direction * pushForce;
+        float playerSpeedX = _playerRigidbody.linearVelocity.x;
+
+        // Hızı birebir kopyala ya da hafifçe artır
+        float boxSpeedX = playerSpeedX * 0.9f;
+
+        _boxRigidbody.linearVelocity = new Vector2(boxSpeedX, 0f);
 
         Debug.Log("Kutu itiliyor!");
     }
@@ -77,7 +79,7 @@ public class PlayerPush : MonoBehaviour
         _playerMovement.isPulling = true;
         _playerMovement.isPushing = false;
 
-        _boxRigidbody.linearVelocity = -direction * pushForce;
+        _boxRigidbody.linearVelocity = -direction * 1.8f;
 
         // Sprite'ı kutunun olduğu yöne döndür
         if (_boxToPush != null)
@@ -100,6 +102,7 @@ public class PlayerPush : MonoBehaviour
             _boxToPush = collision.gameObject;
             _boxRigidbody = _boxToPush.GetComponent<Rigidbody2D>();
             Debug.Log("Kutu algılandı: " + _boxToPush.name); // Kutunun algılandığını kontrol et
+            Debug.Log("Center of mass: " + _boxRigidbody.centerOfMass);
         }
     }
 

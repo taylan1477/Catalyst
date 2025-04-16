@@ -113,9 +113,9 @@ public class PlayerMovement : MonoBehaviour
         if (isSlowed)
         {
             // Yavaşlatılmış hızı hesapla ve sınırla
-            float slowedSpeed = speed * 0.3f; // Hızı yarıya indir
-            speed = Mathf.Clamp(speed, -maxSpeed * 0.3f, maxSpeed * 0.3f);
-            slowedSpeed = Mathf.Clamp(slowedSpeed, -maxSpeed * 0.3f, maxSpeed * 0.3f); // Yavaşlatılmış hızı sınırla
+            float slowedSpeed = speed * 0.4f; // Hızı yarıya indir x = 3/8
+            speed = Mathf.Clamp(speed, -maxSpeed * 0.4f, maxSpeed * 0.4f);
+            slowedSpeed = Mathf.Clamp(slowedSpeed, -maxSpeed * 0.4f, maxSpeed * 0.4f); // Yavaşlatılmış hızı sınırla
             _rigidbody2D.linearVelocity = new Vector2(slowedSpeed, _rigidbody2D.linearVelocity.y);
         }
         else
