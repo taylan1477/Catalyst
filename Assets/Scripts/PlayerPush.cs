@@ -8,35 +8,48 @@ public class PlayerPush : MonoBehaviour
     private GameObject _boxToPush;
     private Rigidbody2D _boxRigidbody;
     private Rigidbody2D _playerRigidbody;
+    private SpriteRenderer _spriteRenderer;
+
+    
 
     void Start()
     {
         _playerMovement = GetComponent<PlayerMovement>();
         _playerRigidbody = GetComponent<Rigidbody2D>(); // Karakterin Rigidbody2D'sini al
+        _spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     private void Update()
     {
+        // HER ZAMAN önce shift'e basılı mı kontrol et
+        _playerMovement.isSlowed = Input.GetKey(KeyCode.LeftShift);
+
         if (Input.GetKey(KeyCode.LeftShift))
         {
-            _playerMovement.isSlowed = true;
-
             if (_boxToPush != null && _boxRigidbody != null)
             {
                 _boxRigidbody.bodyType = RigidbodyType2D.Dynamic;
 
                 float moveInput = Input.GetAxis("Horizontal");
-                Vector2 direction = (_boxToPush.transform.position - transform.position).normalized;
 
-                if (moveInput * direction.x < 0)
-                    PullBox(direction);
+                if (Mathf.Abs(moveInput) > 0.01f)
+                {
+                    Vector2 direction = (_boxToPush.transform.position - transform.position).normalized;
+
+                    if (moveInput * direction.x < 0)
+                        PullBox(direction);
+                    else
+                        PushBox(direction);
+                }
                 else
-                    PushBox(direction);
+                {
+                    _boxRigidbody.linearVelocity = Vector2.zero;
+                }
             }
         }
         else
         {
-            _playerMovement.isSlowed = false;
+            // Shift bırakıldığında pushing/pulling durumu sıfırlanmalı
             _playerMovement.isPushing = false;
             _playerMovement.isPulling = false;
 
@@ -47,6 +60,7 @@ public class PlayerPush : MonoBehaviour
             }
         }
     }
+
 
     private void PushBox(Vector2 direction)
     {
@@ -65,8 +79,18 @@ public class PlayerPush : MonoBehaviour
 
         _boxRigidbody.linearVelocity = -direction * pushForce;
 
+        // Sprite'ı kutunun olduğu yöne döndür
+        if (_boxToPush != null)
+        {
+            float boxPosX = _boxToPush.transform.position.x;
+            float playerPosX = transform.position.x;
+
+            _spriteRenderer.flipX = boxPosX < playerPosX;
+        }
+
         Debug.Log("Kutu çekiliyor!");
     }
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

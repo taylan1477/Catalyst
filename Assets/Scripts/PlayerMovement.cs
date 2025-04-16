@@ -30,7 +30,8 @@ public class PlayerMovement : MonoBehaviour
     public LayerMask groundLayer;
     private Rigidbody2D _rigidbody2D;
     private Animator _animator;
-    private SpriteRenderer _spriteRenderer;
+    [SerializeField] private SpriteRenderer spriteRenderer; // Serialize ederiz, dışarıdan atanabilir
+    public SpriteRenderer SpriteRenderer => spriteRenderer; // Read-only property
     private bool _isGrounded; 
     private bool _isCharging;
     private float _chargeStartTime;
@@ -41,7 +42,9 @@ public class PlayerMovement : MonoBehaviour
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
         _animator = GetComponent<Animator>();
-        _spriteRenderer = GetComponent<SpriteRenderer>();
+        // Eğer Inspector'dan atamadıysan, otomatik al
+        if (spriteRenderer == null)
+            spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     void Update()
@@ -74,9 +77,9 @@ public class PlayerMovement : MonoBehaviour
         {
             if (speed < 0) speed *= -1; // Eğer sola gidiyorsa, hızı tersine çevir
             speed += acceleration;
-            if (isPushing == false)
+            if (isSlowed == false)
             {
-                _spriteRenderer.flipX = false; // Kediyi sola çevir
+                SpriteRenderer.flipX = false; // Kediyi sola çevir
                 UpdateCarryPosition(); // CarryPosition'ı güncelle
             }
             _isStoping = false;
@@ -85,9 +88,9 @@ public class PlayerMovement : MonoBehaviour
         {
             if (speed > 0) speed *= -1;  // Eğer sağa gidiyorsa, hızı tersine çevir
             speed -= acceleration;
-            if (isPushing == false)
+            if (isSlowed == false)
             {
-                _spriteRenderer.flipX = true; // Kediyi sola çevir
+                SpriteRenderer.flipX = true; // Kediyi sola çevir
                 UpdateCarryPosition(); // CarryPosition'ı güncelle
             }
             _isStoping = false;
@@ -279,7 +282,7 @@ public class PlayerMovement : MonoBehaviour
         if (_isCarrying)
         {
             // Kedinin yönüne göre carryPosition'ı güncelle
-            if (_spriteRenderer.flipX) // Sola bakıyorsa
+            if (SpriteRenderer.flipX) // Sola bakıyorsa
             {
                 carryPosition.localPosition = new Vector3(-0.065f, 0.06f, 0); // Sola göre pozisyon
                 _carriedMouse.GetComponent<SpriteRenderer>().flipX = true; // Fareyi sola çevir
