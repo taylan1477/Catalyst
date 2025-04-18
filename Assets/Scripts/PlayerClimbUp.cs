@@ -31,8 +31,6 @@ public class PlayerClimbUp : MonoBehaviour
         //     return;
         // }
 
-        Debug.Log(_wallJump.IsTouchingWall());
-
         CheckClimbableWall();
 
         // Eğer tırmanmak için uygun duvar varsa ve space tuşuna basıldıysa
@@ -65,6 +63,7 @@ public class PlayerClimbUp : MonoBehaviour
         if (_canClimb)
         {
             Debug.Log("Duvar bulundu, tırmanılabilir.");
+            Debug.Log(_wallJump.IsTouchingWall());
 
             // Eğer duvar varsa, duvarın sonuna yaklaşıp yaklaşmadığını kontrol et
             RaycastHit2D topHit = Physics2D.Raycast(climbCheck.position, Vector2.up, climbCheckDistance, climbableLayer);
