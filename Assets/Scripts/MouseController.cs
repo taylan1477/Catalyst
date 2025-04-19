@@ -5,15 +5,22 @@ public class MouseController : MonoBehaviour
     public Transform[] waypoints;
     public float moveSpeed = 2f;
     public int health = 3; 
+    
+    [Header("Audio Settings")]
+    [SerializeField] private Vector2 idleSoundInterval;
+    
     private int _currentWaypointIndex;
     private Animator _animator;
     private SpriteRenderer _spriteRenderer;
-    private bool _isDead; 
-
+    private bool _isDead;
+    private float _idleTimer;
+    private float _nextIdleTime;
+    
     void Start()
     {
         _animator = GetComponent<Animator>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
+        _nextIdleTime = Random.Range(idleSoundInterval.x, idleSoundInterval.y);
     }
 
     void Update()
@@ -21,6 +28,7 @@ public class MouseController : MonoBehaviour
         if (!_isDead)
         {
             MoveAlongWaypoints();
+            HandleIdleSound();
         }
     }
 
@@ -45,33 +53,46 @@ public class MouseController : MonoBehaviour
             _currentWaypointIndex = (_currentWaypointIndex + 1) % waypoints.Length;
         }
 
-        _animator.SetBool("isWalking", true);
+        _animator.SetBool(AnimatorHashes.Walk, true);
+    }
+
+    void HandleIdleSound()
+    {
+        _idleTimer += Time.deltaTime;
+        if(_idleTimer >= _nextIdleTime)
+        {
+            AudioManager.Instance.PlayMouseIdle();
+            _idleTimer = 0f;
+            _nextIdleTime = Random.Range(idleSoundInterval.x, idleSoundInterval.y);
+        }
     }
 
     public void TakeDamage(int damage)
     {
         if (_isDead) return;
 
-        health -= damage; 
+        health -= damage;
+        
+        AudioManager.Instance.PlayMouseHurt();
 
-        if (health <= 0) 
+        if (health <= 0)
         {
             Die();
         }
         else
         {
-            // Yaralanma animasyonunu TRIGGER ile tetikle
-            _animator.SetTrigger("isHurt");
+            _animator.SetTrigger(AnimatorHashes.Hurt);
         }
     }
 
     void Die()
     {
         _isDead = true;
-        _animator.SetTrigger("isDead");
-        _animator.SetBool("isWalking", false);
+        _animator.SetTrigger(AnimatorHashes.Dead);
+        _animator.SetBool(AnimatorHashes.Walk, false);
+        AudioManager.Instance.StopMouseSounds();
         
-        transform.localScale *= 0.7f; // biraz küçült
+        transform.localScale *= 0.7f;
     }
     
     public bool IsDead()

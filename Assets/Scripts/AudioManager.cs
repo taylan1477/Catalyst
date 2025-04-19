@@ -10,11 +10,17 @@ public class AudioManager : MonoBehaviour
     public AudioClip[] fastSteps;
     public AudioClip[] fastestSteps;
     
+    [Header("Mouse Clips")]
+    public AudioClip[] mouseidle;
+    public AudioClip[] mousehurt;
+
     [Header("Volume Settings")]
-    [Range(0, 1)] public float footstepVolume = 0.3f; // Inspector'dan ayarlanabilir
+    [Range(0, 1)] public float footstepVolume = 0.1f;
+    [Range(0, 1)] public float mouseVolume = 0.3f;
 
     AudioSource _sfxSource;
-    bool _isFootstepPlaying; // Sesin aktif olarak çalınıp çalmadığını takip et
+    AudioSource _mouseSource;
+    bool _isFootstepPlaying;
 
     void Awake()
     {
@@ -28,7 +34,33 @@ public class AudioManager : MonoBehaviour
 
         var sources = GetComponents<AudioSource>();
         _sfxSource = sources[0];
-        _sfxSource.volume = footstepVolume; // Volume'ü başlat
+        _mouseSource = sources[1]; // İkinci audio source
+        
+        _sfxSource.volume = footstepVolume;
+        _mouseSource.volume = mouseVolume;
+    }
+    
+    public void PlayMouseIdle()
+    {
+        if(mouseidle.Length == 0) return;
+        
+        AudioClip clip = mouseidle[Random.Range(0, mouseidle.Length)];
+        _mouseSource.clip = clip;
+        _mouseSource.loop = true;
+        _mouseSource.Play();
+    }
+    
+    public void PlayMouseHurt()
+    {
+        if(mousehurt.Length == 0) return;
+        
+        AudioClip clip = mousehurt[Random.Range(0, mousehurt.Length)];
+        _mouseSource.PlayOneShot(clip, mouseVolume);
+    }
+
+    public void StopMouseSounds()
+    {
+        _mouseSource.Stop();
     }
 
     public void PlayFootstep(float speed)
