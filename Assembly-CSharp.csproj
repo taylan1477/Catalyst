@@ -54,6 +54,7 @@
     <Compile Include="Assets\Scripts\PlayerClimbUp.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark02.cs" />
     <Compile Include="Assets\Scripts\FemaleCatController.cs" />
+    <Compile Include="Assets\Scripts\AudioManager.cs" />
     <Compile Include="Assets\Scripts\PlayerPush.cs" />
     <Compile Include="Assets\Scripts\Objectives.cs" />
     <Compile Include="Assets\Scripts\CameraMovement.cs" />

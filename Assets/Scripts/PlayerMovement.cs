@@ -38,12 +38,63 @@ public class PlayerMovement : MonoBehaviour
             spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
+    [Header("Footstep Settings")]
+    [SerializeField] private float footstepInterval = 0.35f;
+    private float _footstepTimer;
+    private bool _wasMoving;
+
     void Update()
     {
         HandleMovement();
         UpdateAnimator();
         CheckGrounded();
         HandleJump();
+        HandleFootsteps(); // Yeni eklenen fonksiyon
+    }
+
+    void HandleFootsteps()
+    {
+        if (_isGrounded && Mathf.Abs(speed) > 0.1f)
+        {
+            _footstepTimer -= Time.deltaTime;
+            
+            if (_footstepTimer <= 0)
+            {
+                PlayFootstepSound();
+                ResetFootstepTimer();
+            }
+            
+            _wasMoving = true;
+        }
+        else
+        {
+            if (_wasMoving)
+            {
+                // Hareket durduğunda son bir adım sesi çal
+                PlayFootstepSound();
+                _wasMoving = false;
+            }
+            ResetFootstepTimer();
+        }
+    }
+
+    void PlayFootstepSound()
+    {
+        if (AudioManager.Instance != null)
+        {
+            // Mutlak hızı kullanarak uygun ses setini seç
+            float currentSpeed = Mathf.Abs(_rigidbody2D.linearVelocity.x);
+            AudioManager.Instance.PlayFootstep(currentSpeed);
+        }
+        else
+        {
+            Debug.LogError("AudioManager instance not found!");
+        }
+    }
+
+    void ResetFootstepTimer()
+    {
+        _footstepTimer = footstepInterval;
     }
 
     void HandleMovement()
