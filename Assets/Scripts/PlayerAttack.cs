@@ -30,9 +30,10 @@ public class PlayerAttack : MonoBehaviour
         _animator.SetTrigger(AnimatorHashes.AttackTrigger);
         
         Collider2D[] hitMice = Physics2D.OverlapCircleAll(transform.position, attackRange, mouseLayer);
-        foreach (Collider2D mouse in hitMice)
+        foreach (Collider2D mouseCollider in hitMice)
         {
-            mouse.GetComponent<MouseController>()?.TakeDamage(attackDamage);
+            MouseController controller = mouseCollider.GetComponent<MouseController>();
+            controller?.TakeDamage(attackDamage);
         }
     }
 
@@ -64,8 +65,8 @@ public class PlayerAttack : MonoBehaviour
         _carriedMouse.transform.SetParent(carryPosition);
         _carriedMouse.transform.localPosition = Vector3.zero;
         
-        Collider2D collider = _carriedMouse.GetComponent<Collider2D>();
-        if (collider != null) collider.enabled = false;
+        Collider2D mouseCollider = _carriedMouse.GetComponent<Collider2D>();
+        if (mouseCollider != null) mouseCollider.enabled = false;
         
         Rigidbody2D rb = _carriedMouse.GetComponent<Rigidbody2D>();
         if (rb != null) rb.simulated = false;
@@ -78,13 +79,12 @@ public class PlayerAttack : MonoBehaviour
         _isCarrying = false;
         _carriedMouse.transform.SetParent(null);
         
-        Collider2D collider = _carriedMouse.GetComponent<Collider2D>();
-        if (collider != null) collider.enabled = true;
+        Collider2D mouseCollider = _carriedMouse.GetComponent<Collider2D>();
+        if (mouseCollider != null) mouseCollider.enabled = true;
         
         Rigidbody2D rb = _carriedMouse.GetComponent<Rigidbody2D>();
         if (rb != null) rb.simulated = true;
-
-        CheckFemaleCatProximity();
+        
         _carriedMouse = null;
     }
 
@@ -98,15 +98,5 @@ public class PlayerAttack : MonoBehaviour
         
         if (_carriedMouse != null)
             _carriedMouse.GetComponent<SpriteRenderer>().flipX = _spriteRenderer.flipX;
-    }
-
-    void CheckFemaleCatProximity()
-    {
-        FemaleCat femaleCat = FindObjectOfType<FemaleCat>();
-        if (femaleCat != null && femaleCat.IsMouseNearby())
-        {
-            femaleCat.GetComponent<Animator>().SetTrigger("ReceiveMouse");
-            Destroy(_carriedMouse);
-        }
     }
 }
