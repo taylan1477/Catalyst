@@ -17,8 +17,6 @@ public class PlayerMovement : MonoBehaviour
     private float _coyoteTimeTimer; // Coyote time için sayaç
     
     public bool isSlowed; // Yavaşlatma durumu
-    public bool isPushing;
-    public bool isPulling;
     
     public LayerMask groundLayer;
     private Rigidbody2D _rigidbody2D;
@@ -108,8 +106,6 @@ public class PlayerMovement : MonoBehaviour
         _animator.SetBool(AnimatorHashes.IsGrounded, _isGrounded);
         _animator.SetBool(AnimatorHashes.IsCharging, _isCharging);
         _animator.SetBool(AnimatorHashes.IsStoping, _isStoping);
-        _animator.SetBool(AnimatorHashes.IsPushing, isPushing);
-        _animator.SetBool(AnimatorHashes.IsPulling, isPulling);
     }
 
     void CheckGrounded()

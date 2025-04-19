@@ -2,8 +2,11 @@ using UnityEngine;
 
 public class PlayerPush : MonoBehaviour
 {
-
+    private bool _isPushing;
+    private bool _isPulling;
+    
     private PlayerMovement _playerMovement;
+    private Animator _animator;
     private GameObject _boxToPush;
     private Rigidbody2D _boxRigidbody;
     private Rigidbody2D _playerRigidbody;
@@ -14,6 +17,7 @@ public class PlayerPush : MonoBehaviour
         _playerMovement = GetComponent<PlayerMovement>();
         _playerRigidbody = GetComponent<Rigidbody2D>(); // Karakterin Rigidbody2D'sini al
         _spriteRenderer = GetComponent<SpriteRenderer>();
+        _animator = GetComponent<Animator>();
     }
 
     private void Update()
@@ -47,8 +51,8 @@ public class PlayerPush : MonoBehaviour
         else
         {
             // Shift bırakıldığında pushing/pulling durumu sıfırlanmalı
-            _playerMovement.isPushing = false;
-            _playerMovement.isPulling = false;
+            _isPushing = false;
+            _isPulling = false;
 
             if (_boxToPush != null && _boxRigidbody != null)
             {
@@ -56,12 +60,19 @@ public class PlayerPush : MonoBehaviour
                 _boxRigidbody.bodyType = RigidbodyType2D.Kinematic;
             }
         }
+        UpdateAnimator();
+    }
+    
+    private void UpdateAnimator()
+    {
+        _animator.SetBool(AnimatorHashes.IsPushing, _isPushing);
+        _animator.SetBool(AnimatorHashes.IsPulling, _isPulling);
     }
     
     private void PushBox(Vector2 direction)
     {
-        _playerMovement.isPushing = true;
-        _playerMovement.isPulling = false;
+        _isPushing = true;
+        _isPulling = false;
 
         float playerSpeedX = _playerRigidbody.linearVelocity.x;
 
@@ -75,8 +86,8 @@ public class PlayerPush : MonoBehaviour
 
     private void PullBox(Vector2 direction)
     {
-        _playerMovement.isPulling = true;
-        _playerMovement.isPushing = false;
+        _isPulling = true;
+        _isPushing = false;
 
         _boxRigidbody.linearVelocity = -direction * 1.8f;
 
