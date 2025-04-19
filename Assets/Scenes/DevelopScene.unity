@@ -33090,6 +33090,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 501417183355690104, guid: 8abebd0463a5ce14ebce6dc8a92afb68, type: 3}
+      propertyPath: coyoteTime
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 501417183355690104, guid: 8abebd0463a5ce14ebce6dc8a92afb68, type: 3}
+      propertyPath: jumpBufferTime
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 501417183355690104, guid: 8abebd0463a5ce14ebce6dc8a92afb68, type: 3}
+      propertyPath: groundCheckDistance
+      value: 0.08
+      objectReference: {fileID: 0}
     - target: {fileID: 4573823566962593706, guid: 8abebd0463a5ce14ebce6dc8a92afb68, type: 3}
       propertyPath: m_Name
       value: Player
@@ -35126,10 +35138,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mouse
       objectReference: {fileID: 0}
-    - target: {fileID: 494894573575724103, guid: 253f099604540b145a42c2f830862f97, type: 3}
-      propertyPath: m_TagString
-      value: Mouse
-      objectReference: {fileID: 0}
     - target: {fileID: 4287104187419092872, guid: 253f099604540b145a42c2f830862f97, type: 3}
       propertyPath: 'waypoints.Array.data[0]'
       value: 
@@ -35138,10 +35146,6 @@ PrefabInstance:
       propertyPath: 'waypoints.Array.data[1]'
       value: 
       objectReference: {fileID: 1206201965}
-    - target: {fileID: 4521825520202608161, guid: 253f099604540b145a42c2f830862f97, type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7219920648793390937, guid: 253f099604540b145a42c2f830862f97, type: 3}
       propertyPath: m_LocalPosition.x
       value: 24.88

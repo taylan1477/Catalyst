@@ -26,18 +26,13 @@ public class PlayerClimbUp : MonoBehaviour
 
     void Update()
     {
-        // if (_isClimbing)
-        // {
-        //     return;
-        // }
+        if (_isClimbing) { return; }
 
         CheckClimbableWall();
 
         // Eğer tırmanmak için uygun duvar varsa ve space tuşuna basıldıysa
         if (_canClimb && Input.GetKeyDown(KeyCode.Space) && _wallJump.IsTouchingWall())
         {
-            Debug.Log("Tırmanma için şartlar sağlandı.");
-            // Tırmanmaya başla
             StartCoroutine(Climb());
         }
     }

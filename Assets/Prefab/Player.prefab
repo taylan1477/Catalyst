@@ -105,6 +105,7 @@ GameObject:
   - component: {fileID: 688583278395713683}
   - component: {fileID: 1050792802234318282}
   - component: {fileID: 501417183355690104}
+  - component: {fileID: 2427320260236890186}
   - component: {fileID: 8216331949264492665}
   - component: {fileID: 4435165782867732076}
   - component: {fileID: 940567848754232291}
@@ -239,16 +240,28 @@ MonoBehaviour:
   isSlowed: 0
   isPushing: 0
   isPulling: 0
-  attackRange: 1.5
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 1
+  spriteRenderer: {fileID: 688583278395713683}
+--- !u!114 &2427320260236890186
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4573823566962593706}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ddae8bd9a354a1186f1e0d2a228cbb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackRange: 1
   attackDamage: 1
   mouseLayer:
     serializedVersion: 2
     m_Bits: 128
   carryPosition: {fileID: 1232642631316714175}
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 1
-  spriteRenderer: {fileID: 688583278395713683}
 --- !u!114 &8216331949264492665
 MonoBehaviour:
   m_ObjectHideFlags: 0

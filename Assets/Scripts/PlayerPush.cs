@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class PlayerPush : MonoBehaviour
 {
-    public float pushForce = 3f; // İtme/çekme kuvveti
 
     private PlayerMovement _playerMovement;
     private GameObject _boxToPush;
