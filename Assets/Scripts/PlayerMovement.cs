@@ -39,9 +39,10 @@ public class PlayerMovement : MonoBehaviour
     }
 
     [Header("Footstep Settings")]
-    [SerializeField] private float footstepInterval = 0.35f;
-    private float _footstepTimer;
-    private bool _wasMoving;
+    [SerializeField] private float minFootstepInterval = 0.5f;
+    [SerializeField] private float maxFootstepInterval = 1.2f;
+    private float _currentFootstepInterval;
+    private bool _footstepCooldown;
 
     void Update()
     {
@@ -54,47 +55,37 @@ public class PlayerMovement : MonoBehaviour
 
     void HandleFootsteps()
     {
-        if (_isGrounded && Mathf.Abs(speed) > 0.1f)
+        if (!_isGrounded || Mathf.Abs(speed) < 0.1f)
         {
-            _footstepTimer -= Time.deltaTime;
-            
-            if (_footstepTimer <= 0)
-            {
-                PlayFootstepSound();
-                ResetFootstepTimer();
-            }
-            
-            _wasMoving = true;
+            _footstepCooldown = false;
+            return;
         }
-        else
+
+        // Hıza göre interval ayarla
+        float speedPercentage = Mathf.Clamp01(Mathf.Abs(speed) / maxSpeed);
+        _currentFootstepInterval = Mathf.Lerp(maxFootstepInterval, minFootstepInterval, speedPercentage);
+
+        if (!_footstepCooldown)
         {
-            if (_wasMoving)
-            {
-                // Hareket durduğunda son bir adım sesi çal
-                PlayFootstepSound();
-                _wasMoving = false;
-            }
-            ResetFootstepTimer();
+            PlayFootstepSound();
+            StartCoroutine(FootstepCooldown());
         }
+    }
+
+    private System.Collections.IEnumerator FootstepCooldown()
+    {
+        _footstepCooldown = true;
+        yield return new WaitForSeconds(_currentFootstepInterval);
+        _footstepCooldown = false;
     }
 
     void PlayFootstepSound()
     {
-        if (AudioManager.Instance != null)
+        if (AudioManager.Instance != null && _isGrounded)
         {
-            // Mutlak hızı kullanarak uygun ses setini seç
             float currentSpeed = Mathf.Abs(_rigidbody2D.linearVelocity.x);
             AudioManager.Instance.PlayFootstep(currentSpeed);
         }
-        else
-        {
-            Debug.LogError("AudioManager instance not found!");
-        }
-    }
-
-    void ResetFootstepTimer()
-    {
-        _footstepTimer = footstepInterval;
     }
 
     void HandleMovement()

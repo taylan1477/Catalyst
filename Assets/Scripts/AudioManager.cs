@@ -28,16 +28,23 @@ public class AudioManager : MonoBehaviour
         _sfxSource   = sources[0];
     }
 
-    // Footstep çalma metodu
     public void PlayFootstep(float speed)
     {
-        AudioClip[] clips = speed < 5f  ? slowSteps
-            : speed < 8f  ? mediumSteps
-            : speed < 11.9f ? fastSteps
-            : fastestSteps;
+        if (_sfxSource.isPlaying) return; // Önceki ses bitmeden yeni ses çalma
 
-        var clip = clips[Random.Range(0, clips.Length)];
-        _sfxSource.pitch = Random.Range(0.95f, 1.05f);
-        _sfxSource.PlayOneShot(clip);
+        AudioClip[] clips = GetSpeedCategory(speed);
+        AudioClip clip = clips[Random.Range(0, clips.Length)];
+    
+        _sfxSource.clip = clip;
+        _sfxSource.pitch = Random.Range(0.9f, 1.1f);
+        _sfxSource.Play();
+    }
+
+    private AudioClip[] GetSpeedCategory(float speed)
+    {
+        if (speed < 5f) return slowSteps;
+        if (speed < 8f) return mediumSteps;
+        if (speed < 11.9f) return fastSteps;
+        return fastestSteps;
     }
 }
