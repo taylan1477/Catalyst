@@ -57,6 +57,11 @@ public class PlayerMovement : MonoBehaviour
     {
         if (!_isGrounded || Mathf.Abs(speed) < 0.1f)
         {
+            // Yeni eklenen: Sesi durdur
+            if (AudioManager.Instance != null)
+            {
+                AudioManager.Instance.StopFootstep();
+            }
             _footstepCooldown = false;
             return;
         }
