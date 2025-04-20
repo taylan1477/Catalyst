@@ -99,4 +99,6 @@ public class PlayerAttack : MonoBehaviour
         if (_carriedMouse != null)
             _carriedMouse.GetComponent<SpriteRenderer>().flipX = _spriteRenderer.flipX;
     }
+    public bool IsCarrying() => _isCarrying;
+    public GameObject GetCarriedMouse() => _carriedMouse;
 }

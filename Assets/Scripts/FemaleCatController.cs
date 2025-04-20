@@ -2,42 +2,57 @@ using UnityEngine;
 
 public class FemaleCat : MonoBehaviour
 {
-    private bool _mouseNearby; // Fare yakın mı?
-    private Animator _animator;
+    [Header("Particle Effects")]
+    public ParticleSystem heartParticlePrefab;
+    public Vector3 heartOffset = new Vector3(0, 1f, 0);
 
+    private Animator _animator;
+    private bool _hasReacted = false;
+    public GameObject heartIndicator; // Inspector'dan sürükle bırak
+    public bool ReactActive { get; private set; }
+    
     void Start()
     {
         _animator = GetComponent<Animator>();
     }
-    
-    public void OnPlayerApproach()
+
+    void Update()
     {
-        _animator.SetBool("isInterested", true);
+        heartIndicator.SetActive(ReactActive);
     }
 
-    public void OnPlayerLeave()
+    // Player girince veya alandayken her frame taşıma durumunu kontrol et
+    void OnTriggerStay2D(Collider2D other)
     {
-        _animator.SetBool("isInterested", false);
-    }
-    
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.CompareTag("Mouse")) // Sadece fareleri algıla
+        if (other.CompareTag("Player"))
         {
-            _mouseNearby = true;
+            var pa = other.GetComponent<PlayerAttack>();
+            bool carrying = (pa != null && pa.IsCarrying());
+            _animator.SetBool("isInterested", true);
         }
     }
 
     void OnTriggerExit2D(Collider2D other)
     {
-        if (other.CompareTag("Mouse"))
+        if (other.CompareTag("Player"))
         {
-            _mouseNearby = false;
+            _animator.SetBool("isInterested", false);
         }
     }
 
-    public bool IsMouseNearby()
+    void OnTriggerEnter2D(Collider2D other)
     {
-        return _mouseNearby;
+        // mouse yere düşüp alana girerse tepki ver
+        if (!_hasReacted && other.CompareTag("Mouse") && other.transform.parent == null)
+        {
+            React();
+        }
+    }
+
+    private void React()
+    {
+        _hasReacted = true;
+        _animator.SetTrigger("react");
+        ReactActive = true;
     }
 }

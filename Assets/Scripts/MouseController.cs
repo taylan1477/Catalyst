@@ -2,7 +2,8 @@ using UnityEngine;
 
 public class MouseController : MonoBehaviour
 {
-    public Transform[] waypoints;
+    [SerializeField] Transform[] waypoints;
+    Vector3[] _wpPositions;
     public float moveSpeed = 2f;
     public int health = 3;
     
@@ -18,6 +19,14 @@ public class MouseController : MonoBehaviour
     private bool _isDead;
     private Transform _player;
 
+    void Awake()
+    {
+        // Başta waypoint Transform’lerinin World pozisyonlarını yakala
+        _wpPositions = new Vector3[waypoints.Length];
+        for (int i = 0; i < waypoints.Length; i++)
+            _wpPositions[i] = waypoints[i].position;
+    }
+    
     void Start()
     {
         _animator = GetComponent<Animator>();
@@ -81,26 +90,19 @@ public class MouseController : MonoBehaviour
 
     void MoveAlongWaypoints()
     {
-        if (waypoints.Length == 0) return;
+        if (_wpPositions.Length == 0) return;
 
-        Transform targetWaypoint = waypoints[_currentWaypointIndex];
-        transform.position = Vector2.MoveTowards(transform.position, targetWaypoint.position, moveSpeed * Time.deltaTime);
+        Vector3 targetPos = _wpPositions[_currentWaypointIndex];
+        transform.position = Vector3.MoveTowards(transform.position, targetPos, moveSpeed * Time.deltaTime);
 
-        UpdateSpriteFlip(targetWaypoint);
-        UpdateWaypointIndex(targetWaypoint);
-        
+        // Yüzünü hedefe çevir
+        _spriteRenderer.flipX = targetPos.x < transform.position.x;
+
+        // Hedefe varınca sıradaki index
+        if (Vector2.Distance(transform.position, targetPos) < 0.1f)
+            _currentWaypointIndex = (_currentWaypointIndex + 1) % _wpPositions.Length;
+
         _animator.SetBool(AnimatorHashes.Walk, true);
-    }
-
-    void UpdateSpriteFlip(Transform target)
-    {
-        _spriteRenderer.flipX = target.position.x < transform.position.x;
-    }
-
-    void UpdateWaypointIndex(Transform target)
-    {
-        if (Vector2.Distance(transform.position, target.position) < 0.1f)
-            _currentWaypointIndex = (_currentWaypointIndex + 1) % waypoints.Length;
     }
 
     public void TakeDamage(int damage)
