@@ -11,7 +11,6 @@ public class AudioManager : MonoBehaviour
     public AudioClip[] fastestSteps;
     
     [Header("Mouse Clips")]
-    public AudioClip[] mouseidle;
     public AudioClip[] mousehurt;
 
     [Header("Volume Settings")]
@@ -40,15 +39,6 @@ public class AudioManager : MonoBehaviour
         _mouseSource.volume = mouseVolume;
     }
     
-    public void PlayMouseIdle()
-    {
-        if(mouseidle.Length == 0) return;
-        
-        AudioClip clip = mouseidle[Random.Range(0, mouseidle.Length)];
-        _mouseSource.clip = clip;
-        _mouseSource.loop = true;
-        _mouseSource.Play();
-    }
     
     public void PlayMouseHurt()
     {
@@ -57,11 +47,7 @@ public class AudioManager : MonoBehaviour
         AudioClip clip = mousehurt[Random.Range(0, mousehurt.Length)];
         _mouseSource.PlayOneShot(clip, mouseVolume);
     }
-
-    public void StopMouseSounds()
-    {
-        _mouseSource.Stop();
-    }
+    
 
     public void PlayFootstep(float speed)
     {

@@ -234,16 +234,16 @@ MonoBehaviour:
   normalJumpForce: 20
   chargedJumpForce: 28
   chargeThreshold: 0.5
-  groundCheckDistance: 0.1
-  jumpBufferTime: 0.12
-  coyoteTime: 0.12
+  groundCheckDistance: 0.08
+  jumpBufferTime: 0.1
+  coyoteTime: 0.1
   isSlowed: 0
-  isPushing: 0
-  isPulling: 0
   groundLayer:
     serializedVersion: 2
     m_Bits: 1
   spriteRenderer: {fileID: 688583278395713683}
+  minFootstepInterval: 0.5
+  maxFootstepInterval: 1.2
 --- !u!114 &2427320260236890186
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -274,7 +274,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 387c82b92e4aac441a5579c769b411bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pushForce: 3
 --- !u!114 &4435165782867732076
 MonoBehaviour:
   m_ObjectHideFlags: 0
