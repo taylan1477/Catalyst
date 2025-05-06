@@ -1,119 +1,91 @@
 using UnityEngine;
+using System.Collections;
 
 public class PlayerClimbUp : MonoBehaviour
 {
-    public Transform climbCheck;               // Duvar tepe kontrolü için boş obje
-    public float climbCheckDistance = 0.3f;    // Duvar kontrol mesafesi
-    public LayerMask climbableLayer;           // Tırmanılabilir layer
-    public float climbDuration = 0.8f;         // Tırmanma animasyon süresi
-    public Vector2 climbOffset = new (0f, 1.2f); // Yukarı taşınma mesafesi
+    [Header("Climb Settings")]
+    public float checkRadius = 0.2f;           // Çember yarıçapı
+    public Vector2 climbOffset = new(0f, 1.2f); // Yukarı taşınma mesafesi
+    public float climbDuration = 0.8f;         // Animasyon süresi
 
-    public Transform climbCheckAnchor;         // Karakterin sabit referans noktası
-    public Vector2 climbCheckLocalOffset = new (0.5f, 1.2f); // Yön bağımlı offset
+    [Header("References")]
+    public Transform ledgeCheck;               // Köşe kontrol noktası
 
     private Animator _animator;
     private Rigidbody2D _rb;
     private bool _isClimbing;
-    private bool _canClimb;
-    private PlayerWallJump _wallJump; // WallJump sınıfını burada kullanacağız
 
-    void Start()
+    private void Awake()
     {
         _animator = GetComponent<Animator>();
         _rb = GetComponent<Rigidbody2D>();
-        _wallJump = GetComponent<PlayerWallJump>(); // WallJump bileşenini alıyoruz
     }
 
-    void Update()
+    private void Update()
     {
-        if (_isClimbing) { return; }
+        if (_isClimbing) return;
 
-        CheckClimbableWall();
-
-        // Eğer tırmanmak için uygun duvar varsa ve space tuşuna basıldıysa
-        if (_canClimb && Input.GetKeyDown(KeyCode.Space) && _wallJump.IsTouchingWall())
+        if (IsAtLedge())
         {
-            StartCoroutine(Climb());
+            StartClimb();
         }
     }
 
-    void LateUpdate()
+    private bool IsAtLedge()
     {
-        if (climbCheck == null || climbCheckAnchor == null) return;
+        Collider2D lowerHit = Physics2D.OverlapCircle(ledgeCheck.position, checkRadius);
+        Vector2 topCheckPos = ledgeCheck.position + Vector3.up * (checkRadius * 2f);
+        Collider2D upperHit = Physics2D.OverlapCircle(topCheckPos, checkRadius);
 
-        float direction = GetFacingDirection();
-        Vector3 offset = new Vector3(climbCheckLocalOffset.x * direction, climbCheckLocalOffset.y, 0);
-        climbCheck.position = climbCheckAnchor.position + offset;
-    }
+        Debug.Log($"[CLIMB] lowerHit: {(lowerHit != null ? lowerHit.name : "none")}, upperHit: {(upperHit != null ? upperHit.name : "none")}");
 
-    void CheckClimbableWall()
-    {
-        // Yönü belirle (sağa ya da sola)
-        Vector2 direction = Vector2.right * GetFacingDirection();
-        RaycastHit2D hit = Physics2D.Raycast(climbCheck.position, direction, climbCheckDistance, climbableLayer);
-        
-        // Duvar var mı kontrol et
-        _canClimb = hit.collider != null;
-
-        if (_canClimb)
+        if (lowerHit != null && upperHit == null)
         {
-            Debug.Log("Duvar bulundu, tırmanılabilir.");
-            Debug.Log(_wallJump.IsTouchingWall());
-
-            // Eğer duvar varsa, duvarın sonuna yaklaşıp yaklaşmadığını kontrol et
-            RaycastHit2D topHit = Physics2D.Raycast(climbCheck.position, Vector2.up, climbCheckDistance, climbableLayer);
-            if (topHit.collider != null)
-            {
-                Debug.Log("Duvarın üst kısmına yaklaşılıyor.");
-                if (topHit.distance < 0.2f) // Duvarın üst kısmına yaklaşıyorsa
-                {
-                    Debug.Log("Duvarın son kısmına ulaşıldı, tırmanma animasyonu başlatılacak.");
-                    StartClimbingUp();
-                }
-                else
-                {
-                    Debug.Log("Duvarın üst kısmına yaklaşılmadı.");
-                }
-            }
-            else
-            {
-                Debug.Log("Duvarın üst kısmı bulunamadı.");
-            }
+            Debug.Log("[CLIMB] Geçerli köşe tespit edildi.");
+            return true;
         }
 
-        Debug.DrawRay(climbCheck.position, direction * climbCheckDistance, _canClimb ? Color.green : Color.red);
+        return false;
     }
 
-    void StartClimbingUp()
+
+    private void StartClimb()
     {
-        if (!_isClimbing)
-        {
-            _isClimbing = true;
-            Debug.Log("Tırmanma animasyonu tetiklendi.");
-            _animator.SetTrigger(AnimatorHashes.ClimbUp);
-            _rb.linearVelocity = Vector2.zero;
-            _rb.gravityScale = 0;
-            
-            // StartCoroutine(Climb());
-        }
+        Debug.Log("[CLIMB] Tırmanma başlatılıyor...");
+        _isClimbing = true;
+        _animator.SetTrigger(AnimatorHashes.ClimbUp);
+
+        _rb.linearVelocity = Vector2.zero;
+        _rb.gravityScale = 0;
+
+        StartCoroutine(ClimbRoutine());
     }
 
-    int GetFacingDirection()
+
+    private IEnumerator ClimbRoutine()
+    {
+        yield return new WaitForSeconds(climbDuration);
+
+        // Karakteri yukarı taşı
+        Vector2 ofs = new Vector2(climbOffset.x * GetFacingDirection(), climbOffset.y);
+        _rb.position += ofs;
+
+        // Reset
+        _rb.gravityScale = 1;
+        _isClimbing = false;
+    }
+
+    private int GetFacingDirection()
     {
         return GetComponent<SpriteRenderer>().flipX ? -1 : 1;
     }
 
-    System.Collections.IEnumerator Climb()
+    private void OnDrawGizmosSelected()
     {
-        yield return new WaitForSeconds(climbDuration); // Animasyon süresi kadar bekle
-
-        // Karakteri yukarıya doğru taşı ve bakış yönüne göre hareket et
-        Vector2 finalOffset = new Vector2(climbOffset.x * GetFacingDirection(), climbOffset.y);
-        _rb.MovePosition(_rb.position + finalOffset);
-        Debug.Log("Karakter yukarı taşındı.");
-
-        // Tırmanma bitti, yerçekimini yeniden aç
-        _rb.gravityScale = 1;
-        _isClimbing = false;
+        if (ledgeCheck == null) return;
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(ledgeCheck.position, checkRadius);
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(ledgeCheck.position + Vector3.up * (checkRadius * 2f), checkRadius);
     }
 }
