@@ -24,6 +24,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private SpriteRenderer spriteRenderer; // Serialize ederiz, dışarıdan atanabilir
     public SpriteRenderer SpriteRenderer => spriteRenderer; // Read-only property
     private bool _isGrounded; 
+    public bool IsGrounded() => _isGrounded;
     private bool _isCharging;
     private float _chargeStartTime;
     private bool _isStoping;
