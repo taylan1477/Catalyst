@@ -23,10 +23,10 @@ public class CameraMovement : MonoBehaviour
             transform.position = smoothedPosition;
         }
 
-        // ESC tuş kontrolü (doğrudan LateUpdate'e ekledim)
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            SceneManager.LoadScene("MainMenu"); // Sahne adını kontrol et!
-        }
+        // // ESC tuş kontrolü (doğrudan LateUpdate'e ekledim)
+        // if (Input.GetKeyDown(KeyCode.Escape))
+        // {
+        //     SceneManager.LoadScene("MainMenu"); // Sahne adını kontrol et!
+        // }
     }
 }
