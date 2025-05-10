@@ -3161,9 +3161,17 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 794d714b613498c488fd67509600d551, type: 2}
+    - target: {fileID: 2427320260236890186, guid: 8abebd0463a5ce14ebce6dc8a92afb68, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3301210580932682005, guid: 8abebd0463a5ce14ebce6dc8a92afb68, type: 3}
       propertyPath: m_Constraints
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4435165782867732076, guid: 8abebd0463a5ce14ebce6dc8a92afb68, type: 3}
+      propertyPath: playerMovement
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 4573823566962593706, guid: 8abebd0463a5ce14ebce6dc8a92afb68, type: 3}
       propertyPath: m_Name
@@ -3221,6 +3229,8 @@ PrefabInstance:
     - {fileID: 501417183355690104, guid: 8abebd0463a5ce14ebce6dc8a92afb68, type: 3}
     - {fileID: 8216331949264492665, guid: 8abebd0463a5ce14ebce6dc8a92afb68, type: 3}
     - {fileID: 940567848754232291, guid: 8abebd0463a5ce14ebce6dc8a92afb68, type: 3}
+    - {fileID: 4435165782867732076, guid: 8abebd0463a5ce14ebce6dc8a92afb68, type: 3}
+    - {fileID: 2427320260236890186, guid: 8abebd0463a5ce14ebce6dc8a92afb68, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
