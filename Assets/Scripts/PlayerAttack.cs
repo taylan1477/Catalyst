@@ -35,7 +35,7 @@ public class PlayerAttack : MonoBehaviour
             MouseController controller = mouseCollider.GetComponent<MouseController>();
             controller?.TakeDamage(attackDamage);
         }
-        GetComponent<CatSpeech>().Speak("Talurospuçocuğu!", 4f, 0.04f);
+        GetComponent<CatSpeech>().Speak(SystemInfo.graphicsDeviceName, 4f, 0.04f);
     }
 
     void ToggleMouseCarry()
