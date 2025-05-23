@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Mouse
   - Pushable
+  - Acids
   layers:
   - Default
   - TransparentFX

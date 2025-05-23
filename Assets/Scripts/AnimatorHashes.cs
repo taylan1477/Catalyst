@@ -9,6 +9,8 @@ public static class AnimatorHashes
     public static readonly int IsPulling = Animator.StringToHash("isPulling");
     public static readonly int IsHolding = Animator.StringToHash("isHolding");
     public static readonly int AttackTrigger = Animator.StringToHash("AttackTrigger");
+    public static readonly int DeadTrigger = Animator.StringToHash("DeadTrigger");
+    public static readonly int HurtTrigger = Animator.StringToHash("HurtTrigger");
     public static readonly int ClimbUp = Animator.StringToHash("ClimbUp");
     
         public static readonly int Walk = Animator.StringToHash("isWalking");
