@@ -143,6 +143,7 @@ GameObject:
   - component: {fileID: 3301210580932682005}
   - component: {fileID: 5204602838216876375}
   - component: {fileID: 6588303976676466889}
+  - component: {fileID: 2206749381352643600}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -294,6 +295,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   carryPosition: {fileID: 1232642631316714175}
+  leverLayer:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!114 &8216331949264492665
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -464,6 +468,20 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.13967004, y: 0.1125052}
   m_EdgeRadius: 0
+--- !u!114 &2206749381352643600
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4573823566962593706}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1624a355deddbbb4b93a2d82daf03995, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speechBubblePrefab: {fileID: 8108523735397710303, guid: cf68256720898144f8a9a9682a90e021, type: 3}
+  bubblePoint: {fileID: 1208551510366771022}
 --- !u!1 &5371582973123913220
 GameObject:
   m_ObjectHideFlags: 0

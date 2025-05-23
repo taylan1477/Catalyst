@@ -6,6 +6,7 @@ public class PlayerAttack : MonoBehaviour
     public int attackDamage = 1;
     public LayerMask mouseLayer;
     public Transform carryPosition;
+    public LayerMask leverLayer;
     
     private GameObject _carriedMouse;
     private bool _isCarrying;
@@ -29,13 +30,23 @@ public class PlayerAttack : MonoBehaviour
     {
         _animator.SetTrigger(AnimatorHashes.AttackTrigger);
         
+        // Farelere saldır
         Collider2D[] hitMice = Physics2D.OverlapCircleAll(transform.position, attackRange, mouseLayer);
         foreach (Collider2D mouseCollider in hitMice)
         {
             MouseController controller = mouseCollider.GetComponent<MouseController>();
             controller?.TakeDamage(attackDamage);
         }
-        GetComponent<CatSpeech>().Speak(SystemInfo.graphicsDeviceName, 4f, 0.04f);
+
+        // Lever kontrol et
+        Collider2D[] hitLevers = Physics2D.OverlapCircleAll(transform.position, attackRange, leverLayer);
+        foreach (Collider2D leverCollider in hitLevers)
+        {
+            LeverController lever = leverCollider.GetComponent<LeverController>();
+            lever?.ToggleLever();
+        }
+
+        // GetComponent<CatSpeech>().Speak(SystemInfo.graphicsDeviceName, 4f, 0.04f);
     }
 
     void ToggleMouseCarry()
