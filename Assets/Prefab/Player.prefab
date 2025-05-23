@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 855439381042310254}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.0599, y: 0.3164, z: 0}
+  m_LocalPosition: {x: 0.0599, y: 0.289, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -144,6 +144,7 @@ GameObject:
   - component: {fileID: 5204602838216876375}
   - component: {fileID: 6588303976676466889}
   - component: {fileID: 2206749381352643600}
+  - component: {fileID: 6320579388574302024}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -482,6 +483,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speechBubblePrefab: {fileID: 8108523735397710303, guid: cf68256720898144f8a9a9682a90e021, type: 3}
   bubblePoint: {fileID: 1208551510366771022}
+--- !u!114 &6320579388574302024
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4573823566962593706}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 335ad903a1be40eabe49a4f402a5ed65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  respawnPoint: {fileID: 0}
+  respawnDelay: 2
 --- !u!1 &5371582973123913220
 GameObject:
   m_ObjectHideFlags: 0

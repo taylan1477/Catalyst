@@ -1,16 +1,18 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class PlayerDeath : MonoBehaviour
 {
-    public Transform respawnPoint; // Checkpoint varsa buraya dön
-    public float deathDelay = 1f; // Ölümden sonra bekleme
-
+    public Transform respawnPoint;
+    public float respawnDelay = 1f;
     private Animator _animator;
     private bool _isDead;
 
-    private void Start()
+    void Start()
     {
         _animator = GetComponent<Animator>();
+        _animator = GetComponent<Animator>();
+        _animator.SetTrigger(AnimatorHashes.SpawnTrigger);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -24,10 +26,20 @@ public class PlayerDeath : MonoBehaviour
     void Die()
     {
         _isDead = true;
-        _animator.SetTrigger(AnimatorHashes.DeadTrigger); // Ölüm animasyonu varsa tetikle
-        GetComponent<Rigidbody2D>().simulated = false; // Hareketi durdur
+        _animator.SetTrigger(AnimatorHashes.DeadTrigger);
+        GetComponent<Rigidbody2D>().simulated = false;
+    }
 
-        Invoke(nameof(Respawn), deathDelay);
+    // Animation event'ten çağrılacak
+    public void OnDeathAnimationEnd()
+    {
+        StartCoroutine(DelayedRespawn());
+    }
+
+    IEnumerator DelayedRespawn()
+    {
+        yield return new WaitForSeconds(respawnDelay);
+        Respawn();
     }
 
     void Respawn()
@@ -35,5 +47,6 @@ public class PlayerDeath : MonoBehaviour
         transform.position = respawnPoint.position;
         GetComponent<Rigidbody2D>().simulated = true;
         _isDead = false;
+        _animator.SetTrigger(AnimatorHashes.SpawnTrigger);
     }
 }
