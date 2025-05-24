@@ -23,7 +23,7 @@ public class PlayerDeath : MonoBehaviour
         }
     }
 
-    void Die()
+    public void Die()
     {
         _isDead = true;
         _animator.SetTrigger(AnimatorHashes.DeadTrigger);
