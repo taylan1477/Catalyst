@@ -170,20 +170,20 @@ TextureImporter:
       name: bite-attack_0
       rect:
         serializedVersion: 2
-        x: 42
-        y: 503
-        width: 171
-        height: 115
+        x: 43
+        y: 504
+        width: 168
+        height: 113
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 8bb4eddf2fec37200800000000000000
-      internalID: 176712353434192824
+      spriteID: 59733c8c02a4b1042b554f79e28b4651
+      internalID: 904167597
       vertices: []
       indices: 
       edges: []
@@ -192,20 +192,20 @@ TextureImporter:
       name: bite-attack_1
       rect:
         serializedVersion: 2
-        x: 279
-        y: 501
-        width: 170
-        height: 119
+        x: 280
+        y: 502
+        width: 168
+        height: 117
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: ff4c0a22fb7397a20800000000000000
-      internalID: 3060538715834205439
+      spriteID: 1f68684405b48954496ce2dd879eaaf5
+      internalID: -1434296191
       vertices: []
       indices: 
       edges: []
@@ -214,20 +214,20 @@ TextureImporter:
       name: bite-attack_2
       rect:
         serializedVersion: 2
-        x: 515
-        y: 500
-        width: 171
-        height: 122
+        x: 516
+        y: 501
+        width: 169
+        height: 120
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: f0b949896d14d7450800000000000000
-      internalID: 6088094661213461263
+      spriteID: 6cf2c43b35ea0a840805fc2a6426d628
+      internalID: 228529315
       vertices: []
       indices: 
       edges: []
@@ -236,20 +236,20 @@ TextureImporter:
       name: bite-attack_3
       rect:
         serializedVersion: 2
-        x: 752
-        y: 500
-        width: 170
-        height: 123
+        x: 753
+        y: 501
+        width: 168
+        height: 121
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 1f8a0439820ba05d0800000000000000
-      internalID: -3095468105548125967
+      spriteID: c349b2e82d3b1ec419db6a4c994ac799
+      internalID: -667769614
       vertices: []
       indices: 
       edges: []
@@ -258,20 +258,20 @@ TextureImporter:
       name: bite-attack_4
       rect:
         serializedVersion: 2
-        x: 988
-        y: 500
-        width: 171
-        height: 125
+        x: 989
+        y: 502
+        width: 169
+        height: 122
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: e06a513b4e05ba950800000000000000
-      internalID: 6461347033580414478
+      spriteID: 01e7ddac5acb42a498d32b0663964df0
+      internalID: 1259660206
       vertices: []
       indices: 
       edges: []
@@ -280,20 +280,20 @@ TextureImporter:
       name: bite-attack_5
       rect:
         serializedVersion: 2
-        x: 62
-        y: 336
-        width: 171
-        height: 125
+        x: 63
+        y: 337
+        width: 169
+        height: 123
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 1e97f76dfa377a1e0800000000000000
-      internalID: -2186651895009936927
+      spriteID: 95781cfbf23b0ff499d71cfa86c2a43a
+      internalID: 29079447
       vertices: []
       indices: 
       edges: []
@@ -302,20 +302,20 @@ TextureImporter:
       name: bite-attack_6
       rect:
         serializedVersion: 2
-        x: 280
-        y: 333
-        width: 172
-        height: 134
+        x: 281
+        y: 334
+        width: 170
+        height: 131
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 03214c1dc770cf8f0800000000000000
-      internalID: -505520825495711184
+      spriteID: 0e84316c4abc2f24699e58a12eadbaf0
+      internalID: -1469520104
       vertices: []
       indices: 
       edges: []
@@ -324,20 +324,20 @@ TextureImporter:
       name: bite-attack_7
       rect:
         serializedVersion: 2
-        x: 499
-        y: 334
-        width: 172
-        height: 138
+        x: 501
+        y: 335
+        width: 169
+        height: 135
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 45c45f89a022f3db0800000000000000
-      internalID: -4810088448097170348
+      spriteID: 765adf9a5905c174da3ed73dc2c2c7af
+      internalID: -536607469
       vertices: []
       indices: 
       edges: []
@@ -346,20 +346,20 @@ TextureImporter:
       name: bite-attack_8
       rect:
         serializedVersion: 2
-        x: 721
-        y: 335
-        width: 181
-        height: 142
+        x: 723
+        y: 336
+        width: 178
+        height: 140
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 8c4ef0df54452fe90800000000000000
-      internalID: -6993434611777805112
+      spriteID: d4a7ada59f06f3e43a34302717a3bfad
+      internalID: -1832461914
       vertices: []
       indices: 
       edges: []
@@ -368,20 +368,20 @@ TextureImporter:
       name: bite-attack_9
       rect:
         serializedVersion: 2
-        x: 944
-        y: 335
-        width: 194
-        height: 147
+        x: 945
+        y: 337
+        width: 192
+        height: 144
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 368f3377cd1e65160800000000000000
-      internalID: 7014041806685075555
+      spriteID: a2f6b70f9b9a99546b60a4f5f8506bb8
+      internalID: -1534903846
       vertices: []
       indices: 
       edges: []
@@ -390,20 +390,20 @@ TextureImporter:
       name: bite-attack_10
       rect:
         serializedVersion: 2
-        x: 9
-        y: 170
-        width: 204
-        height: 150
+        x: 11
+        y: 171
+        width: 200
+        height: 148
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 69bc378cc39758750800000000000000
-      internalID: 6306580155170278294
+      spriteID: 5a1e898a14353404fa69f3a5fe68605e
+      internalID: 1115385900
       vertices: []
       indices: 
       edges: []
@@ -412,20 +412,20 @@ TextureImporter:
       name: bite-attack_11
       rect:
         serializedVersion: 2
-        x: 241
-        y: 170
-        width: 204
-        height: 150
+        x: 243
+        y: 171
+        width: 200
+        height: 148
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 7b7e3facebec9dd90800000000000000
-      internalID: -7072394420964563017
+      spriteID: 2edcdcc4812d20440b7eb7e04e07407a
+      internalID: -1220508378
       vertices: []
       indices: 
       edges: []
@@ -434,20 +434,20 @@ TextureImporter:
       name: bite-attack_12
       rect:
         serializedVersion: 2
-        x: 473
-        y: 170
-        width: 204
-        height: 150
+        x: 475
+        y: 171
+        width: 200
+        height: 148
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 87576b8181b102c20800000000000000
-      internalID: 3179571127231346040
+      spriteID: e558af5f6da91ae4c8a753bc99ab3738
+      internalID: 793098805
       vertices: []
       indices: 
       edges: []
@@ -456,20 +456,20 @@ TextureImporter:
       name: bite-attack_13
       rect:
         serializedVersion: 2
-        x: 696
-        y: 170
-        width: 213
-        height: 140
+        x: 697
+        y: 171
+        width: 210
+        height: 138
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: c2162494fda6fdba0800000000000000
-      internalID: -6062009066178059988
+      spriteID: fd8c9303c570c934aa252d03468284fa
+      internalID: 567603121
       vertices: []
       indices: 
       edges: []
@@ -478,20 +478,20 @@ TextureImporter:
       name: bite-attack_14
       rect:
         serializedVersion: 2
-        x: 928
-        y: 170
-        width: 213
-        height: 140
+        x: 929
+        y: 171
+        width: 210
+        height: 138
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 41f72bcf391609570800000000000000
-      internalID: 8471378187311546132
+      spriteID: 5d81eba236d359d42bd07812ce435b6f
+      internalID: -406205644
       vertices: []
       indices: 
       edges: []
@@ -500,20 +500,20 @@ TextureImporter:
       name: bite-attack_15
       rect:
         serializedVersion: 2
-        x: 1
-        y: 4
-        width: 212
-        height: 140
+        x: 2
+        y: 5
+        width: 209
+        height: 138
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 3a2d752219ee221b0800000000000000
-      internalID: -5682717472674295133
+      spriteID: 0937c6ed8804b5a42b24f1f896669e27
+      internalID: 1423199915
       vertices: []
       indices: 
       edges: []
@@ -522,20 +522,20 @@ TextureImporter:
       name: bite-attack_16
       rect:
         serializedVersion: 2
-        x: 235
-        y: 3
-        width: 210
-        height: 140
+        x: 236
+        y: 4
+        width: 207
+        height: 138
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: a559a0f5fa7479b80800000000000000
-      internalID: -8388156962414881446
+      spriteID: c1c34834fabc0e843886c990b5ae9f66
+      internalID: 1998725583
       vertices: []
       indices: 
       edges: []
@@ -544,20 +544,20 @@ TextureImporter:
       name: bite-attack_17
       rect:
         serializedVersion: 2
-        x: 478
-        y: 2
-        width: 197
-        height: 135
+        x: 479
+        y: 3
+        width: 195
+        height: 133
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: d80b8690a56d2ea30800000000000000
-      internalID: 4243189481129685133
+      spriteID: e9b32da42b0791c4a97c6f1ceb6cbefd
+      internalID: -801274856
       vertices: []
       indices: 
       edges: []
@@ -566,20 +566,20 @@ TextureImporter:
       name: bite-attack_18
       rect:
         serializedVersion: 2
-        x: 721
-        y: 3
-        width: 185
-        height: 127
+        x: 722
+        y: 4
+        width: 183
+        height: 125
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 87067ecb5efa4ba40800000000000000
-      internalID: 5383120855866237048
+      spriteID: 072d832bc1365a04791347dd2864d030
+      internalID: -959999187
       vertices: []
       indices: 
       edges: []
@@ -588,7 +588,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: aaab3d1a40c7973499aee033c1830e72
     internalID: 0
     vertices: []
     indices: 
@@ -597,7 +597,26 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      bite-attack_0: 904167597
+      bite-attack_1: -1434296191
+      bite-attack_10: 1115385900
+      bite-attack_11: -1220508378
+      bite-attack_12: 793098805
+      bite-attack_13: 567603121
+      bite-attack_14: -406205644
+      bite-attack_15: 1423199915
+      bite-attack_16: 1998725583
+      bite-attack_17: -801274856
+      bite-attack_18: -959999187
+      bite-attack_2: 228529315
+      bite-attack_3: -667769614
+      bite-attack_4: 1259660206
+      bite-attack_5: 29079447
+      bite-attack_6: -1469520104
+      bite-attack_7: -536607469
+      bite-attack_8: -1832461914
+      bite-attack_9: -1534903846
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
