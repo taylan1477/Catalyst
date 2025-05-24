@@ -14,8 +14,10 @@ public static class AnimatorHashes
     public static readonly int HurtTrigger = Animator.StringToHash("HurtTrigger");
     public static readonly int ClimbUp = Animator.StringToHash("ClimbUp");
     
-        public static readonly int Walk = Animator.StringToHash("isWalking");
-        public static readonly int Dead = Animator.StringToHash("isDead");
-        public static readonly int Hurt = Animator.StringToHash("isHurt");
+    public static readonly int Walk = Animator.StringToHash("isWalking");
+    public static readonly int Dead = Animator.StringToHash("isDead");
+    public static readonly int Hurt = Animator.StringToHash("isHurt");
+    
+    
     
 }
