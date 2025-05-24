@@ -18,6 +18,8 @@ public static class AnimatorHashes
     public static readonly int Dead = Animator.StringToHash("isDead");
     public static readonly int Hurt = Animator.StringToHash("isHurt");
     
-    
+    public static readonly int RatWalk = Animator.StringToHash("RatWalk");
+    public static readonly int RatDead = Animator.StringToHash("RatDead");
+    public static readonly int RatAttack = Animator.StringToHash("RatAttack");
     
 }
