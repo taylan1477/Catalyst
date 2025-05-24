@@ -1,49 +1,58 @@
 fileFormatVersion: 2
-guid: 3f190bbee94f75446bb4b8ad9dd8a7f8
+guid: fef9c2aa360292b4997585c34a27bf5c
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6521986483153200760
-    second: Big Grey Rat_0
+      213: -6504748529180627509
+    second: jump-cycle_0
   - first:
-      213: 2834523186552951001
-    second: Big Grey Rat_1
+      213: 7283154210777855220
+    second: jump-cycle_1
   - first:
-      213: 6809676437530404945
-    second: Big Grey Rat_2
+      213: 563173620041356362
+    second: jump-cycle_2
   - first:
-      213: -7133590627139532674
-    second: Big Grey Rat_3
+      213: 2178446862006831657
+    second: jump-cycle_3
   - first:
-      213: -9065329247471913541
-    second: Big Grey Rat_4
+      213: -5883014037895452277
+    second: jump-cycle_4
   - first:
-      213: -2800112250809869521
-    second: Big Grey Rat_5
+      213: 8387274071615137770
+    second: jump-cycle_5
   - first:
-      213: 6394619003737471826
-    second: Big Grey Rat_6
+      213: -5189807949521875459
+    second: jump-cycle_6
   - first:
-      213: -8688012745261277973
-    second: Big Grey Rat_7
+      213: 2522784785566663131
+    second: jump-cycle_7
   - first:
-      213: -1372407358197080954
-    second: Big Grey Rat_8
+      213: 1256878025199739915
+    second: jump-cycle_8
   - first:
-      213: 5324073937581993096
-    second: Big Grey Rat_9
+      213: -2855952324948370178
+    second: jump-cycle_9
   - first:
-      213: 7992976971007830510
-    second: Big Grey Rat_10
+      213: -4738309244304045773
+    second: jump-cycle_10
   - first:
-      213: -7785128616232802156
-    second: Big Grey Rat_11
+      213: 1521482493817420885
+    second: jump-cycle_11
   - first:
-      213: 4016765811927377394
-    second: Big Grey Rat_12
+      213: 1239181489553183539
+    second: jump-cycle_12
   - first:
-      213: 996875695705215676
-    second: Big Grey Rat_13
+      213: 4869131314877941119
+    second: jump-cycle_13
+  - first:
+      213: -1073007701082643987
+    second: jump-cycle_14
+  - first:
+      213: -3383974537262285456
+    second: jump-cycle_15
+  - first:
+      213: -535337882580703017
+    second: jump-cycle_16
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -152,13 +161,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Big Grey Rat_0
+      name: jump-cycle_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 72
-        width: 48
-        height: 18
+        x: 27
+        y: 513
+        width: 171
+        height: 116
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -167,20 +176,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 88911c939df3d75a0800000000000000
-      internalID: -6521986483153200760
+      spriteID: bcda1f42dad7ab5a0800000000000000
+      internalID: -6504748529180627509
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Big Grey Rat_1
+      name: jump-cycle_1
       rect:
         serializedVersion: 2
-        x: 0
-        y: 54
-        width: 48
-        height: 19
+        x: 321
+        y: 513
+        width: 186
+        height: 148
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -189,20 +198,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 9d0d81af1df365720800000000000000
-      internalID: 2834523186552951001
+      spriteID: 4f4fdc9ba26f21560800000000000000
+      internalID: 7283154210777855220
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Big Grey Rat_2
+      name: jump-cycle_2
       rect:
         serializedVersion: 2
-        x: 47
-        y: 54
-        width: 49
-        height: 19
+        x: 617
+        y: 512
+        width: 195
+        height: 180
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -211,20 +220,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 158e85604a4d08e50800000000000000
-      internalID: 6809676437530404945
+      spriteID: a449f617c6bc0d700800000000000000
+      internalID: 563173620041356362
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Big Grey Rat_3
+      name: jump-cycle_3
       rect:
         serializedVersion: 2
-        x: 95
-        y: 54
-        width: 49
-        height: 19
+        x: 919
+        y: 505
+        width: 200
+        height: 205
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -233,20 +242,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e78ca48be15600d90800000000000000
-      internalID: -7133590627139532674
+      spriteID: 92a4bfb01e56b3e10800000000000000
+      internalID: 2178446862006831657
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Big Grey Rat_4
+      name: jump-cycle_4
       rect:
         serializedVersion: 2
-        x: 143
-        y: 54
-        width: 49
-        height: 19
+        x: 1225
+        y: 514
+        width: 222
+        height: 203
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -255,20 +264,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: bb53a70641b713280800000000000000
-      internalID: -9065329247471913541
+      spriteID: b89ea9ee6e55b5ea0800000000000000
+      internalID: -5883014037895452277
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Big Grey Rat_5
+      name: jump-cycle_5
       rect:
         serializedVersion: 2
-        x: 191
-        y: 54
-        width: 49
-        height: 19
+        x: 1531
+        y: 543
+        width: 253
+        height: 179
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -277,20 +286,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f2b12475eb00429d0800000000000000
-      internalID: -2800112250809869521
+      spriteID: ae7e6789455956470800000000000000
+      internalID: 8387274071615137770
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Big Grey Rat_6
+      name: jump-cycle_6
       rect:
         serializedVersion: 2
-        x: 0
-        y: 36
-        width: 48
-        height: 19
+        x: 13
+        y: 294
+        width: 258
+        height: 170
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -299,20 +308,152 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 25bfbbf8a104eb850800000000000000
-      internalID: 6394619003737471826
+      spriteID: dfd004caa291af7b0800000000000000
+      internalID: -5189807949521875459
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Big Grey Rat_7
+      name: jump-cycle_7
       rect:
         serializedVersion: 2
-        x: 0
+        x: 322
+        y: 292
+        width: 258
+        height: 161
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bd1067c656bb20320800000000000000
+      internalID: 2522784785566663131
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jump-cycle_8
+      rect:
+        serializedVersion: 2
+        x: 632
+        y: 312
+        width: 270
+        height: 135
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b04660a97e3517110800000000000000
+      internalID: 1256878025199739915
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jump-cycle_9
+      rect:
+        serializedVersion: 2
+        x: 940
+        y: 332
+        width: 277
+        height: 111
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: efc5000fd7e9d58d0800000000000000
+      internalID: -2855952324948370178
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jump-cycle_10
+      rect:
+        serializedVersion: 2
+        x: 1247
+        y: 323
+        width: 273
+        height: 112
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 339ce41d8d42e3eb0800000000000000
+      internalID: -4738309244304045773
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jump-cycle_11
+      rect:
+        serializedVersion: 2
+        x: 1549
+        y: 284
+        width: 234
+        height: 133
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 55c76f754446d1510800000000000000
+      internalID: 1521482493817420885
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jump-cycle_12
+      rect:
+        serializedVersion: 2
+        x: 26
+        y: 22
+        width: 192
+        height: 131
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3339e01dff4723110800000000000000
+      internalID: 1239181489553183539
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jump-cycle_13
+      rect:
+        serializedVersion: 2
+        x: 328
         y: 18
-        width: 48
-        height: 19
+        width: 168
+        height: 118
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -321,20 +462,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: bec92a2707afd6780800000000000000
-      internalID: -8688012745261277973
+      spriteID: f75c7041221a29340800000000000000
+      internalID: 4869131314877941119
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Big Grey Rat_8
+      name: jump-cycle_14
       rect:
         serializedVersion: 2
-        x: 47
-        y: 36
-        width: 49
-        height: 19
+        x: 633
+        y: 16
+        width: 168
+        height: 113
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -343,20 +484,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 68cd78f67ca34fce0800000000000000
-      internalID: -1372407358197080954
+      spriteID: de1e5bf4e29eb11f0800000000000000
+      internalID: -1073007701082643987
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Big Grey Rat_9
+      name: jump-cycle_15
       rect:
         serializedVersion: 2
-        x: 47
-        y: 18
-        width: 193
-        height: 19
+        x: 940
+        y: 14
+        width: 168
+        height: 116
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -365,20 +506,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 88c6d7fb909e2e940800000000000000
-      internalID: 5324073937581993096
+      spriteID: 07db3816615b901d0800000000000000
+      internalID: -3383974537262285456
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Big Grey Rat_10
+      name: jump-cycle_16
       rect:
         serializedVersion: 2
-        x: 95
-        y: 36
-        width: 49
-        height: 19
+        x: 1246
+        y: 15
+        width: 168
+        height: 118
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -387,74 +528,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ee9acced432ccee60800000000000000
-      internalID: 7992976971007830510
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Big Grey Rat_11
-      rect:
-        serializedVersion: 2
-        x: 143
-        y: 36
-        width: 49
-        height: 19
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 49827ba55caa5f390800000000000000
-      internalID: -7785128616232802156
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Big Grey Rat_12
-      rect:
-        serializedVersion: 2
-        x: 191
-        y: 35
-        width: 49
-        height: 20
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 2f56dd5693b6eb730800000000000000
-      internalID: 4016765811927377394
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Big Grey Rat_13
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 48
-        height: 18
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: cb2dabfd92d95dd00800000000000000
-      internalID: 996875695705215676
+      spriteID: 7d8a7f938091298f0800000000000000
+      internalID: -535337882580703017
       vertices: []
       indices: 
       edges: []

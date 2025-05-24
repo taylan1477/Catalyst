@@ -1,49 +1,64 @@
 fileFormatVersion: 2
-guid: 9644bebead996974cabc35d5db4016a6
+guid: 2f90216ca31b97348a6fd00cfc409a9a
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8023406661100188355
-    second: Big White Rat_0
+      213: 176712353434192824
+    second: bite-attack_0
   - first:
-      213: -4829465413980098054
-    second: Big White Rat_1
+      213: 3060538715834205439
+    second: bite-attack_1
   - first:
-      213: -2238609858352478894
-    second: Big White Rat_2
+      213: 6088094661213461263
+    second: bite-attack_2
   - first:
-      213: -8809839524176761486
-    second: Big White Rat_3
+      213: -3095468105548125967
+    second: bite-attack_3
   - first:
-      213: 1497795647607236078
-    second: Big White Rat_4
+      213: 6461347033580414478
+    second: bite-attack_4
   - first:
-      213: -706779793184551129
-    second: Big White Rat_5
+      213: -2186651895009936927
+    second: bite-attack_5
   - first:
-      213: -121123043260633570
-    second: Big White Rat_6
+      213: -505520825495711184
+    second: bite-attack_6
   - first:
-      213: 2108943604509586086
-    second: Big White Rat_7
+      213: -4810088448097170348
+    second: bite-attack_7
   - first:
-      213: -1469675769265916617
-    second: Big White Rat_8
+      213: -6993434611777805112
+    second: bite-attack_8
   - first:
-      213: 3670237739557916832
-    second: Big White Rat_9
+      213: 7014041806685075555
+    second: bite-attack_9
   - first:
-      213: -4878158005519796072
-    second: Big White Rat_10
+      213: 6306580155170278294
+    second: bite-attack_10
   - first:
-      213: -3184261453981794407
-    second: Big White Rat_11
+      213: -7072394420964563017
+    second: bite-attack_11
   - first:
-      213: 8443768574774747715
-    second: Big White Rat_12
+      213: 3179571127231346040
+    second: bite-attack_12
   - first:
-      213: 8582558813037023500
-    second: Big White Rat_13
+      213: -6062009066178059988
+    second: bite-attack_13
+  - first:
+      213: 8471378187311546132
+    second: bite-attack_14
+  - first:
+      213: -5682717472674295133
+    second: bite-attack_15
+  - first:
+      213: -8388156962414881446
+    second: bite-attack_16
+  - first:
+      213: 4243189481129685133
+    second: bite-attack_17
+  - first:
+      213: 5383120855866237048
+    second: bite-attack_18
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -152,13 +167,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Big White Rat_0
+      name: bite-attack_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 72
-        width: 48
-        height: 18
+        x: 42
+        y: 503
+        width: 171
+        height: 115
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -167,20 +182,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3c2316339ddd85f60800000000000000
-      internalID: 8023406661100188355
+      spriteID: 8bb4eddf2fec37200800000000000000
+      internalID: 176712353434192824
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Big White Rat_1
+      name: bite-attack_1
       rect:
         serializedVersion: 2
-        x: 0
-        y: 54
-        width: 48
-        height: 19
+        x: 279
+        y: 501
+        width: 170
+        height: 119
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -189,20 +204,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: af17ea82bca4afcb0800000000000000
-      internalID: -4829465413980098054
+      spriteID: ff4c0a22fb7397a20800000000000000
+      internalID: 3060538715834205439
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Big White Rat_2
+      name: bite-attack_2
       rect:
         serializedVersion: 2
-        x: 47
-        y: 54
-        width: 49
-        height: 19
+        x: 515
+        y: 500
+        width: 171
+        height: 122
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -211,20 +226,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 255863ac13cdee0e0800000000000000
-      internalID: -2238609858352478894
+      spriteID: f0b949896d14d7450800000000000000
+      internalID: 6088094661213461263
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Big White Rat_3
+      name: bite-attack_3
       rect:
         serializedVersion: 2
-        x: 95
-        y: 54
-        width: 49
-        height: 19
+        x: 752
+        y: 500
+        width: 170
+        height: 123
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -233,20 +248,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 27d6f3911a92db580800000000000000
-      internalID: -8809839524176761486
+      spriteID: 1f8a0439820ba05d0800000000000000
+      internalID: -3095468105548125967
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Big White Rat_4
+      name: bite-attack_4
       rect:
         serializedVersion: 2
-        x: 143
-        y: 54
-        width: 49
-        height: 19
+        x: 988
+        y: 500
+        width: 171
+        height: 125
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -255,20 +270,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ee561c1b43d39c410800000000000000
-      internalID: 1497795647607236078
+      spriteID: e06a513b4e05ba950800000000000000
+      internalID: 6461347033580414478
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Big White Rat_5
+      name: bite-attack_5
       rect:
         serializedVersion: 2
-        x: 191
-        y: 54
-        width: 49
-        height: 19
+        x: 62
+        y: 336
+        width: 171
+        height: 125
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -277,20 +292,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 72f8fc4d5830136f0800000000000000
-      internalID: -706779793184551129
+      spriteID: 1e97f76dfa377a1e0800000000000000
+      internalID: -2186651895009936927
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Big White Rat_6
+      name: bite-attack_6
       rect:
         serializedVersion: 2
-        x: 0
-        y: 36
-        width: 48
-        height: 19
+        x: 280
+        y: 333
+        width: 172
+        height: 134
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -299,20 +314,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e1ee550eb3fa15ef0800000000000000
-      internalID: -121123043260633570
+      spriteID: 03214c1dc770cf8f0800000000000000
+      internalID: -505520825495711184
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Big White Rat_7
+      name: bite-attack_7
       rect:
         serializedVersion: 2
-        x: 0
-        y: 18
-        width: 48
-        height: 19
+        x: 499
+        y: 334
+        width: 172
+        height: 138
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -321,20 +336,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6a2302ed809744d10800000000000000
-      internalID: 2108943604509586086
+      spriteID: 45c45f89a022f3db0800000000000000
+      internalID: -4810088448097170348
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Big White Rat_8
+      name: bite-attack_8
       rect:
         serializedVersion: 2
-        x: 47
-        y: 36
-        width: 49
-        height: 19
+        x: 721
+        y: 335
+        width: 181
+        height: 142
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -343,20 +358,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 735f7edaca9aa9be0800000000000000
-      internalID: -1469675769265916617
+      spriteID: 8c4ef0df54452fe90800000000000000
+      internalID: -6993434611777805112
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Big White Rat_9
+      name: bite-attack_9
       rect:
         serializedVersion: 2
-        x: 47
-        y: 18
-        width: 193
-        height: 19
+        x: 944
+        y: 335
+        width: 194
+        height: 147
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -365,20 +380,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 0a0159347cd4fe230800000000000000
-      internalID: 3670237739557916832
+      spriteID: 368f3377cd1e65160800000000000000
+      internalID: 7014041806685075555
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Big White Rat_10
+      name: bite-attack_10
       rect:
         serializedVersion: 2
-        x: 95
-        y: 36
-        width: 49
-        height: 19
+        x: 9
+        y: 170
+        width: 204
+        height: 150
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -387,20 +402,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 898b3cab32d4d4cb0800000000000000
-      internalID: -4878158005519796072
+      spriteID: 69bc378cc39758750800000000000000
+      internalID: 6306580155170278294
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Big White Rat_11
+      name: bite-attack_11
       rect:
         serializedVersion: 2
-        x: 143
-        y: 36
-        width: 49
-        height: 19
+        x: 241
+        y: 170
+        width: 204
+        height: 150
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -409,20 +424,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 99f327b141b3fc3d0800000000000000
-      internalID: -3184261453981794407
+      spriteID: 7b7e3facebec9dd90800000000000000
+      internalID: -7072394420964563017
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Big White Rat_12
+      name: bite-attack_12
       rect:
         serializedVersion: 2
-        x: 191
-        y: 35
-        width: 49
-        height: 20
+        x: 473
+        y: 170
+        width: 204
+        height: 150
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -431,20 +446,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3422e0128ca4e2570800000000000000
-      internalID: 8443768574774747715
+      spriteID: 87576b8181b102c20800000000000000
+      internalID: 3179571127231346040
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Big White Rat_13
+      name: bite-attack_13
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 48
-        height: 18
+        x: 696
+        y: 170
+        width: 213
+        height: 140
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -453,8 +468,118 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c0158f2a4cf5b1770800000000000000
-      internalID: 8582558813037023500
+      spriteID: c2162494fda6fdba0800000000000000
+      internalID: -6062009066178059988
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bite-attack_14
+      rect:
+        serializedVersion: 2
+        x: 928
+        y: 170
+        width: 213
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 41f72bcf391609570800000000000000
+      internalID: 8471378187311546132
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bite-attack_15
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 4
+        width: 212
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3a2d752219ee221b0800000000000000
+      internalID: -5682717472674295133
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bite-attack_16
+      rect:
+        serializedVersion: 2
+        x: 235
+        y: 3
+        width: 210
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a559a0f5fa7479b80800000000000000
+      internalID: -8388156962414881446
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bite-attack_17
+      rect:
+        serializedVersion: 2
+        x: 478
+        y: 2
+        width: 197
+        height: 135
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d80b8690a56d2ea30800000000000000
+      internalID: 4243189481129685133
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bite-attack_18
+      rect:
+        serializedVersion: 2
+        x: 721
+        y: 3
+        width: 185
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 87067ecb5efa4ba40800000000000000
+      internalID: 5383120855866237048
       vertices: []
       indices: 
       edges: []

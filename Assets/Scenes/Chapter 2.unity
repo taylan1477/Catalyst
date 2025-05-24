@@ -1190,7 +1190,6 @@ GameObject:
   - component: {fileID: 851947385}
   - component: {fileID: 851947384}
   - component: {fileID: 851947389}
-  - component: {fileID: 851947388}
   m_Layer: 0
   m_Name: Monster Rat
   m_TagString: Untagged
@@ -1225,7 +1224,7 @@ Animator:
   m_GameObject: {fileID: 851947383}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 20ec9ea48e738b6488ee615673d5c4a8, type: 2}
+  m_Controller: {fileID: 9100000, guid: 80ab88a8e73cb83488019ddbb729c6de, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1280,8 +1279,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1227397845
   m_SortingLayer: 3
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 3144305005723157462, guid: c79ff73b1e32da44ebb29fa671f9a21f, type: 3}
+  m_SortingOrder: 1
+  m_Sprite: {fileID: -6521986483153200760, guid: 2302c91fc038aaf49adf6d3a2ec42e7a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1301,58 +1300,12 @@ Transform:
   m_GameObject: {fileID: 851947383}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -21.21, y: -3.9, z: -0.40744582}
-  m_LocalScale: {x: 7, y: 7, z: 1}
+  m_LocalPosition: {x: -21.44, y: -2.83, z: 0}
+  m_LocalScale: {x: 8, y: 8, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &851947388
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 851947383}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_CompositeOperation: 0
-  m_CompositeOrder: 0
-  m_Offset: {x: -0.004999995, y: 0.095}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5106383, y: -0.058823533}
-    oldSize: {x: 0.47, y: 0.17}
-    newSize: {x: 0.47, y: 0.17}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Size: {x: 0.47, y: 0.17000002}
-  m_EdgeRadius: 0
 --- !u!50 &851947389
 Rigidbody2D:
   serializedVersion: 5
@@ -1365,7 +1318,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 20
+  m_Mass: 15
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_GravityScale: 1

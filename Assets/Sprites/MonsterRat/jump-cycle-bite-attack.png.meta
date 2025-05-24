@@ -1,49 +1,58 @@
 fileFormatVersion: 2
-guid: c883f9436b2bf5e46a512a511b94c199
+guid: 9158008ad26ded24386edcd48eb2f283
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7179200243574258633
-    second: Big Brown Rat_0
+      213: 1210772570848142431
+    second: jump-cycle-bite-attack_0
   - first:
-      213: 2515873735784303131
-    second: Big Brown Rat_1
+      213: 4657233449668500060
+    second: jump-cycle-bite-attack_1
   - first:
-      213: -7425830360723160158
-    second: Big Brown Rat_2
+      213: 5142874230767906489
+    second: jump-cycle-bite-attack_2
   - first:
-      213: 3250687646124087424
-    second: Big Brown Rat_3
+      213: -7213950155582690446
+    second: jump-cycle-bite-attack_3
   - first:
-      213: 3859930670458566495
-    second: Big Brown Rat_4
+      213: 631987134427215564
+    second: jump-cycle-bite-attack_4
   - first:
-      213: -8820248310898295211
-    second: Big Brown Rat_5
+      213: -1345173114612137923
+    second: jump-cycle-bite-attack_5
   - first:
-      213: 5493739628714067408
-    second: Big Brown Rat_6
+      213: -6419431301317208323
+    second: jump-cycle-bite-attack_6
   - first:
-      213: 5902043028050536637
-    second: Big Brown Rat_7
+      213: -3398745049759954740
+    second: jump-cycle-bite-attack_7
   - first:
-      213: -3992755977164833610
-    second: Big Brown Rat_8
+      213: -5228030528201573489
+    second: jump-cycle-bite-attack_8
   - first:
-      213: 7708185995101010869
-    second: Big Brown Rat_9
+      213: -4109042540922362941
+    second: jump-cycle-bite-attack_9
   - first:
-      213: 8169237529594005711
-    second: Big Brown Rat_10
+      213: 8288376888852510509
+    second: jump-cycle-bite-attack_10
   - first:
-      213: 2320012941856885501
-    second: Big Brown Rat_11
+      213: 5796902548962312194
+    second: jump-cycle-bite-attack_11
   - first:
-      213: -4051541144597211975
-    second: Big Brown Rat_12
+      213: -5882158143221686744
+    second: jump-cycle-bite-attack_12
   - first:
-      213: -7671928663366366625
-    second: Big Brown Rat_13
+      213: -2919130408821996104
+    second: jump-cycle-bite-attack_13
+  - first:
+      213: -5669760979491000601
+    second: jump-cycle-bite-attack_14
+  - first:
+      213: 479102039779330620
+    second: jump-cycle-bite-attack_15
+  - first:
+      213: 5262866015157625031
+    second: jump-cycle-bite-attack_16
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -152,13 +161,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Big Brown Rat_0
+      name: jump-cycle-bite-attack_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 72
-        width: 48
-        height: 18
+        x: 27
+        y: 500
+        width: 170
+        height: 116
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -167,20 +176,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 9cb34a1a594a1a360800000000000000
-      internalID: 7179200243574258633
+      spriteID: f54a03dfc378dc010800000000000000
+      internalID: 1210772570848142431
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Big Brown Rat_1
+      name: jump-cycle-bite-attack_1
       rect:
         serializedVersion: 2
-        x: 0
-        y: 54
-        width: 48
-        height: 19
+        x: 321
+        y: 500
+        width: 186
+        height: 147
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -189,20 +198,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b1a882145dd2ae220800000000000000
-      internalID: 2515873735784303131
+      spriteID: c5ade8bb521d1a040800000000000000
+      internalID: 4657233449668500060
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Big Brown Rat_2
+      name: jump-cycle-bite-attack_2
       rect:
         serializedVersion: 2
-        x: 47
-        y: 54
-        width: 49
-        height: 19
+        x: 616
+        y: 499
+        width: 196
+        height: 180
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -211,20 +220,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 2a309c271a622f890800000000000000
-      internalID: -7425830360723160158
+      spriteID: 9be6e616dd82f5740800000000000000
+      internalID: 5142874230767906489
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Big Brown Rat_3
+      name: jump-cycle-bite-attack_3
       rect:
         serializedVersion: 2
-        x: 95
-        y: 54
-        width: 49
-        height: 19
+        x: 915
+        y: 492
+        width: 203
+        height: 206
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -233,20 +242,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 0881af6f033cc1d20800000000000000
-      internalID: 3250687646124087424
+      spriteID: 27bae1dfd86e2eb90800000000000000
+      internalID: -7213950155582690446
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Big Brown Rat_4
+      name: jump-cycle-bite-attack_4
       rect:
         serializedVersion: 2
-        x: 143
-        y: 54
-        width: 49
-        height: 19
+        x: 1220
+        y: 500
+        width: 226
+        height: 209
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -255,20 +264,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f5771567e7a319530800000000000000
-      internalID: 3859930670458566495
+      spriteID: cc6b62a43f445c800800000000000000
+      internalID: 631987134427215564
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Big Brown Rat_5
+      name: jump-cycle-bite-attack_5
       rect:
         serializedVersion: 2
-        x: 191
-        y: 54
-        width: 49
-        height: 19
+        x: 1533
+        y: 530
+        width: 251
+        height: 188
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -277,20 +286,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 55efa2694ee289580800000000000000
-      internalID: -8820248310898295211
+      spriteID: d304326ed2cf45de0800000000000000
+      internalID: -1345173114612137923
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Big Brown Rat_6
+      name: jump-cycle-bite-attack_6
       rect:
         serializedVersion: 2
-        x: 0
-        y: 36
-        width: 48
-        height: 19
+        x: 21
+        y: 280
+        width: 250
+        height: 181
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -299,20 +308,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 0d50df1d51fad3c40800000000000000
-      internalID: 5493739628714067408
+      spriteID: df6d6f83e3999e6a0800000000000000
+      internalID: -6419431301317208323
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Big Brown Rat_7
+      name: jump-cycle-bite-attack_7
       rect:
         serializedVersion: 2
-        x: 0
-        y: 18
-        width: 48
-        height: 19
+        x: 333
+        y: 278
+        width: 246
+        height: 172
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -321,20 +330,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: db8e5081dd448e150800000000000000
-      internalID: 5902043028050536637
+      spriteID: cc8c0f2726b35d0d0800000000000000
+      internalID: -3398745049759954740
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Big Brown Rat_8
+      name: jump-cycle-bite-attack_8
       rect:
         serializedVersion: 2
-        x: 47
-        y: 36
-        width: 49
-        height: 19
+        x: 629
+        y: 299
+        width: 273
+        height: 142
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -343,20 +352,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6bcb542e791e698c0800000000000000
-      internalID: -3992755977164833610
+      spriteID: f8bb5a31fed4277b0800000000000000
+      internalID: -5228030528201573489
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Big Brown Rat_9
+      name: jump-cycle-bite-attack_9
       rect:
         serializedVersion: 2
-        x: 47
-        y: 18
-        width: 193
-        height: 19
+        x: 938
+        y: 324
+        width: 279
+        height: 109
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -365,20 +374,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 5bbf2a4a25af8fa60800000000000000
-      internalID: 7708185995101010869
+      spriteID: 3c3aa55649fb9f6c0800000000000000
+      internalID: -4109042540922362941
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Big Brown Rat_10
+      name: jump-cycle-bite-attack_10
       rect:
         serializedVersion: 2
-        x: 95
-        y: 36
-        width: 49
-        height: 19
+        x: 1247
+        y: 309
+        width: 273
+        height: 113
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -387,20 +396,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: fc88d3d2046fe5170800000000000000
-      internalID: 8169237529594005711
+      spriteID: d277c90edda360370800000000000000
+      internalID: 8288376888852510509
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Big Brown Rat_11
+      name: jump-cycle-bite-attack_11
       rect:
         serializedVersion: 2
-        x: 143
-        y: 36
-        width: 49
-        height: 19
+        x: 1548
+        y: 270
+        width: 235
+        height: 134
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -409,20 +418,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: dfa40b98a77523020800000000000000
-      internalID: 2320012941856885501
+      spriteID: 200847ca72cb27050800000000000000
+      internalID: 5796902548962312194
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Big Brown Rat_12
+      name: jump-cycle-bite-attack_12
       rect:
         serializedVersion: 2
-        x: 191
-        y: 35
-        width: 49
-        height: 20
+        x: 26
+        y: 9
+        width: 192
+        height: 131
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -431,20 +440,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 9b457638bc806c7c0800000000000000
-      internalID: -4051541144597211975
+      spriteID: 82e999075506e5ea0800000000000000
+      internalID: -5882158143221686744
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Big Brown Rat_13
+      name: jump-cycle-bite-attack_13
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 48
-        height: 18
+        x: 327
+        y: 4
+        width: 168
+        height: 118
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -453,8 +462,74 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f5a09ed3785d78590800000000000000
-      internalID: -7671928663366366625
+      spriteID: 8b5cf110c5a2d77d0800000000000000
+      internalID: -2919130408821996104
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jump-cycle-bite-attack_14
+      rect:
+        serializedVersion: 2
+        x: 632
+        y: 6
+        width: 169
+        height: 109
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7ee6118cd66f051b0800000000000000
+      internalID: -5669760979491000601
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jump-cycle-bite-attack_15
+      rect:
+        serializedVersion: 2
+        x: 938
+        y: 5
+        width: 170
+        height: 112
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c3a463c44cc16a600800000000000000
+      internalID: 479102039779330620
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jump-cycle-bite-attack_16
+      rect:
+        serializedVersion: 2
+        x: 1243
+        y: 6
+        width: 170
+        height: 114
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7c022f5c1c4790940800000000000000
+      internalID: 5262866015157625031
       vertices: []
       indices: 
       edges: []
