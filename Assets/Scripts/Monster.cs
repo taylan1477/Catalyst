@@ -13,6 +13,11 @@ public class Monster : MonoBehaviour
     public Transform groundCheck;
     public float groundCheckRadius = 0.2f;
     public LayerMask groundLayer;
+    
+    [Header("Death")]
+    public float deathAnimationDuration = 0.5f; // Animasyon süresi
+
+    private bool _ismDead;
 
     private Transform _player;
     private Rigidbody2D _rb;
@@ -33,6 +38,7 @@ public class Monster : MonoBehaviour
 
     void Update()
     {
+        if(_ismDead) return;
         _isChasing = Vector2.Distance(transform.position, _player.position) <= chaseRange;
         _isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
         
@@ -41,6 +47,7 @@ public class Monster : MonoBehaviour
 
     void FixedUpdate()
     {
+        if(_ismDead) return;
         if(_isChasing && _isGrounded && Time.time > _lastJumpTime + jumpCooldown)
         {
             JumpTowardsPlayer();
@@ -72,5 +79,32 @@ public class Monster : MonoBehaviour
         {
             collision.gameObject.GetComponent<PlayerDeath>()?.Die();
         }
+    }
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.CompareTag("Acids") && !_ismDead)
+        {
+            Die();
+        }
+    }
+    
+    void Die()
+    {
+        _ismDead = true;
+        
+        // Animasyonu tetikle
+        _anim.SetTrigger(AnimatorHashes.MonsterDead); // Animator'de "Death" adında bir trigger oluşturun
+        // Fizik etkileşimlerini durdur
+        _rb.linearVelocity = Vector2.zero;
+        _rb.simulated = false;
+        
+        // Collider'ları devre dışı bırak
+        foreach(Collider2D col in GetComponents<Collider2D>())
+        {
+            col.enabled = false;
+        }
+
+        // Canavarı yok et
+        Destroy(gameObject, deathAnimationDuration);
     }
 }
