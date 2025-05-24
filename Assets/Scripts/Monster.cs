@@ -1,18 +1,19 @@
 ﻿using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody2D), typeof(Animator))]
+[RequireComponent(typeof(Rigidbody2D), typeof(Animator), typeof(SpriteRenderer))]
 public class Monster : MonoBehaviour
 {
     [Header("Settings")]
     public float chaseRange = 5f;
-    public float jumpForce = 8f;
-    public float horizontalForce = 4f;
+    public float jumpForce = 10f; // Artırılmış zıplama gücü
+    public float horizontalSpeed = 7f; // Yatay hız için yeni parametre
     public float jumpCooldown = 2f;
     
     [Header("References")]
     public Transform groundCheck;
+    public float groundCheckRadius = 0.2f;
     public LayerMask groundLayer;
-    
+
     private Transform _player;
     private Rigidbody2D _rb;
     private Animator _anim;
@@ -25,17 +26,17 @@ public class Monster : MonoBehaviour
     {
         _rb = GetComponent<Rigidbody2D>();
         _anim = GetComponent<Animator>();
-        _player = GameObject.FindGameObjectWithTag("Player").transform;
         _spriteRenderer = GetComponent<SpriteRenderer>();
+        _player = GameObject.FindGameObjectWithTag("Player").transform;
+        _rb.constraints = RigidbodyConstraints2D.FreezeRotation;
     }
 
     void Update()
     {
-        // Oyuncu takip kontrolü
         _isChasing = Vector2.Distance(transform.position, _player.position) <= chaseRange;
+        _isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
         
-        // Zemin kontrolü
-        _isGrounded = Physics2D.OverlapCircle(groundCheck.position, 0.1f, groundLayer);
+        Debug.Log($"Grounded: {_isGrounded} | Velocity: {_rb.linearVelocity}"); // Debug log
     }
 
     void FixedUpdate()
@@ -49,39 +50,27 @@ public class Monster : MonoBehaviour
 
     void JumpTowardsPlayer()
     {
-        // Yön hesaplama (daha güvenli versiyon)
+        // Yön hesaplama (güncellenmiş versiyon)
         float xDifference = _player.position.x - transform.position.x;
-        float direction = xDifference > 0 ? 1 : -1;
+        int direction = xDifference > 0 ? 1 : -1;
 
-        // Zıplama vektörü
-        Vector2 jumpVector = new Vector2(direction * horizontalForce, jumpForce);
-        _rb.AddForce(jumpVector, ForceMode2D.Impulse);
+        // Sprite yönü için doğru flip mantığı
+        _spriteRenderer.flipX = xDifference > 0; // Düzeltilmiş satır
 
-        // Sprite yönünü doğru şekilde çevirme
-        if (xDifference != 0)
-        {
-            _spriteRenderer.flipX = direction < 0;
-        }
-    
-        // Animasyon tetikleme
+        // Hareket uygula
+        _rb.linearVelocity = new Vector2(direction * horizontalSpeed, jumpForce);
+
+        // Animasyon
         _anim.SetTrigger(AnimatorHashes.JumpBite);
+    
+        Debug.Log($"X Difference: {xDifference} | Direction: {direction} | FlipX: {_spriteRenderer.flipX}");
     }
 
     void OnCollisionEnter2D(Collision2D collision)
     {
         if(collision.gameObject.CompareTag("Player"))
         {
-            // Oyuncuya temas anında ölüm
             collision.gameObject.GetComponent<PlayerDeath>()?.Die();
         }
     }
-
-    // GroundCheck görselleştirme (Scene penceresinde görmek için)
-    void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(groundCheck.position, 0.1f);
-    }
 }
-
-// _anim.SetBool(AnimatorHashes.JumpBite, true);
