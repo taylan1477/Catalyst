@@ -153,8 +153,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 26798d6224561c046978c8c31b0a9148, type: 3}
   mousehurt:
   - {fileID: 8300000, guid: d82f815d15b76cb409545a2e96f8113e, type: 3}
-  footstepVolume: 0.5
-  mouseVolume: 0.5
+  footstepVolume: 1
+  mouseVolume: 1
 --- !u!82 &652333484695798206
 AudioSource:
   m_ObjectHideFlags: 0

@@ -11,18 +11,18 @@ public class PlayerPush : MonoBehaviour
     private Rigidbody2D _boxRigidbody;
     private Rigidbody2D _playerRigidbody;
     private SpriteRenderer _spriteRenderer;
+    private BoxPushAudio _currentPushedBoxAudio;
 
     void Start()
     {
         _playerMovement = GetComponent<PlayerMovement>();
-        _playerRigidbody = GetComponent<Rigidbody2D>(); // Karakterin Rigidbody2D'sini al
+        _playerRigidbody = GetComponent<Rigidbody2D>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _animator = GetComponent<Animator>();
     }
 
     private void Update()
     {
-        // HER ZAMAN önce shift'e basılı mı kontrol et
         _playerMovement.isSlowed = Input.GetKey(KeyCode.LeftShift);
 
         if (Input.GetKey(KeyCode.LeftShift))
@@ -37,20 +37,28 @@ public class PlayerPush : MonoBehaviour
                 {
                     Vector2 direction = (_boxToPush.transform.position - transform.position).normalized;
 
+                    // BoxPushAudio bileşeni alınıyor
+                    if (_currentPushedBoxAudio == null)
+                    {
+                        _currentPushedBoxAudio = _boxToPush.GetComponent<BoxPushAudio>();
+                    }
+
                     if (moveInput * direction.x < 0)
                         PullBox(direction);
                     else
                         PushBox(direction);
+
+                    _currentPushedBoxAudio?.StartPushSound(); // Ses başlat
                 }
                 else
                 {
                     _boxRigidbody.linearVelocity = Vector2.zero;
+                    _currentPushedBoxAudio?.StopPushSound(); // Ses durdur
                 }
             }
         }
         else
         {
-            // Shift bırakıldığında pushing/pulling durumu sıfırlanmalı
             _isPushing = false;
             _isPulling = false;
 
@@ -59,7 +67,10 @@ public class PlayerPush : MonoBehaviour
                 _boxRigidbody.linearVelocity = Vector2.zero;
                 _boxRigidbody.bodyType = RigidbodyType2D.Kinematic;
             }
+
+            _currentPushedBoxAudio?.StopPushSound(); // Shift bırakılırsa ses durdur
         }
+
         UpdateAnimator();
     }
     
@@ -75,12 +86,9 @@ public class PlayerPush : MonoBehaviour
         _isPulling = false;
 
         float playerSpeedX = _playerRigidbody.linearVelocity.x;
-
-        // Hızı birebir kopyala ya da hafifçe artır
         float boxSpeedX = playerSpeedX * 0.9f;
 
         _boxRigidbody.linearVelocity = new Vector2(boxSpeedX, 0f);
-
         Debug.Log("Kutu itiliyor!");
     }
 
@@ -91,7 +99,6 @@ public class PlayerPush : MonoBehaviour
 
         _boxRigidbody.linearVelocity = -direction * 1.8f;
 
-        // Sprite'ı kutunun olduğu yöne döndür
         if (_boxToPush != null)
         {
             float boxPosX = _boxToPush.transform.position.x;
@@ -103,27 +110,28 @@ public class PlayerPush : MonoBehaviour
         Debug.Log("Kutu çekiliyor!");
     }
 
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        // Eğer çarpışan nesne "Pushable" tag'ine sahipse
         if (collision.CompareTag("Pushable"))
         {
             _boxToPush = collision.gameObject;
             _boxRigidbody = _boxToPush.GetComponent<Rigidbody2D>();
-            Debug.Log("Kutu algılandı: " + _boxToPush.name); // Kutunun algılandığını kontrol et
-            Debug.Log("Center of mass: " + _boxRigidbody.centerOfMass);
+            _currentPushedBoxAudio = _boxToPush.GetComponent<BoxPushAudio>();
+
+            Debug.Log("Kutu algılandı: " + _boxToPush.name);
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        // Eğer çarpışan nesne "Pushable" tag'ine sahipse
         if (collision.CompareTag("Pushable"))
         {
-            Debug.Log("Kutu algılanmadı."); // Kutunun algılanmadığını kontrol et
-            _boxToPush = null; // Kutuyu sıfırla
-            _boxRigidbody = null; // Rigidbody2D'yi sıfırla
+            _currentPushedBoxAudio?.StopPushSound();
+            _boxToPush = null;
+            _boxRigidbody = null;
+            _currentPushedBoxAudio = null;
+
+            Debug.Log("Kutu algılanmadı.");
         }
     }
 }
