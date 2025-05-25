@@ -26,6 +26,13 @@ public class Monster : MonoBehaviour
     private bool _isGrounded;
     private float _lastJumpTime;
     private bool _isChasing;
+    
+    [Header("Audio")]
+    public AudioClip[] jumpSounds;
+    public AudioClip[] deathSounds;
+
+    private AudioSource _audioSource;
+
 
     void Start()
     {
@@ -34,6 +41,7 @@ public class Monster : MonoBehaviour
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _player = GameObject.FindGameObjectWithTag("Player").transform;
         _rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+        _audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -69,6 +77,12 @@ public class Monster : MonoBehaviour
 
         // Animasyon
         _anim.SetTrigger(AnimatorHashes.JumpBite);
+        if (jumpSounds.Length > 0)
+        {
+            AudioClip clip = jumpSounds[Random.Range(0, jumpSounds.Length)];
+            _audioSource.PlayOneShot(clip);
+        }
+
     
         Debug.Log($"X Difference: {xDifference} | Direction: {direction} | FlipX: {_spriteRenderer.flipX}");
     }
@@ -102,6 +116,11 @@ public class Monster : MonoBehaviour
         foreach(Collider2D col in GetComponents<Collider2D>())
         {
             col.enabled = false;
+        }
+        if (deathSounds.Length > 0)
+        {
+            AudioClip clip = deathSounds[Random.Range(0, deathSounds.Length)];
+            _audioSource.PlayOneShot(clip);
         }
 
         // Canavarı yok et

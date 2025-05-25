@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class AudioManager : MonoBehaviour
 {
@@ -39,6 +40,57 @@ public class AudioManager : MonoBehaviour
         _mouseSource.volume = mouseVolume;
     }
     
+    [Header("Music")]
+    public AudioSource musicSource;
+    
+    [Header("Music Clips")]
+    public AudioClip mainMenuMusic;
+    public AudioClip chapter1Music;
+    public AudioClip chapter2Music;
+
+    void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        Debug.Log("Scene Loaded: " + scene.name);
+
+        switch (scene.name)
+        {
+            case "MainMenu":
+                PlayMusic(mainMenuMusic, 0.6f);
+                break;
+            case "Chapter 1":
+                PlayMusic(chapter1Music, 0.7f);
+                break;
+            case "Chapter 2":
+                PlayMusic(chapter2Music, 0.7f);
+                break;
+        }
+    }
+
+    public void PlayMusic(AudioClip musicClip, float volume = 1f)
+    {
+        if (musicClip == null) return;
+
+        musicSource.Stop(); // Kesin dursun
+        musicSource.clip = musicClip;
+        musicSource.volume = volume;
+        musicSource.loop = true;
+        musicSource.Play();
+    }
+
+    public void StopMusic()
+    {
+        musicSource.Stop();
+    }
     
     public void PlayMouseHurt()
     {
@@ -47,7 +99,6 @@ public class AudioManager : MonoBehaviour
         AudioClip clip = mousehurt[Random.Range(0, mousehurt.Length)];
         _mouseSource.PlayOneShot(clip, mouseVolume);
     }
-    
 
     public void PlayFootstep(float speed)
     {

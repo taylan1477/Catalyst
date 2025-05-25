@@ -12,7 +12,7 @@ public class PlayerDeath : MonoBehaviour
     {
         _animator = GetComponent<Animator>();
         _animator = GetComponent<Animator>();
-        _animator.SetTrigger(AnimatorHashes.SpawnTrigger);
+        // _animator.SetTrigger(AnimatorHashes.SpawnTrigger);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
