@@ -14,9 +14,10 @@ public class PlayerPositionLoader : MonoBehaviour
             yield break;
         }
 
-        player.transform.position = GameState.loadPosition;
-        Debug.Log($"Oyuncu pozisyonu yüklendi: {GameState.loadPosition}");
-
-        GameState.loadPosition = Vector2.zero;
+        if (GameState.loadPosition != Vector2.zero)
+        {
+            player.transform.position = GameState.loadPosition;
+            Debug.Log($"Oyuncu pozisyonu yüklendi: {GameState.loadPosition}");
+        }
     }
 }

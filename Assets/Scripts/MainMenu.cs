@@ -1,21 +1,35 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections.Generic;
 
 public class MainMenu : MonoBehaviour
 {
-    
     public TMP_InputField nameInput;
     public GameObject newGamePanel;
     public GameObject loadGamePanel;
+    
+    public void DeleteSaveSlot(int slotIndex)
+    {
+        SaveSystem.DeleteSave(slotIndex);
+        RefreshLoadSlotTexts(); // UI güncelle
+    }
 
     public TextMeshProUGUI[] loadSlotTexts; // Inspector'dan atanacak
+
+    // Her chapter için başlangıç spawn pozisyonları (Vector3, z = 0)
+    private readonly Dictionary<int, Vector3> _chapterSpawnPoints = new Dictionary<int, Vector3>()
+    {
+        { 0, new Vector3(-103f, 4.4f, 0f) },   // Chapter 1 başlangıç noktası
+        { 1, new Vector3(-36f, -4f, 0f) },   // Chapter 2 başlangıç noktası
+        { 2, new Vector3(10f, 1f, 0f) }   // Chapter 3 başlangıç noktası
+    };
 
     void Start()
     {
         RefreshLoadSlotTexts();
     }
-    
+
     void RefreshLoadSlotTexts()
     {
         for (int i = 0; i < loadSlotTexts.Length; i++)
@@ -35,7 +49,7 @@ public class MainMenu : MonoBehaviour
             }
         }
     }
-    
+
     int SceneNameToChapterIndex(string sceneName)
     {
         if (sceneName.StartsWith("Chapter"))
@@ -46,11 +60,9 @@ public class MainMenu : MonoBehaviour
                 return Mathf.Clamp(num - 1, 0, 3); // 1-based to 0-based
             }
         }
-
         return 0;
     }
 
-    
     public void ShowNewGamePanel()
     {
         newGamePanel.SetActive(true);
@@ -64,28 +76,33 @@ public class MainMenu : MonoBehaviour
         newGamePanel.SetActive(false);
         RefreshLoadSlotTexts();
     }
-    
+
     public void HidePanels()
     {
         newGamePanel.SetActive(false);
         loadGamePanel.SetActive(false);
     }
 
-    // Sahneye geçmeden önce oyuncunun seçimlerine göre kayıt yaratır ve yükler
     public void StartNewGame(int slotIndex, string playerName)
     {
         SaveData newSave = new SaveData();
         newSave.slotName = playerName;
         newSave.chapterIndex = 0;
         newSave.sceneName = "ControlsScreen"; // İlk sahne
-        newSave.playerPosition = Vector2.zero;
+
+        if (_chapterSpawnPoints.TryGetValue(0, out Vector3 spawnPos))
+            newSave.playerPosition = spawnPos;
+        else
+            newSave.playerPosition = Vector2.zero;
 
         SaveSystem.SaveGame(newSave, slotIndex);
         GameState.activeSlot = slotIndex;
 
+        GameState.loadPosition = Vector2.zero; // <<< BURASI
+
         SceneManager.LoadScene(newSave.sceneName);
     }
-    
+
     public void StartNewGameSlot0()
     {
         StartNewGame(0, nameInput.text);
@@ -100,11 +117,10 @@ public class MainMenu : MonoBehaviour
     {
         StartNewGame(2, nameInput.text);
     }
-    
-    // Options butonu (Henüz işlev eklenmedi)
+
     public void OpenOptions()
     {
-        Debug.Log("Options Menu Açılacak (Henüz eklenmedi)"); 
+        Debug.Log("Options Menu Açılacak (Henüz eklenmedi)");
     }
 
     public void LoadExistingGame(int slotIndex)
@@ -121,7 +137,7 @@ public class MainMenu : MonoBehaviour
 
         SceneManager.LoadScene(save.sceneName);
     }
-    
+
     public void LoadExistingGameSlot0()
     {
         LoadExistingGame(0);
