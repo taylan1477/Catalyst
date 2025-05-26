@@ -46,7 +46,7 @@ public class PlayerAttack : MonoBehaviour
             lever?.ToggleLever();
         }
 
-        // GetComponent<CatSpeech>().Speak(SystemInfo.graphicsDeviceName, 4f, 0.04f);
+        GetComponent<CatSpeech>().Speak("Meow!!!", 4f, 0.04f);
     }
 
     void ToggleMouseCarry()
