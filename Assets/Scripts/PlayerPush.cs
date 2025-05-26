@@ -53,7 +53,7 @@ public class PlayerPush : MonoBehaviour
                 else
                 {
                     _boxRigidbody.linearVelocity = Vector2.zero;
-                    _currentPushedBoxAudio?.StopPushSound(); // Ses durdur
+                    _currentPushedBoxAudio?.StartPushSound(); // Ses durdur
                 }
             }
         }

@@ -52,7 +52,7 @@ public class ControlsScreen : MonoBehaviour
             _characterAnimator.SetTrigger(param); // Trigger tetikle
         }
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(2f);
     
         if (isBool)
         {
@@ -60,7 +60,7 @@ public class ControlsScreen : MonoBehaviour
         }
     
         key.sprite = normalSprite; // Tuşu eski haline getir
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1f);
     }
 
 

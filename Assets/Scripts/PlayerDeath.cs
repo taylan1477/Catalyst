@@ -6,7 +6,7 @@ public class PlayerDeath : MonoBehaviour
 {
     public Transform respawnPoint;
     public float respawnDelay = 1f;
-    public TextMeshProUGUI lifeTextUI;// UI'daki "9x" yazısı
+    public TextMeshProUGUI lifeTextUI;
 
     private Animator _animator;
     private bool _isDead;
@@ -61,10 +61,17 @@ public class PlayerDeath : MonoBehaviour
 
     void Respawn()
     {
-        transform.position = respawnPoint.position;
+        if (GameState.loadPosition != Vector2.zero)
+            transform.position = GameState.loadPosition;
+        else
+            transform.position = respawnPoint.position;
+
         GetComponent<Rigidbody2D>().simulated = true;
         _isDead = false;
         _animator.SetTrigger(AnimatorHashes.SpawnTrigger);
+
+        // Reset loadPosition to prevent unexpected reuse
+        GameState.loadPosition = Vector2.zero;
     }
 
     void UpdateLifeUI()

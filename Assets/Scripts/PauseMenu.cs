@@ -8,6 +8,7 @@ public class PauseMenu : MonoBehaviour
     [Header("Main Pause Menu")]
     public GameObject pauseScreen; // ESC ile açılan panel
     public Button continueButton;
+    public Button saveButton; // Save buton referansı
     public Button settingsButton;
     public Button quitButton;
 
@@ -25,7 +26,10 @@ public class PauseMenu : MonoBehaviour
         // Menüler başlangıçta kapalı
         pauseScreen.SetActive(false);
         settingsPanel.SetActive(false);
-
+        
+        // Diğer listener'ların altına ekle
+        saveButton.onClick.AddListener(SaveGame);
+   
         // Pause ekran butonları
         continueButton.onClick.AddListener(ResumeGame);
         settingsButton.onClick.AddListener(OpenSettings);
@@ -83,6 +87,44 @@ public class PauseMenu : MonoBehaviour
         settingsPanel.SetActive(false);
         Time.timeScale = 1f;
         AudioListener.pause = false;
+    }
+    
+    int SceneNameToChapterIndex(string sceneName)
+    {
+        switch (sceneName)
+        {
+            case "Chapter1": return 0;
+            case "Chapter2": return 1;
+            case "Chapter3": return 2;
+            case "Chapter4": return 3;
+            default: return 0;
+        }
+    }
+
+    void SaveGame()
+    {
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        if (player == null)
+        {
+            Debug.LogError("Player bulunamadı!");
+            return;
+        }
+
+        Vector3 pos = player.transform.position;
+
+        // Gerçek chapter indeksini belirle (örnek: Chapter1 sahnesi "Chapter1", o zaman 0)
+        string sceneName = SceneManager.GetActiveScene().name;
+        int chapterIndex = SceneNameToChapterIndex(sceneName);
+
+        // Önceki kayıt verisini al, sadece pozisyon ve chapter'ı güncelle
+        SaveData data = SaveSystem.LoadGame(GameState.activeSlot) ?? new SaveData();
+        data.playerPosition = pos;
+        data.chapterIndex = chapterIndex;
+        data.sceneName = sceneName;
+
+        SaveSystem.SaveGame(data, GameState.activeSlot);
+
+        Debug.Log($"Oyun kaydedildi: Slot {GameState.activeSlot}, Chapter {chapterIndex}, Pos {pos}");
     }
 
     void OpenSettings()
