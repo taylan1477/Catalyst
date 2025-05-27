@@ -30,7 +30,7 @@
 - 🧩 Basit bulmaca ve platform öğeleri yerleştirildi
 - 🐭 Düşman prototipleri: Fare
 
-![kutu itme](gifs/kutu_itme.gif)
+![kutu itme](gifs/push_pull.gif)
 ![wall jump](gifs/wall_jump.gif)
 
 ---
