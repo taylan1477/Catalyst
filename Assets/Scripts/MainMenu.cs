@@ -2,28 +2,51 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections.Generic;
+using UnityEngine.Audio;
+using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
     public TMP_InputField nameInput;
     public GameObject newGamePanel;
     public GameObject loadGamePanel;
+    public GameObject optionsPanel;
+
+    public AudioMixer mixer;
+    public Slider musicSlider;
+    public Slider sfxSlider;
     
     public void DeleteSaveSlot(int slotIndex)
     {
         SaveSystem.DeleteSave(slotIndex);
-        RefreshLoadSlotTexts(); // UI güncelle
+        RefreshLoadSlotTexts();
     }
 
     public TextMeshProUGUI[] loadSlotTexts; // Inspector'dan atanacak
 
-    // Her chapter için başlangıç spawn pozisyonları (Vector3, z = 0)
+    // Her chapter için başlangıç spawn pozisyonları
     private readonly Dictionary<int, Vector3> _chapterSpawnPoints = new Dictionary<int, Vector3>()
     {
         { 0, new Vector3(-103f, 4.4f, 0f) },   // Chapter 1 başlangıç noktası
         { 1, new Vector3(-36f, -4f, 0f) },   // Chapter 2 başlangıç noktası
         { 2, new Vector3(10f, 1f, 0f) }   // Chapter 3 başlangıç noktası
     };
+    
+    void Awake()
+    {
+        // Slider ayarları
+        musicSlider.onValueChanged.AddListener(SetMusicVolume);
+        sfxSlider.onValueChanged.AddListener(SetSfxVolume);
+        
+        float savedMusic = PlayerPrefs.GetFloat("Music", 1f);
+        float savedSfx = PlayerPrefs.GetFloat("SFX", 1f);
+
+        musicSlider.value = savedMusic;
+        sfxSlider.value = savedSfx;
+
+        SetMusicVolume(savedMusic);
+        SetSfxVolume(savedSfx);
+    }
 
     void Start()
     {
@@ -81,6 +104,7 @@ public class MainMenu : MonoBehaviour
     {
         newGamePanel.SetActive(false);
         loadGamePanel.SetActive(false);
+        optionsPanel.SetActive(false);
     }
 
     public void StartNewGame(int slotIndex, string playerName)
@@ -120,7 +144,28 @@ public class MainMenu : MonoBehaviour
 
     public void OpenOptions()
     {
-        Debug.Log("Options Menu Açılacak (Henüz eklenmedi)");
+        optionsPanel.SetActive(true);
+        newGamePanel.SetActive(false);
+        loadGamePanel.SetActive(false);
+    }
+
+    
+    void SetMusicVolume(float value)
+    {
+        PlayerPrefs.SetFloat("Music", value);
+        PlayerPrefs.Save();
+
+        float dB = Mathf.Log10(Mathf.Clamp(value, 0.0001f, 1f)) * 20f;
+        mixer.SetFloat("Music", dB);
+    }
+
+    void SetSfxVolume(float value)
+    {
+        PlayerPrefs.SetFloat("SFX", value);
+        PlayerPrefs.Save();
+
+        float dB = Mathf.Log10(Mathf.Clamp(value, 0.0001f, 1f)) * 20f;
+        mixer.SetFloat("SFX", dB);
     }
 
     public void LoadExistingGame(int slotIndex)
