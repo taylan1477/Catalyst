@@ -101,5 +101,5 @@ Sürüm sistemi şu şekilde ilerlemektedir:
 ## ✉️ İletişim
 
 > Geliştirici: [taylan147701@gmail.com]  
-> GitHub: [@taylanozgur](https://github.com/taylanozgur)  
+> GitHub: [@taylan1477](https://github.com/taylan1477)  
 
