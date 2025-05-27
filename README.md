@@ -30,9 +30,6 @@
 - 🧩 Basit bulmaca ve platform öğeleri yerleştirildi
 - 🐭 Düşman prototipleri: Fare
 
-![kutu itme](gifs/push_pull.gif)
-![wall jump](gifs/wall_jump.gif)
-
 ---
 
 ### 🔹 v0.3.2 – İkinci Sürüm (🗓️ Nisan 2025)
@@ -72,7 +69,9 @@
 ## 📸 Ekran Görüntüleri
 
 ![Ana Menü](screenshots/disi_kedi.gif)  
-![Wall Jump](gifs/walljump.gif)  
+![kutu itme](gifs/push_pull.gif)
+![wall jump](gifs/wall_jump.gif)
+![wall jump](gifs/female_cat.gif)
 
 ---
 
