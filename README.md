@@ -3,15 +3,15 @@
 **Geliştirici:** Taylan Özgür Özdemir  
 **Okul:** İnönü Üniversitesi - Bilgisayar Mühendisliği  
 **Proje Türü:** 2D Platformer/Metroidvania
-**Oyun Motoru:** Unity 6 6000.0.36f1  
+**Oyun Motoru:** Unity 6 (6000.0.36f1)
 **Dil:** C#  
-**Durum:** Geliştirme aşamasında (ver0.6.8)
+**Durum:** Geliştirme aşamasında (0.6.8)
 
 ---
 
 ## 🐱 Oyun Hakkında
 
-**EvoluCat**, ilaçla zekileşen bir kedinin hikayesini anlatan, bulmaca tabanlı bir 2D platformer/metroidvania oyunudur. Oyunda oyuncu; keşif, dövüş, çevresel etkileşim ve yavaş yavaş açılan yeni yeteneklerle ilerler.
+**EvoluCat**, ilaçla zekileşen bir kedinin hikayesini anlatan, bulmaca tabanlı bir 2D platformer/metroidvania oyunudur. Oyunda oyuncu; keşif, dövüş, çevresel etkileşim ve yavaş yavaş açılan yeni yeteneklerle hayvanlar üzerinde yapılan deneylerin arkasındaki gizem perdesini aralayacaktır.
 
 ---
 
@@ -27,7 +27,6 @@
   - Kutu itme/çekme
   - Pati ile saldırı
   - Fare taşıma ve etkileşim
-- 🎮 Ana Menü sistemi eklendi
 - 🧩 Basit bulmaca ve platform öğeleri yerleştirildi
 - 🐭 Düşman prototipleri: Fare
 
@@ -53,6 +52,8 @@
 - 🎧 Tüm ses dosyaları ve Müzikler toplandı. (pixabay.com üzerinden)
 - ☠ Canavar ve Platform tehtidleri eklendi.
 - 📜 Chapter 2'in çizimsel geçişleri tamamlandı (çizgi roman tarzı)
+- 🎮 Ana Menü sistemi eklendi.
+- 💾 Kayıt&Yükleme sistemi oluşturuldu.
 
 ---
 
@@ -60,7 +61,7 @@
 
 | Planlanan Özellikler          | Durum           |
 |-------------------------------|-----------------|
-| Chapter 3 Laboratuvar         | 🔜 Planlanıyor |
+| Laboratuvar (Chapter 3)       | 🔜 Planlanıyor |
 | Telekinezi mekaniği           | 🔜 Planlanıyor |
 | Boss Fight (Chapter 4)        | ⏳ Tasarımda    |
 | Türkçe dil desteği            | 🟡 Düşünülüyor |
@@ -81,11 +82,11 @@
 - **IDE:** JetBrains Rider
 - **Dil:** C#
 - **Platform:** Windows x64
-- **Assetler:** Unity Asset Store, Kenney.nl, OpenGameArt.org
+- **Assetler:** Unity Asset Store, [itch.io](https://itch.io), [OpenGameArt.org](https://opengameart.org), [GameDevMarket.com](https://www.gamedevmarket.net)
 
 ---
 
-## 🗃️ Versiyonlama
+## 🗃️ Versiyonlama & İndirme Linkleri
 
 Sürüm sistemi şu şekilde ilerlemektedir:  
 `MAJOR.MINOR.PATCH`
@@ -95,6 +96,9 @@ Sürüm sistemi şu şekilde ilerlemektedir:
 - `0.6.0` = Chapter 2 tamamlandığında
 - `0.9.0` = Chapter 3 tamamlandığında
 - `1.0.0` = Final sürüm, tüm chapter’lar ve mekanikler entegre
+
+🎮 **[EvoluCat v0.6.8 İndir (Windows 64-bit)](https://example.com/evolucat_v0.6.8.zip)**  
+📦 Dosya Boyutu: 140 MB | Yayın Tarihi: 26 Mayıs 2025
 
 ---
 
