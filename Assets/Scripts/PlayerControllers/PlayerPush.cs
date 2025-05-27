@@ -71,7 +71,7 @@ namespace PlayerControllers
                     _boxRigidbody.bodyType = RigidbodyType2D.Kinematic;
                 }
 
-                _currentPushedBoxAudio?.StopPushSound(); // Shift bırakılırsa ses durdur
+                _currentPushedBoxAudio?.StopPushSound(); // Shift bırakılırsa sesi lapa
             }
 
             UpdateAnimator();

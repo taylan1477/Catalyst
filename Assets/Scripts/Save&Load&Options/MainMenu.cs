@@ -24,19 +24,18 @@ namespace Save_Load_Options
             RefreshLoadSlotTexts();
         }
 
-        public TextMeshProUGUI[] loadSlotTexts; // Inspector'dan atanacak
+        public TextMeshProUGUI[] loadSlotTexts;
 
         // Her chapter için başlangıç spawn pozisyonları
         private readonly Dictionary<int, Vector3> _chapterSpawnPoints = new Dictionary<int, Vector3>()
         {
-            { 0, new Vector3(-103f, 4.4f, 0f) },   // Chapter 1 başlangıç noktası
-            { 1, new Vector3(-36f, -4f, 0f) },   // Chapter 2 başlangıç noktası
-            { 2, new Vector3(10f, 1f, 0f) }   // Chapter 3 başlangıç noktası
+            { 0, new Vector3(-103f, 4.4f, 0f) },
+            { 1, new Vector3(-36f, -4f, 0f) },
+            { 2, new Vector3(10f, 1f, 0f) }
         };
     
         void Awake()
         {
-            // Slider ayarları
             musicSlider.onValueChanged.AddListener(SetMusicVolume);
             sfxSlider.onValueChanged.AddListener(SetSfxVolume);
         
@@ -82,7 +81,7 @@ namespace Save_Load_Options
                 string numPart = sceneName.Substring(7);
                 if (int.TryParse(numPart, out int num))
                 {
-                    return Mathf.Clamp(num - 1, 0, 3); // 1-based to 0-based
+                    return Mathf.Clamp(num - 1, 0, 3);
                 }
             }
             return 0;
@@ -124,7 +123,7 @@ namespace Save_Load_Options
             SaveSystem.SaveGame(newSave, slotIndex);
             GameState.activeSlot = slotIndex;
 
-            GameState.loadPosition = Vector2.zero; // <<< BURASI
+            GameState.loadPosition = Vector2.zero;
 
             SceneManager.LoadScene(newSave.sceneName);
         }

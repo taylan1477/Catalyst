@@ -54,14 +54,13 @@ namespace PlayerControllers
             UpdateAnimator();
             CheckGrounded();
             HandleJump();
-            HandleFootsteps(); // Yeni eklenen fonksiyon
+            HandleFootsteps();
         }
 
         void HandleFootsteps()
         {
             if (!_isGrounded || Mathf.Abs(speed) < 0.1f)
             {
-                // Yeni eklenen: Sesi durdur
                 if (AudioManager.Instance != null)
                 {
                     AudioManager.Instance.StopFootstep();
@@ -106,7 +105,6 @@ namespace PlayerControllers
                 if (isSlowed == false)
                 {
                     SpriteRenderer.flipX = false; // Kediyi sola çevir
-                    // UpdateCarryPosition(); // CarryPosition'ı güncelle
                 }
                 _isStoping = false;
             }
@@ -117,7 +115,6 @@ namespace PlayerControllers
                 if (isSlowed == false)
                 {
                     SpriteRenderer.flipX = true; // Kediyi sola çevir
-                    // UpdateCarryPosition(); // CarryPosition'ı güncelle
                 }
                 _isStoping = false;
             }
@@ -181,7 +178,7 @@ namespace PlayerControllers
                 if (_isGrounded)
                 {
                     _isCharging = true;           // Yere değdiğinde charged jump için şarj başlasın
-                    _chargeStartTime = Time.time;   // Şarj başlangıç zamanı
+                    _chargeStartTime = Time.time;   // charge başlangıç zamanı
                 }
             }
 

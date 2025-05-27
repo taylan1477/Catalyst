@@ -36,7 +36,7 @@ namespace Save_Load_Options
 
             var sources = GetComponents<AudioSource>();
             _sfxSource = sources[0];
-            _mouseSource = sources[1]; // İkinci audio source
+            _mouseSource = sources[1];
         
             _sfxSource.volume = footstepVolume;
             _mouseSource.volume = mouseVolume;

@@ -8,8 +8,8 @@ namespace NPCControllers
     {
         [Header("Settings")]
         public float chaseRange = 5f;
-        public float jumpForce = 10f; // Artırılmış zıplama gücü
-        public float horizontalSpeed = 7f; // Yatay hız için yeni parametre
+        public float jumpForce = 10f;
+        public float horizontalSpeed = 7f;
         public float jumpCooldown = 2f;
     
         [Header("References")]
@@ -18,7 +18,7 @@ namespace NPCControllers
         public LayerMask groundLayer;
     
         [Header("Death")]
-        public float deathAnimationDuration = 0.5f; // Animasyon süresi
+        public float deathAnimationDuration = 1f; // Animasyon süresi
 
         private bool _ismDead;
 
@@ -52,8 +52,6 @@ namespace NPCControllers
             if(_ismDead) return;
             _isChasing = Vector2.Distance(transform.position, _player.position) <= chaseRange;
             _isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
-        
-            Debug.Log($"Grounded: {_isGrounded} | Velocity: {_rb.linearVelocity}"); // Debug log
         }
 
         void FixedUpdate()
@@ -68,17 +66,16 @@ namespace NPCControllers
 
         void JumpTowardsPlayer()
         {
-            // Yön hesaplama (güncellenmiş versiyon)
+            // Yön hesaplamaca
             float xDifference = _player.position.x - transform.position.x;
             int direction = xDifference > 0 ? 1 : -1;
 
-            // Sprite yönü için doğru flip mantığı
-            _spriteRenderer.flipX = xDifference > 0; // Düzeltilmiş satır
+            // flip mantığı
+            _spriteRenderer.flipX = xDifference > 0; 
 
             // Hareket uygula
             _rb.linearVelocity = new Vector2(direction * horizontalSpeed, jumpForce);
-
-            // Animasyon
+            
             _anim.SetTrigger(AnimatorHashes.JumpBite);
             if (jumpSounds.Length > 0)
             {
@@ -110,12 +107,12 @@ namespace NPCControllers
             _ismDead = true;
         
             // Animasyonu tetikle
-            _anim.SetTrigger(AnimatorHashes.MonsterDead); // Animator'de "Death" adında bir trigger oluşturun
-            // Fizik etkileşimlerini durdur
+            _anim.SetTrigger(AnimatorHashes.MonsterDead);
+            // rigidbody kapa
             _rb.linearVelocity = Vector2.zero;
             _rb.simulated = false;
         
-            // Collider'ları devre dışı bırak
+            // Collider kapa
             foreach(Collider2D col in GetComponents<Collider2D>())
             {
                 col.enabled = false;
@@ -126,7 +123,6 @@ namespace NPCControllers
                 _audioSource.PlayOneShot(clip);
             }
 
-            // Canavarı yok et
             Destroy(gameObject, deathAnimationDuration);
         }
     }

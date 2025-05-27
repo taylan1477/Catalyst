@@ -8,9 +8,9 @@ namespace Save_Load_Options
     public class PauseMenu : MonoBehaviour
     {
         [Header("Main Pause Menu")]
-        public GameObject pauseScreen; // ESC ile açılan panel
+        public GameObject pauseScreen; 
         public Button continueButton;
-        public Button saveButton; // Save buton referansı
+        public Button saveButton;
         public Button settingsButton;
         public Button quitButton;
 
@@ -28,16 +28,12 @@ namespace Save_Load_Options
             // Menüler başlangıçta kapalı
             pauseScreen.SetActive(false);
             settingsPanel.SetActive(false);
-        
-            // Diğer listener'ların altına ekle
-            saveButton.onClick.AddListener(SaveGame);
-   
+            
             // Pause ekran butonları
             continueButton.onClick.AddListener(ResumeGame);
+            saveButton.onClick.AddListener(SaveGame);
             settingsButton.onClick.AddListener(OpenSettings);
             quitButton.onClick.AddListener(QuitGame);
-
-            // Ayarlar menüsü butonları
             backButton.onClick.AddListener(CloseSettings);
 
             // Slider ayarları
@@ -61,7 +57,7 @@ namespace Save_Load_Options
             {
                 if (settingsPanel.activeSelf)
                 {
-                    CloseSettings(); // Ayarlar açıksa önce onu kapat
+                    CloseSettings();
                 }
                 else if (_isPaused)
                 {
@@ -113,8 +109,7 @@ namespace Save_Load_Options
             }
 
             Vector3 pos = player.transform.position;
-
-            // Gerçek chapter indeksini belirle (örnek: Chapter1 sahnesi "Chapter1", o zaman 0)
+            
             string sceneName = SceneManager.GetActiveScene().name;
             int chapterIndex = SceneNameToChapterIndex(sceneName);
 

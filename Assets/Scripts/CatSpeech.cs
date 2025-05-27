@@ -17,7 +17,7 @@ public class CatSpeech : MonoBehaviour
 
     private IEnumerator TypeText(TMP_Text textComp, string fullText, float duration, GameObject bubble, float charDelay)
     {
-        textComp.text = ""; // Temizle
+        textComp.text = ""; // Temizliyor bu gereksiz değillllllllll
         foreach (char c in fullText)
         {
             textComp.text += c;

@@ -7,14 +7,14 @@ namespace SceneControllers
 {
     public class ControlsScreen : MonoBehaviour
     {
-        public Image keyA, keySpace, keyD, keyShift, keyE; // Tuş görselleri
+        public Image keyA, keySpace, keyD, keyShift, keyE;
         public Sprite keyANormal, keyAPressed;
         public Sprite keySpaceNormal, keySpacePressed;
         public Sprite keyDNormal, keyDPressed;
         public Sprite keyShiftNormal, keyShiftPressed;
         public Sprite keyENormal, keyEPressed;
-        private Animator _characterAnimator; // Karakterin Animator bileşeni
-        private SpriteRenderer _spriteRenderer; // Karakterin SpriteRenderer bileşeni
+        private Animator _characterAnimator;
+        private SpriteRenderer _spriteRenderer;
 
         private void Awake()
         {

@@ -14,7 +14,7 @@ namespace PlayerControllers
         private Animator _animator;
         private bool _isDead;
 
-        public static int lives = 9; // Oyuncunun toplam canı (oyun boyunca sabit)
+        public static int lives = 9;
 
         void Start()
         {
@@ -43,11 +43,10 @@ namespace PlayerControllers
             if (lives <= 0)
             {
                 Debug.Log("Game Over!");
-                // GameOver ekranı vs.
+                // GameOver ekranı burada çağırırım
             }
         }
-
-        // Animation event'ten çağrılacak
+        
         public void OnDeathAnimationEnd()
         {
             if (lives > 0)

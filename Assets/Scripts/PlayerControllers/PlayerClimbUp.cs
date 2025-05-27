@@ -14,7 +14,9 @@ namespace PlayerControllers
         private Animator _animator;
         private Rigidbody2D _rb;
         private bool _isClimbing;
-        private bool _wasAtLedge;  // Önceki frame durumu
+        private bool _wasAtLedge; 
+        
+        // BU MEKANİK ÇALIŞMIYOR ŞİMDİLİK BIRAKALIM 
 
         private void Awake()
         {
@@ -67,7 +69,7 @@ namespace PlayerControllers
             _rb.gravityScale = 0;
         }
 
-        // Animation Event: tam yukarı çekildiği anda
+        // Animation event: tam yukarı çekildiği anda
         public void ClimbMove()
         {
             Debug.Log("[CLIMB] Event: ClimbMove");
@@ -84,8 +86,6 @@ namespace PlayerControllers
             Debug.Log("[CLIMB] Event: OnClimbComplete");
             _rb.gravityScale = 1;
             _isClimbing = false;
-            // İsteğe bağlı: yere inmeden yeniden tırmanmayı önlemek için
-            // _wasAtLedge = true;
         }
 
         private int GetFacingDirection()
