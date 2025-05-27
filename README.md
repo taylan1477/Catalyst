@@ -17,7 +17,7 @@
 
 ## 🚧 Geliştirme Günlüğü
 
-### 🔹 v0.1.0 – İlk Sürüm (🗓️ Mart 2025)
+### 🔹 v0.1.0 – Temel Mekanikler (🗓️ Mart 2025)
 
 - ✅ **Temel Mekanikler Geliştirildi** (Küçük mahalle ortamı)
 - 🧠 **Mekanikler:**
@@ -32,7 +32,7 @@
 
 ---
 
-### 🔹 v0.3.2 – İkinci Sürüm (🗓️ Nisan 2025)
+### 🔹 v0.3.2 – İlk Sürüm (🗓️ Nisan 2025)
 
 - ✅ **Chapter 1 tamamlandı** (Küçük mahalle ortamı)
 - 🎨 Oyun içi HUD tasarımı ve animasyonları
@@ -43,7 +43,7 @@
 
 ---
 
-### 🔹 v0.6.0 – Temel Mekanikler
+### 🔹 v0.6.5 – İkinci Sürüm (🗓️ Mayıs 2025)
 
 - ✅ **Chapter 2 tamamlandı** (Gergin Kanalizasyon)
 - 🎧 Tüm ses dosyaları ve Müzikler toplandı. (pixabay.com üzerinden)
