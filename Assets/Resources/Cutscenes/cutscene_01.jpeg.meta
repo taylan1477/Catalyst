@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 2d0cabe378858bc40a6eb0d489100384
+guid: 8bfc5f0402996b54a9c3fb42fb274695
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7449642262635028819
-    second: 05 to sewer_0
+      213: 156178388912589208
+    second: cutscene_01_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,7 +46,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: 05 to sewer_0
+      name: cutscene_01_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 1024
-        height: 1024
+        width: 600
+        height: 900
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: daed6eff4dd8d9890800000000000000
-      internalID: -7449642262635028819
+      spriteID: 8994ab0da6bda2200800000000000000
+      internalID: 156178388912589208
       vertices: []
       indices: 
       edges: []
@@ -138,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      cutscene_01_0: 156178388912589208
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

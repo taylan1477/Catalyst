@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 652d3710ccb53ce4296f1c95120846c5
+guid: 2d0cabe378858bc40a6eb0d489100384
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8477750874738608626
-    second: "03 bitmi\u015F arasokak_0"
+      213: -2739526039695813981
+    second: cutscene_05_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,7 +46,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: "03 bitmi\u015F arasokak_0"
+      name: cutscene_05_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 846
-        height: 737
+        width: 900
+        height: 900
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e06b2f81f7af85a80800000000000000
-      internalID: -8477750874738608626
+      spriteID: 3a29ffed49f3bf9d0800000000000000
+      internalID: -2739526039695813981
       vertices: []
       indices: 
       edges: []
@@ -138,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      cutscene_05_0: -2739526039695813981
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

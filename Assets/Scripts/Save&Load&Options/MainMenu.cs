@@ -124,7 +124,7 @@ namespace Save_Load_Options
             GameState.activeSlot = slotIndex;
 
             GameState.loadPosition = Vector2.zero;
-
+            GameState.playIntro = true; // introyu ekledim
             SceneManager.LoadScene(newSave.sceneName);
         }
 
