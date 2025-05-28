@@ -50,6 +50,7 @@
     <Compile Include="Assets\Scripts\AnimatorHashes.cs" />
     <Compile Include="Assets\Scripts\PlayerControllers\PlayerClimbUp.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextEventHandler.cs" />
+    <Compile Include="Assets\Scripts\PlayerControllers\CatSpeech.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\EnvMapAnimator.cs" />
     <Compile Include="Assets\Scripts\PlayerControllers\PlayerPush.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextSelector_A.cs" />
@@ -103,7 +104,7 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextMeshProFloatingText.cs" />
     <Compile Include="Assets\Scripts\PlayerControllers\PlayerDeath.cs" />
     <Compile Include="Assets\Scripts\PlayerControllers\PlayerWallJump.cs" />
-    <Compile Include="Assets\Scripts\CatSpeech.cs" />
+    <Compile Include="Assets\Scripts\SceneControllers\Ch2CutsceneStarter.cs" />
     <Compile Include="Assets\Scripts\ObjectControllers\BoxPushAudio.cs" />
     <Compile Include="Assets\Scripts\PlayerControllers\PlayerAttack.cs" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
