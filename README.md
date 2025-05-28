@@ -96,8 +96,12 @@ Sürüm sistemi şu şekilde ilerlemektedir:
 - `0.9.0` = Chapter 3 tamamlandığında
 - `1.0.0` = Final sürüm, tüm chapter’lar ve mekanikler entegre
 
-🎮 **[EvoluCat v0.6.8 İndir (Windows 64-bit)](https://example.com/evolucat_v0.6.8.zip)**  
-📦 Dosya Boyutu: 140 MB | Yayın Tarihi: 26 Mayıs 2025
+## 🐾 Son Sürüm İndir
+
+🎮 [EvoluCat v0.7.6 (Windows 64-bit) İndir](https://github.com/taylanozgur/evolucat/releases/download/v0.7.6/evolucat_v0.7.6_win64.zip)
+📅 Yayın Tarihi: 27 Mayıs 2025
+📦 Boyut: 51 MB
+
 
 ---
 
