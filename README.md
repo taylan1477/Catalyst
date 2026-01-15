@@ -98,7 +98,7 @@ Sürüm sistemi şu şekilde ilerlemektedir:
 
 ## 🐾 Son Sürüm İndir
 
-🎮 [EvoluCat v0.7.6 (Windows 64-bit) İndir](https://github.com/taylan1477/Catalyst/releases/download/v0.7.6/Evolucat_v0.7.6_win64.zip)
+🎮 [EvoluCat v0.5.6 (Windows 64-bit) İndir](https://github.com/taylan1477/Catalyst/releases/download/v0.7.6/Evolucat_v0.7.6_win64.zip)
 📅 Yayın Tarihi: 27 Mayıs 2025
 📦 Boyut: 51 MB
 
