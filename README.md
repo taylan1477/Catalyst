@@ -5,7 +5,7 @@
 **Proje Türü:** 2D Platformer/Metroidvania
 **Oyun Motoru:** Unity 6 (6000.0.36f1)
 **Dil:** C#  
-**Durum:** Geliştirme aşamasında (0.6.8)
+**Durum:** Geliştirme aşamasında (0.5.6)
 
 ---
 
